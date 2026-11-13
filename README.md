@@ -13,7 +13,7 @@
 
 | Distribution Package | Download Link | File Size | SHA-256 Checksum |
 | :--- | :--- | :---: | :--- |
-| **Official 1-Click Setup (.exe)** | [**Download XSHEILD_Setup.exe**](https://github.com/futurefinger/XsheildPublic/raw/main/release/XSHEILD_Setup.exe) | **45.2 MB** | `677e946e9a8a9240167c56757e6847c279fdeb9f564b27f3910932fe28066ed6` |
+| **Official 1-Click Setup (.exe)** | [**Download XSHEILD_Setup.exe**](https://github.com/futurefinger/XsheildPublic/raw/main/release/XSHEILD_Setup.exe) | **45.2 MB** | `d4f84cc628aae064a4d0f3df57c8639a2c09ef8d3a00d51a0a92769abe286f5c` |
 | **Direct CDN Mirror** | [**Download via Mirror**](https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe) | **45.2 MB** | Verified SHA-256 Match |
 | **Local Cockpit Fast Stream** | [**Local Download (Port 8100)**](http://127.0.0.1:8100/download/XSHEILD_Setup.exe) | **45.2 MB** | High-Speed Local Cache |
 
@@ -49,7 +49,7 @@ Get-FileHash -Path "XSHEILD_Setup.exe" -Algorithm SHA256
 ```
 Expected Output:
 ```
-677e946e9a8a9240167c56757e6847c279fdeb9f564b27f3910932fe28066ed6
+d4f84cc628aae064a4d0f3df57c8639a2c09ef8d3a00d51a0a92769abe286f5c
 ```
 
 ---

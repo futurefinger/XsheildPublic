@@ -1,0 +1,10 @@
+{
+  "version": "2.5.0",
+  "tag_name": "v2.5.0",
+  "name": "XSHEILD v2.5.0 \u2014 Sovereign Endpoint Protection and 5D Idle Sentinel",
+  "published_at": "2026-11-13T16:56:52.241452+00:00",
+  "sha256": "d4f84cc628aae064a4d0f3df57c8639a2c09ef8d3a00d51a0a92769abe286f5c",
+  "size": 47386328,
+  "download_url": "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe",
+  "release_notes": "XSHEILD v2.5.0: 3D/4D/5D Holographic Idle Sentinel, Non-Intrusive Taskbar HUD, Zero-Day Minifilter Defense."
+}
