@@ -1,10 +1,10 @@
 {
-  "version": "2.5.0",
-  "tag_name": "v2.5.0",
-  "name": "XSHEILD v2.5.0 \u2014 Sovereign Endpoint Protection and 5D Idle Sentinel",
-  "published_at": "2026-11-13T16:56:52.241452+00:00",
-  "sha256": "6a7b0f22a42e6d9fb8275e9deb580e85ba3004a497c863fa0da14b59f3e3f126",
-  "size": 49344696,
+  "version": "2.5.5",
+  "tag_name": "v2.5.5",
+  "name": "XSHEILD v2.5.5 \u2014 Sovereign Silent Security and Global Autonomous Defense",
+  "published_at": "2026-11-16T00:15:00.000000+00:00",
+  "sha256": "eecaabc81ed607b2a3abbd1aac0d061c09acc6959dc3c33b4a1a9b8ffc8b92de",
+  "size": 49344728,
   "download_url": "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe",
-  "release_notes": "XSHEILD v2.5.0: 3D/4D/5D Holographic Idle Sentinel, Non-Intrusive Taskbar HUD, Zero-Day Minifilter Defense."
+  "release_notes": "XSHEILD v2.5.5: Permanent HUD Discretion Protocol (Silent Tray Operation), 100 Procedural 3D/4D/5D Security Holograms, Kernel Minifilter Driver Sentry, Global Autonomous Endpoint Defense, EULA & Section 65B IT Act Legal Vault Enrollment."
 }
