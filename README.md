@@ -14,8 +14,8 @@
 
 | Distribution Package | Download Link | File Size | SHA-256 Checksum |
 | :--- | :--- | :---: | :--- |
-| **Official GitHub Release CDN (.exe)** | [**Download XSHEILD_Setup.exe (v2.5.6)**](https://github.com/futurefinger/XsheildPublic/releases/download/v2.5.6/XSHEILD_Setup.exe) | **49.3 MB** | `eecaabc81ed607b2a3abbd1aac0d061c09acc6959dc3c33b4a1a9b8ffc8b92de` |
-| **Direct Repository Mirror** | [**Download via Raw Mirror**](https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe) | **49.3 MB** | Verified SHA-256 Match |
+| **Official GitHub Release CDN (.exe)** | [**Download XSHEILD_Setup.exe (v2.5.6)**](https://github.com/futurefinger/XsheildPublic/releases/download/v2.5.6/XSHEILD_Setup.exe) | **49.4 MB** | `a01be96052f54097883ebc1aff17881700ab94b6d111226cba114776db585a67` |
+| **Direct Repository Mirror** | [**Download via Raw Mirror**](https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe) | **49.4 MB** | Verified SHA-256 Match |
 | **Official Release Page** | [**View Release v2.5.6 Assets**](https://github.com/futurefinger/XsheildPublic/releases/tag/v2.5.6) | **GitHub CDN** | Direct Binary Release |
 
 ---
@@ -34,7 +34,7 @@
 
 ## ⚡ Installation Instructions
 
-1. Download **[`XSHEILD_Setup.exe`](https://github.com/futurefinger/XsheildPublic/releases/download/v2.5.5/XSHEILD_Setup.exe)** from the official release link above.
+1. Download **[`XSHEILD_Setup.exe`](https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe)** from the official release link above.
 2. Double-click `XSHEILD_Setup.exe` to launch the Setup Wizard.
    > **Note on Windows SmartScreen:** If Windows SmartScreen displays *"Windows protected your PC"*, click **"More info"** (अतिरिक्त जानकारी) and select **"Run anyway"** (फिर भी चलाएं).
 3. Review and accept the legal EULA agreement (exclusive New Delhi jurisdiction).
