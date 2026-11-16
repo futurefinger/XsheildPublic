@@ -1,3 +1,4 @@
+# XShield Coexistence Sentry v2.5.6 (16 Nov 2026)
 # XShield Antivirus & Microsoft Defender Coexistence Script
 # Future Finger Technologies Inc. (C) 2026
 

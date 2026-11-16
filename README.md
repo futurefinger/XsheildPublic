@@ -1,6 +1,6 @@
 # XShield™ Endpoint Security & Anti-Ransomware Shield
 ### Official Public Distribution by Future Finger Technologies
-[![Release](https://img.shields.io/badge/Release-v2.5.5--Enterprise-emerald.svg)](https://github.com/futurefinger/XsheildPublic/releases)
+[![Release](https://img.shields.io/badge/Release-v2.5.6--Enterprise-emerald.svg)](https://github.com/futurefinger/XsheildPublic/releases)
 [![Target OS](https://img.shields.io/badge/OS-Windows%2010%20%7C%2011%20%7C%20Server-blue.svg)](https://github.com/futurefinger/XsheildPublic)
 [![Security Rating](https://img.shields.io/badge/Security-Enterprise%20Grade-success.svg)](https://github.com/futurefinger/XsheildPublic)
 [![Last Updated](https://img.shields.io/badge/Updated-November%2016%2C%202026-brightgreen.svg)](https://github.com/futurefinger/XsheildPublic)
@@ -14,14 +14,15 @@
 
 | Distribution Package | Download Link | File Size | SHA-256 Checksum |
 | :--- | :--- | :---: | :--- |
-| **Official GitHub Release CDN (.exe)** | [**Download XSHEILD_Setup.exe (v2.5.5)**](https://github.com/futurefinger/XsheildPublic/releases/download/v2.5.5/XSHEILD_Setup.exe) | **49.3 MB** | `eecaabc81ed607b2a3abbd1aac0d061c09acc6959dc3c33b4a1a9b8ffc8b92de` |
+| **Official GitHub Release CDN (.exe)** | [**Download XSHEILD_Setup.exe (v2.5.6)**](https://github.com/futurefinger/XsheildPublic/releases/download/v2.5.6/XSHEILD_Setup.exe) | **49.3 MB** | `eecaabc81ed607b2a3abbd1aac0d061c09acc6959dc3c33b4a1a9b8ffc8b92de` |
 | **Direct Repository Mirror** | [**Download via Raw Mirror**](https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe) | **49.3 MB** | Verified SHA-256 Match |
-| **Official Release Page** | [**View Release v2.5.5 Assets**](https://github.com/futurefinger/XsheildPublic/releases/tag/v2.5.5) | **GitHub CDN** | Direct Binary Release |
+| **Official Release Page** | [**View Release v2.5.6 Assets**](https://github.com/futurefinger/XsheildPublic/releases/tag/v2.5.6) | **GitHub CDN** | Direct Binary Release |
 
 ---
 
-## 🛡️ Core Capabilities & v2.5.5 Highlights
+## 🛡️ Core Capabilities & v2.5.6 Highlights
 
+- **Automated Windows Startup Version Check & Background Auto-Download:** Client installations automatically query GitHub on Windows boot. If a newer production release is discovered, the verified binary is automatically downloaded and staged silently in the background, keeping endpoints continuously up-to-date.
 - **Permanent HUD Discretion Protocol (Silent Tray Operation):** Complete elimination of recurring intrusive popup notifications. Operates discreetly inside the Windows System Tray with seamless status transitions and zero user distraction.
 - **100 Procedural 3D/4D/5D Security Holograms:** Dynamic multi-dimensional holographic visualizers and custom-fitted dialog cards.
 - **Digital EULA & Legal Audit Vault:** Legally binding End-User License Agreement with explicit New Delhi Jurisdiction clause compliant with Section 65B of the Indian Evidence Act / Information Technology Act 2000. Hardware-bound telemetry is securely archived in the Super Admin Audit Vault and dispatched to `futurefingerindia@gmail.com`.
