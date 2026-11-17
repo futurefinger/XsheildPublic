@@ -1,11 +1,11 @@
-{
-  "version": "2.5.6",
-  "tag_name": "v2.5.6",
-  "name": "XSHEILD v2.5.6 \u2014 Sovereign Silent Security & Windows Startup Auto-Updater",
-  "published_at": "2026-11-16T13:48:00+00:00",
-  "sha256": "a01be96052f54097883ebc1aff17881700ab94b6d111226cba114776db585a67",
-  "size": 49450200,
-  "download_url": "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe",
-  "cdn_download_url": "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe",
-  "release_notes": "XSHEILD v2.5.6: Automated Windows Startup Version Check, Seamless GitHub Auto-Download Pipeline, Silent Tray Operation, 100 Procedural 3D/4D/5D Security Holograms, Kernel Minifilter Driver Sentry, EULA & Section 65B IT Act Legal Vault Enrollment."
+﻿{
+    "version":  "2.5.6",
+    "tag_name":  "v2.5.6",
+    "name":  "XSHEILD v2.5.6 — Sovereign Silent Security \u0026 Windows Startup Auto-Updater",
+    "published_at":  "2026-11-16T13:48:00+00:00",
+    "sha256":  "1cb6a5331bf927d18744f0bc6ccbec3df586a6f5ff37526bad786353f3724d61",
+    "size":  49446520,
+    "download_url":  "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe",
+    "cdn_download_url":  "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe",
+    "release_notes":  "XSHEILD v2.5.6: Automated Windows Startup Version Check, Seamless GitHub Auto-Download Pipeline, Silent Tray Operation, 100 Procedural 3D/4D/5D Security Holograms, Kernel Minifilter Driver Sentry, EULA \u0026 Section 65B IT Act Legal Vault Enrollment."
 }
