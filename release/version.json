@@ -1,12 +1,11 @@
-﻿{
-    "version":  "2.5.6",
-    "tag_name":  "v2.5.6",
-    "name":  "XSHEILD v2.5.6 â€” Sovereign Silent Security \u0026 Windows Startup Auto-Updater",
-    "published_at":  "2026-11-16T13:48:00+00:00",
-    "sha256":  "f88799eab8f65c2c96fc3e06297d241594696e8de05a95466d629337f9439f09",
-    "size":  49452248,
-    "download_url":  "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe",
-    "cdn_download_url":  "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe",
-    "release_notes":  "XSHEILD v2.5.6: Automated Windows Startup Version Check, Seamless GitHub Auto-Download Pipeline, Silent Tray Operation, 100 Procedural 3D/4D/5D Security Holograms, Kernel Minifilter Driver Sentry, EULA \u0026 Section 65B IT Act Legal Vault Enrollment."
+{
+  "tag": "v2.5.6",
+  "version": "2.5.6",
+  "release_name": "XSHEILD v2.5.6 Production Enterprise Release",
+  "published_at": "2026-11-17T10:43:27Z",
+  "installer_file": "XSHEILD_Setup.exe",
+  "installer_sha256": "df63e9f69aea60f14c093c0c31e6d8086e687894b3e5588e1d5576b29c962793",
+  "installer_size": 42256600,
+  "download_url": "https://github.com/futurefinger/XsheildPublic/releases/download/v2.5.6/XSHEILD_Setup.exe",
+  "raw_url": "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe"
 }
-
