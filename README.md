@@ -1,6 +1,6 @@
 # XShield™ Endpoint Security & Anti-Ransomware Shield
 ### Official Public Distribution by Future Finger Technologies
-[![Release](https://img.shields.io/badge/Release-v2.6.0--Enterprise-emerald.svg)](https://github.com/futurefinger/XsheildPublic/releases)
+[![Release](https://img.shields.io/badge/Release-v2.6.1--Enterprise-emerald.svg)](https://github.com/futurefinger/XsheildPublic/releases)
 [![Target OS](https://img.shields.io/badge/OS-Windows%2010%20%7C%2011%20%7C%20Server-blue.svg)](https://github.com/futurefinger/XsheildPublic)
 [![Security Rating](https://img.shields.io/badge/Security-Enterprise%20Grade-success.svg)](https://github.com/futurefinger/XsheildPublic)
 [![Last Updated](https://img.shields.io/badge/Updated-November%2019%2C%202026-brightgreen.svg)](https://github.com/futurefinger/XsheildPublic)
@@ -14,13 +14,13 @@
 
 | Distribution Package | Download Link | File Size | SHA-256 Checksum |
 | :--- | :--- | :---: | :--- |
-| **Official GitHub Release CDN (.exe)** | [**Download XSHEILD_Setup.exe (v2.6.0)**](https://github.com/futurefinger/XsheildPublic/releases/download/v2.6.0/XSHEILD_Setup.exe) | **41.5 MB** | `e11c9fa8df8b7f06740e0d34e5d9dbf5e51acc91f95843b48351330913cc4c99` |
+| **Official GitHub Release CDN (.exe)** | [**Download XSHEILD_Setup.exe (v2.6.1)**](https://github.com/futurefinger/XsheildPublic/releases/download/v2.6.1/XSHEILD_Setup.exe) | **41.5 MB** | `0c97e83956a55558fa8a1a692edd976fcf68ae2578b6ac0cace3af97ca211629` |
 | **Direct Repository Mirror** | [**Download via Raw Mirror**](https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe) | **41.5 MB** | Verified SHA-256 Match |
-| **Official Release Page** | [**View Release v2.6.0 Assets**](https://github.com/futurefinger/XsheildPublic/releases/tag/v2.6.0) | **GitHub CDN** | Direct Binary Release |
+| **Official Release Page** | [**View Release v2.6.1 Assets**](https://github.com/futurefinger/XsheildPublic/releases/tag/v2.6.1) | **GitHub CDN** | Direct Binary Release |
 
 ---
 
-## 🛡️ Core Capabilities & v2.6.0 Highlights
+## 🛡️ Core Capabilities & v2.6.1 Highlights
 
 - **Automated Windows Startup Version Check & Background Auto-Download:** Client installations automatically query GitHub on Windows boot. If a newer production release is discovered, the verified binary is automatically downloaded and staged silently in the background, keeping endpoints continuously up-to-date.
 - **Permanent HUD Discretion Protocol (Silent Tray Operation):** Complete elimination of recurring intrusive popup notifications. Operates discreetly inside the Windows System Tray with seamless status transitions and zero user distraction.
@@ -52,7 +52,7 @@ Get-FileHash -Path "XSHEILD_Setup.exe" -Algorithm SHA256
 ```
 Expected Output:
 ```
-eecaabc81ed607b2a3abbd1aac0d061c09acc6959dc3c33b4a1a9b8ffc8b92de
+0c97e83956a55558fa8a1a692edd976fcf68ae2578b6ac0cace3af97ca211629
 ```
 
 ---
