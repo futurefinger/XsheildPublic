@@ -1,65 +1,145 @@
-# XShield™ Endpoint Security & Anti-Ransomware Shield
-### Official Public Distribution by Future Finger Technologies
-[![Release](https://img.shields.io/badge/Release-v2.6.1--Enterprise-emerald.svg)](https://github.com/futurefinger/XsheildPublic/releases)
-[![Target OS](https://img.shields.io/badge/OS-Windows%2010%20%7C%2011%20%7C%20Server-blue.svg)](https://github.com/futurefinger/XsheildPublic)
-[![Security Rating](https://img.shields.io/badge/Security-Enterprise%20Grade-success.svg)](https://github.com/futurefinger/XsheildPublic)
-[![Last Updated](https://img.shields.io/badge/Updated-November%2019%2C%202026-brightgreen.svg)](https://github.com/futurefinger/XsheildPublic)
-[![Authenticode](https://img.shields.io/badge/Digital%20Signature-Authenticode%20Signed-00F0FF.svg)](https://github.com/futurefinger/XsheildPublic)
+# XSHEILD — Beyond Antivirus. Your Digital Bodyguard.
+### Owner: Future Finger Technologies
 
-**XShield™** is an enterprise-grade endpoint security and sovereign cyber defense suite engineered by Future Finger Technologies to detect, quarantine, and neutralize zero-day ransomware, unauthorized kernel driver injections, and behavioral memory anomalies before payload detonation.
-
----
-
-## ⬇️ Direct Download Links (Latest Production Build: November 19, 2026)
-
-| Distribution Package | Download Link | File Size | SHA-256 Checksum |
-| :--- | :--- | :---: | :--- |
-| **Official GitHub Release CDN (.exe)** | [**Download XSHEILD_Setup.exe (v2.6.1)**](https://github.com/futurefinger/XsheildPublic/releases/download/v2.6.1/XSHEILD_Setup.exe) | **41.5 MB** | `0c97e83956a55558fa8a1a692edd976fcf68ae2578b6ac0cace3af97ca211629` |
-| **Direct Repository Mirror** | [**Download via Raw Mirror**](https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe) | **41.5 MB** | Verified SHA-256 Match |
-| **Official Release Page** | [**View Release v2.6.1 Assets**](https://github.com/futurefinger/XsheildPublic/releases/tag/v2.6.1) | **GitHub CDN** | Direct Binary Release |
+[![Platform: Windows 10/11](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-00F0FF.svg)](https://microsoft.com/windows)
+[![Version: v2.6.2](https://img.shields.io/badge/Release-v2.6.2--Production-emerald.svg)](https://github.com/futurefinger/XsheildPublic/releases)
+[![Python: 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](https://python.org)
+[![FastAPI: Backend](https://img.shields.io/badge/Backend-FastAPI%20%7C%20SQLite-009688.svg)](https://fastapi.tiangolo.com)
+[![Updated: 16 Nov 2026](https://img.shields.io/badge/Updated-November%2016%2C%202026-brightgreen.svg)](https://github.com/futurefinger/XSHEILD)
+[![License: Proprietary Commercial](https://img.shields.io/badge/License-Proprietary-FF9800.svg)](#commercial-model)
+[![Status: Active Engineering](https://img.shields.io/badge/Status-Active%20Engineering-4CAF50.svg)](STATUS.md)
 
 ---
 
-## 🛡️ Core Capabilities & v2.6.1 Highlights
+## 1. Executive Summary
 
-- **Automated Windows Startup Version Check & Background Auto-Download:** Client installations automatically query GitHub on Windows boot. If a newer production release is discovered, the verified binary is automatically downloaded and staged silently in the background, keeping endpoints continuously up-to-date.
-- **Permanent HUD Discretion Protocol (Silent Tray Operation):** Complete elimination of recurring intrusive popup notifications. Operates discreetly inside the Windows System Tray with seamless status transitions and zero user distraction.
-- **100 Procedural 3D/4D/5D Security Holograms:** Dynamic multi-dimensional holographic visualizers and custom-fitted dialog cards.
-- **Digital EULA & Legal Audit Vault:** Legally binding End-User License Agreement with explicit New Delhi Jurisdiction clause compliant with Section 65B of the Indian Evidence Act / Information Technology Act 2000. Hardware-bound telemetry is securely archived in the Super Admin Audit Vault and dispatched to `futurefingerindia@gmail.com`.
-- **Windows Kernel Minifilter Driver Sentry:** Real-time driver-level protection against unauthorized file encryption, process injection, and boot persistence attacks.
-- **Background Autonomous Global Endpoint Defense:** Integrated zero-overhead outbound security ambassador operating quietly without local CPU spikes or marketing interference.
-- **Authenticode Cryptographic Signing:** Authenticode digital signature embedded into all PE binaries (`XSHEILD.exe` & `XSHEILD_Setup.exe`) ensuring software origin and tamper prevention.
+**XSHEILD** is a next-generation, layered Windows endpoint security product engineered by **Future Finger Technologies**. XSHEILD bridges low-latency heuristic scanning, cryptographic signature verification, behavioral and persistence surveillance, and a cloud-assisted reputation subsystem with an ultra-responsive, animated desktop UI.
 
----
-
-## ⚡ Installation Instructions
-
-1. Download **[`XSHEILD_Setup.exe`](https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe)** from the official release link above.
-2. Double-click `XSHEILD_Setup.exe` to launch the Setup Wizard.
-   > **Note on Windows SmartScreen:** If Windows SmartScreen displays *"Windows protected your PC"*, click **"More info"** (अतिरिक्त जानकारी) and select **"Run anyway"** (फिर भी चलाएं).
-3. Review and accept the legal EULA agreement (exclusive New Delhi jurisdiction).
-4. Choose your installation directory (default: `%LocalAppData%\Programs\XSHEILD`).
-5. Click **Install**. The wizard extracts all security components, registers system drivers, and creates your **Desktop Shortcut (`XSHEILD.lnk`)**.
-6. Click **Finish**. XShield will immediately arm background real-time surveillance.
+### Brand Attribution
+- **Product Name**: XSHEILD (alias: XSHIELD)
+- **Tagline**: *"Beyond Antivirus. Your Digital Bodyguard."*
+- **Publisher**: Future Finger Technologies
+- **Target OS**: 64-bit Windows 11 and supported Windows 10 installations.
 
 ---
 
-## 🔍 Cryptographic Verification
+## 2. Core Pillars & Architecture
 
-Verify installer package integrity using Windows PowerShell:
+```
+                       ┌──────────────────────────────────────────────┐
+                       │          XSHEILD Desktop UI (v1.0)           │
+                       │    (WebView2 / Hardware-Accelerated Web)     │
+                       └──────────────────────┬───────────────────────┘
+                                              │ Local Authenticated IPC
+                                              ▼
+┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                 XSHEILD CORE SERVICE                                        │
+├───────────────────────────────┬─────────────────────────────┬───────────────────────────────┤
+│    Detection Engine           │   Quarantine Vault          │   Real-Time Monitor           │
+│  - Multi-Hash (SHA256/MD5)    │  - AES/XOR Encrypted Stash  │  - Filesystem Watcher         │
+│  - PE Header & Import Parser  │  - Tamper-Evident Manifest  │  - Registry Persistence Mon   │
+│  - Shannon Entropy Inspection │  - Atomic Safe Restoration  │  - Process Spawning Telemetry │
+│  - EICAR & Custom Signatures  │  - Safe Isolation ACLs      │  - Download Dir Interception  │
+├───────────────────────────────┴─────────────────────────────┴───────────────────────────────┤
+│   Entitlement & Licensing Engine                                                            │
+│  - Cryptographically Signed Entitlements (HMAC-SHA256 Token)                                │
+│  - Anti-Rollback Monotonic System Clock Verifier                                            │
+│  - Offline Grace Period Cache with Device UUID Fingerprinting                               │
+└─────────────────────────────────────────────┬───────────────────────────────────────────────┘
+                                              │ TLS 1.3 / Authenticated REST
+                                              ▼
+                       ┌──────────────────────────────────────────────┐
+                       │           XSHEILD Cloud & Backend            │
+                       │   - FastAPI Cloud Reputation & Feed          │
+                       │   - Razorpay Sandbox Payment Verification    │
+                       │   - Webhook Signature & Replay Protection    │
+                       │   - Customer & Device Admin Portal           │
+                       └──────────────────────────────────────────────┘
+```
+
+1. **Deterministic Multi-Hash Engine**: Fast block-level SHA-256, MD5, and SHA-1 calculation against local and cloud threat databases.
+2. **PE File Structural Analysis**: Deep inspection of portable executable sections, anomalously high entropy (packed/encrypted malware indicators), suspicious DLL imports (e.g., `VirtualAllocEx`, `WriteProcessMemory`, `CreateRemoteThread`), and anomalous compile timestamps.
+3. **Archive Security**: Deep zip inspection with strict recursion limits, decompression ratios, and zip-bomb containment.
+4. **Secure Quarantine Vault**: Cryptographically obfuscates and isolates malicious binaries in a sandboxed, restricted directory, preventing direct execution while preserving original filesystem metadata for authorized restoration.
+5. **Real-Time Filesystem & Persistence Monitor**: Continuous monitoring of critical directories (Downloads, Desktop, Temp, Startup) and registry run keys (`HKCU\Software\Microsoft\Windows\CurrentVersion\Run`).
+6. **Commercial Razorpay Billing & Cryptographic Licensing**: Integrates Razorpay sandbox order creation, payment capture, idempotent webhook event verification, and Ed25519/HMAC-signed offline entitlement tokens.
+7. **Windows Defender Coexistence**: Designed to run cleanly alongside Microsoft Defender without attempting to disable or bypass Windows core security features.
+
+---
+
+## 3. Commercial Model & Plans
+
+| Plan | Target | Duration / Billing | Key Capabilities |
+| :--- | :--- | :--- | :--- |
+| **Free Evaluation** | Single Device | 14-day trial | Quick & Full scan, basic heuristic analysis, quarantine |
+| **XSHEILD Pro** | Individual User | Monthly / Annual | Real-time monitoring, cloud reputation, auto-updates |
+| **XSHEILD Family** | Multi-Device (Up to 5) | Monthly / Annual | Centralized license dashboard, multi-seat activation |
+| **XSHEILD Business**| Organization / Enterprise | Annual | Policy enforcement, administrative reporting, device audit |
+
+*Payment gateway supported via Razorpay (UPI, Credit/Debit Cards, NetBanking).*
+
+---
+
+## 4. Repository Structure
+
+```
+XSHIELD/
+├── README.md               # Product overview and documentation index
+├── ARCHITECTURE.md         # Full systems engineering & data flow specification
+├── SECURITY.md             # Security policies, boundaries, vulnerability disclosure
+├── THREAT_MODEL.md         # STRIDE & attack surface analysis
+├── DEVELOPMENT_PLAN.md     # 9-Phase engineering milestones & priorities
+├── TEST_PLAN.md            # Test matrix, EICAR tests, unit, integration tests
+├── PRIVACY.md              # Telemetry ethics, Indian privacy law & GDPR compliance
+├── INSTALLATION.md         # Build, installation, and deployment procedures
+├── RELEASE_CHECKLIST.md    # Production acceptance gates & verification checklist
+├── CHANGELOG.md            # Version history and changes
+├── AI_HANDOFF.md           # Autonomous agent context & state continuation
+├── STATUS.md               # Live task ledger and build/test status
+├── assets/                 # SVGs, icons (.ico), logos, high-res marketing marks
+├── src/
+│   ├── core/               # Antivirus engine: scanner, heuristics, quarantine, cache
+│   ├── realtime/           # Filesystem watcher & persistence surveillance
+│   ├── licensing/          # Entitlement tokens, device binding, anti-clock-tamper
+│   ├── backend/            # FastAPI licensing, admin portal, Razorpay sandbox
+│   ├── ui/                 # Animated UI (HTML5/CSS3/JS) + PyWebView IPC runner
+│   └── tools/              # CLI scanner, test dataset generator, benchmark harness
+├── tests/                  # Automated pytest suite (scanner, quarantine, licensing)
+└── installer/              # Standalone Windows packaging & setup script
+```
+
+---
+
+## 5. Quick Start (Development & Testing)
+
+### Prerequisites
+- Windows 10 or 11 (64-bit)
+- Python 3.12+
+- Microsoft Edge WebView2 Evergreen Runtime (pre-installed on Windows 10/11)
+
+### Running Automated Test Suite
 ```powershell
-Get-FileHash -Path "XSHEILD_Setup.exe" -Algorithm SHA256
+pytest -v tests/
 ```
-Expected Output:
+
+### Running the Desktop UI
+```powershell
+python -m src.ui.app
 ```
-0c97e83956a55558fa8a1a692edd976fcf68ae2578b6ac0cace3af97ca211629
+
+### Running the Licensing & Payment Backend
+```powershell
+uvicorn src.backend.server:app --port 8000 --reload
+```
+
+### Running CLI Scanner Directly
+```powershell
+python -m src.tools.cli scan --path "C:\Users\HP\Downloads" --mode full
 ```
 
 ---
 
-## 🏢 Publisher & Commercial Licensing
-
-- **Publisher:** Future Finger Technologies  
-- **Exclusive Jurisdiction:** New Delhi, Delhi, India  
-- **Support & Commercial Licensing:** [futurefingerindia@gmail.com](mailto:futurefingerindia@gmail.com)  
-- **Enterprise Volume Deployment:** Contact support for enterprise endpoint licensing (25 to 500+ machines) with centralized administrative telemetry.
+## 6. Truth in Security & Attributions
+- **No Deceptive Protection**: XSHEILD reports genuine scan results and never fabricates threat counts or claims "100% security".
+- **Coexistence**: XSHEILD complies with Windows Security guidelines and does not disable Defender or UAC.
+- **Attribution**: *XSHEILD is developed and owned by Future Finger Technologies.*
