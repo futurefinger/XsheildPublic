@@ -44,6 +44,18 @@
 </head>
 <body>
 
+  <!-- Cyber Matrix Background Particle Canvas -->
+  <canvas id="cyberMatrixCanvas" class="cyber-matrix-canvas" aria-hidden="true"></canvas>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar">
+    <div class="container announcement-inner">
+      <span class="announcement-pill">⚡ NEW RELEASE</span>
+      <span>XShield v2.6.3 Matrix Edition is live with Automated USB Disinfection & 3D Meditation Sentinel HUD &bull; Authenticode Signed</span>
+      <a href="product-onepager.html" class="announcement-link">View Corporate 1-Pager &rarr;</a>
+    </div>
+  </div>
+
   <!-- ==================== STICKY NAVIGATION BAR ==================== -->
   <header class="site-header" id="site-header">
     <div class="nav-container">
@@ -56,7 +68,9 @@
       <nav class="nav-links" id="nav-links" aria-label="Main Navigation">
         <a href="#hero" class="nav-item">Home</a>
         <a href="#features" class="nav-item">Features</a>
-        <a href="product-onepager.html" class="nav-item" style="color: #00f0ff; font-weight: 700;">📄 1-Pager Brochure</a>
+        <a href="#simulator" class="nav-item">Simulator</a>
+        <a href="product-onepager.html" class="nav-item" style="color: #00f0ff; font-weight: 700;">📄 1-Pager</a>
+        <a href="assets/logo-3d-interactive.html" class="nav-item" target="_blank" style="color: #a78bfa;">🎨 3D Logo</a>
         <a href="#why-choose" class="nav-item">Why XShield</a>
         <a href="#screenshots" class="nav-item">Screenshots</a>
         <a href="#download" class="nav-item">Download</a>
@@ -147,19 +161,33 @@
           </div>
         </div>
 
-        <div class="hero-visual">
-          <div class="shield-container">
+        <div class="hero-visual" id="heroVisualStage">
+          <div class="shield-container" id="heroShieldContainer">
             <div class="shield-hologram-ring ring-outer"></div>
             <div class="shield-hologram-ring ring-inner"></div>
             <div class="shield-core-glow"></div>
             <img src="assets/hero-shield.svg" alt="XShield 3D Security Shield" class="hero-shield-img" width="460" height="460">
             
-            <!-- Floating Security Status Cards -->
+            <!-- Floating 3D Security Status Badges -->
             <div class="floating-badge badge-top-left">
               <span class="badge-icon-shield">🛡️</span>
               <div class="badge-text">
                 <strong>Real-Time Shield</strong>
-                <span>Active &bull; Monitoring</span>
+                <span>14 Kernel Shields &bull; Active</span>
+              </div>
+            </div>
+            <div class="floating-badge badge-top-right">
+              <span class="badge-icon-shield" style="color: #00f0ff;">⚡</span>
+              <div class="badge-text">
+                <strong>USB Auto-Shield</strong>
+                <span>Zero-Click Intercept</span>
+              </div>
+            </div>
+            <div class="floating-badge badge-bottom-left">
+              <span class="badge-icon-shield" style="color: #8b5cf6;">🧠</span>
+              <div class="badge-text">
+                <strong>Neural Engine</strong>
+                <span>99.98% Zero-Day Catch</span>
               </div>
             </div>
             <div class="floating-badge badge-bottom-right">
@@ -169,6 +197,39 @@
                 <span>HUD Status: Secured</span>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5 ENTERPRISE METRICS STRIP ==================== -->
+    <section class="metrics-strip-section" id="metrics">
+      <div class="container">
+        <div class="metrics-strip-grid">
+          <div class="metric-strip-card" data-tilt>
+            <div class="metric-strip-value" data-counter="99.98" data-suffix="%">99.98%</div>
+            <div class="metric-strip-title">Zero-Day Catch Rate</div>
+            <div class="metric-strip-sub">Offline Neural Engine</div>
+          </div>
+          <div class="metric-strip-card" data-tilt>
+            <div class="metric-strip-value" data-counter="0.18" data-prefix="< " data-suffix="s">&lt; 0.18s</div>
+            <div class="metric-strip-title">USB Insertion Intercept</div>
+            <div class="metric-strip-sub">Automated Disinfection</div>
+          </div>
+          <div class="metric-strip-card" data-tilt>
+            <div class="metric-strip-value" data-counter="42" data-suffix=" MB">42 MB</div>
+            <div class="metric-strip-title">Peak RAM Footprint</div>
+            <div class="metric-strip-sub">Featherweight Agent</div>
+          </div>
+          <div class="metric-strip-card" data-tilt>
+            <div class="metric-strip-value" data-counter="0" data-suffix="%">0%</div>
+            <div class="metric-strip-title">Idle CPU Drag</div>
+            <div class="metric-strip-sub">Zero System Lag</div>
+          </div>
+          <div class="metric-strip-card" data-tilt>
+            <div class="metric-strip-value" data-counter="100" data-suffix="%">100%</div>
+            <div class="metric-strip-title">Air-Gap Autonomy</div>
+            <div class="metric-strip-sub">100% Offline Scans</div>
           </div>
         </div>
       </div>
@@ -484,12 +545,54 @@
             </p>
           </div>
 
-          <div class="why-card">
+          <div class="why-card" data-tilt>
             <div class="why-number">06</div>
             <h3 class="why-title">Authenticode Digital Signature</h3>
             <p class="why-desc">
               Compiled and cryptographically signed with SHA-256 for verified publisher identity, transparent integrity checks, and clean installation on Windows.
             </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== LIVE INTERACTIVE DEFENSE SIMULATOR ==================== -->
+    <section class="section sim-section" id="simulator">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge">INTERACTIVE THREAT SIMULATOR</span>
+          <h2 class="section-title">See Autonomous Defense in Action</h2>
+          <p class="section-subtitle">
+            Experience how XShield intercepts zero-day threats, neutralizes rogue USB flash drives, and stops memory injection in real time.
+          </p>
+        </div>
+
+        <div class="sim-console-card" data-tilt>
+          <div class="sim-header-bar">
+            <div class="sim-dots">
+              <span class="sim-dot dot-red"></span>
+              <span class="sim-dot dot-yellow"></span>
+              <span class="sim-dot dot-green"></span>
+            </div>
+            <div class="sim-title">XSHIELD // LIVE NEURAL SENTRY TERMINAL</div>
+            <div class="sim-status" id="simLiveStatus">&bull; SENTRY ACTIVE & MONITORING</div>
+          </div>
+
+          <div class="sim-screen" id="simConsoleScreen">
+            <div class="sim-log-row"><span class="sim-time">[14:30:01]</span> <span class="sim-tag-ok">[INITIALIZE]</span> XShield Kernel Core v2.6.3 booted. 14 Kernel Shields engaged.</div>
+            <div class="sim-log-row"><span class="sim-time">[14:30:02]</span> <span class="sim-tag-ok">[MEMORY]</span> Process sandbox active. Memory footprint: 41.8 MB.</div>
+            <div class="sim-log-row"><span class="sim-time">[14:30:03]</span> <span class="sim-tag-ok">[HUD]</span> Meditation Sentinel Tray HUD linked. Status: SECURED.</div>
+            <div class="sim-log-row"><span class="sim-time">[14:30:05]</span> <span class="sim-tag-ok">[READY]</span> Waiting for hardware event or file stream activity...</div>
+          </div>
+
+          <div class="sim-controls-bar">
+            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 700;">Simulate Real-Time Threat Event:</span>
+            <div class="sim-btns">
+              <button class="sim-btn" onclick="runSim('usb')">🔌 Plug In Infected USB</button>
+              <button class="sim-btn" onclick="runSim('ransomware')">☣️ Launch Zero-Day Ransomware</button>
+              <button class="sim-btn" onclick="runSim('persistence')">🛡️ Test Startup Registry Hijack</button>
+              <button class="sim-btn" style="border-color: #64748b; color: #94a3b8;" onclick="clearSimLogs()">🧹 Clear</button>
+            </div>
           </div>
         </div>
       </div>

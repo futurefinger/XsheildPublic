@@ -1,53 +1,255 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
   <defs>
-    <linearGradient id="heroShield" x1="50" y1="50" x2="450" y2="450" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#00F0FF"/>
-      <stop offset="40%" stop-color="#3B82F6"/>
-      <stop offset="80%" stop-color="#1D4ED8"/>
-      <stop offset="100%" stop-color="#0F172A"/>
-    </linearGradient>
-    <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#00F59B" stop-opacity="0.9"/>
-      <stop offset="50%" stop-color="#00F0FF" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#030712" stop-opacity="0"/>
+    <!-- Background Canvas Glow & Vignette -->
+    <radialGradient id="spaceGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.18"/>
+      <stop offset="40%" stop-color="#8b5cf6" stop-opacity="0.10"/>
+      <stop offset="75%" stop-color="#020617" stop-opacity="0.0"/>
     </radialGradient>
-    <filter id="hyperGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="10" result="blur"/>
-      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+
+    <!-- Metallic Titanium Bevel Gradients -->
+    <linearGradient id="metalBevelLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="25%" stop-color="#00f0ff" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="#0284c7" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#031525" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <linearGradient id="metalBevelRight" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9"/>
+      <stop offset="35%" stop-color="#1e1b4b" stop-opacity="0.8"/>
+      <stop offset="70%" stop-color="#090d16" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#020617" stop-opacity="0.98"/>
+    </linearGradient>
+
+    <!-- 3D Shield Shell Gradients -->
+    <radialGradient id="shield3DLight" cx="45%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="40%" stop-color="#0f172a"/>
+      <stop offset="80%" stop-color="#050814"/>
+      <stop offset="100%" stop-color="#020308"/>
+    </radialGradient>
+
+    <!-- Faceted Crystal Defense Layers -->
+    <linearGradient id="facetTopLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.08"/>
+    </linearGradient>
+
+    <linearGradient id="facetTopRight" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0.05"/>
+    </linearGradient>
+
+    <linearGradient id="facetBottom" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.45"/>
+    </linearGradient>
+
+    <!-- 3D Extruded Chrome 'X' Monogram -->
+    <linearGradient id="chromeBar1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="20%" stop-color="#67e8f9"/>
+      <stop offset="50%" stop-color="#0284c7"/>
+      <stop offset="80%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#082f49"/>
+    </linearGradient>
+
+    <linearGradient id="chromeBar2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="25%" stop-color="#a78bfa"/>
+      <stop offset="55%" stop-color="#6366f1"/>
+      <stop offset="85%" stop-color="#3730a3"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+
+    <linearGradient id="chromeExtrude" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#082f49"/>
+      <stop offset="50%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+
+    <!-- Central Quantum Singularity Core -->
+    <radialGradient id="singularityCore" cx="45%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="25%" stop-color="#67e8f9"/>
+      <stop offset="55%" stop-color="#06b6d4"/>
+      <stop offset="85%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </radialGradient>
+
+    <radialGradient id="coreAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8"/>
+      <stop offset="40%" stop-color="#8b5cf6" stop-opacity="0.5"/>
+      <stop offset="80%" stop-color="#00f0ff" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Gold Enterprise Seal Ribbon -->
+    <linearGradient id="goldRibbon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="40%" stop-color="#f59e0b"/>
+      <stop offset="70%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+
+    <!-- Drop Shadows & Holographic Glow Filters -->
+    <filter id="shield3DShadow" x="-30%" y="-20%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="28" stdDeviation="24" flood-color="#000000" flood-opacity="0.75"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#00f0ff" flood-opacity="0.35"/>
     </filter>
+
+    <filter id="neonPulsar" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur1"/>
+      <feGaussianBlur stdDeviation="20" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="xDepthShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="6" dy="14" stdDeviation="10" flood-color="#000000" flood-opacity="0.85"/>
+      <feDropShadow dx="-4" dy="-4" stdDeviation="6" flood-color="#00f0ff" flood-opacity="0.4"/>
+    </filter>
+
+    <!-- Metallic Specular Highlights Pattern -->
+    <linearGradient id="specularGlint" x1="0%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6"/>
+      <stop offset="30%" stop-color="#ffffff" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
   </defs>
 
-  <!-- Ambient Holographic Nebula -->
-  <circle cx="250" cy="250" r="220" fill="url(#coreGlow)" opacity="0.6"/>
+  <!-- Ambient Orbital Matrix Rings -->
+  <g opacity="0.65">
+    <ellipse cx="400" cy="400" rx="360" ry="360" fill="none" stroke="url(#spaceGlow)" stroke-width="1.5" stroke-dasharray="6 8"/>
+    <ellipse cx="400" cy="400" rx="335" ry="335" fill="none" stroke="#00f0ff" stroke-width="1" stroke-opacity="0.25" stroke-dasharray="1 10"/>
+    <ellipse cx="400" cy="400" rx="310" ry="120" fill="none" stroke="#8b5cf6" stroke-width="1.2" stroke-opacity="0.3" transform="rotate(-25 400 400)"/>
+    <ellipse cx="400" cy="400" rx="310" ry="120" fill="none" stroke="#00f0ff" stroke-width="1.2" stroke-opacity="0.3" transform="rotate(25 400 400)"/>
+  </g>
 
-  <!-- Orbiting 3D Quantum Rings -->
-  <ellipse cx="250" cy="250" rx="230" ry="80" stroke="rgba(0, 240, 255, 0.4)" stroke-width="1.8" stroke-dasharray="8 6" transform="rotate(-25 250 250)"/>
-  <ellipse cx="250" cy="250" rx="210" ry="70" stroke="rgba(0, 245, 155, 0.35)" stroke-width="1.4" stroke-dasharray="12 4" transform="rotate(35 250 250)"/>
-  <ellipse cx="250" cy="250" rx="190" ry="190" stroke="rgba(139, 92, 246, 0.3)" stroke-width="1.2" stroke-dasharray="4 8"/>
+  <!-- Background Volumetric Radial Glow -->
+  <circle cx="400" cy="380" r="320" fill="url(#spaceGlow)"/>
 
-  <!-- Outer Kinetic Shield Facets -->
-  <path d="M250 40 L410 95 V260 C410 370 340 430 250 460 C160 430 90 370 90 260 V95 Z" 
-        fill="#050C1B" stroke="url(#heroShield)" stroke-width="6" filter="url(#hyperGlow)"/>
+  <!-- ==================== MAIN 3D SHIELD ENCLOSURE ==================== -->
+  <g filter="url(#shield3DShadow)">
+    
+    <!-- 1. Outer Deep 3D Shadow Shell / Rim Extrusion -->
+    <path d="M400 90 L620 180 L620 390 C620 540 520 635 400 685 C280 635 180 540 180 390 L180 180 Z"
+          fill="#030712" stroke="#0f172a" stroke-width="4"/>
 
-  <!-- Inner Refracted Armor Chamber -->
-  <path d="M250 72 L378 116 V252 C378 340 322 392 250 420 C178 392 122 340 122 252 V116 Z" 
-        fill="#091833" stroke="rgba(0, 240, 255, 0.5)" stroke-width="2.5"/>
+    <!-- 2. Metallic Beveled Left Facet (Light Catcher) -->
+    <path d="M400 90 L180 180 L180 390 C180 540 280 635 400 685 L400 90 Z"
+          fill="url(#metalBevelLeft)"/>
 
-  <!-- Central Tesseract / Hexagonal Sentinel Core -->
-  <polygon points="250,140 320,185 320,275 250,320 180,275 180,185" 
-           fill="#061226" stroke="#00F0FF" stroke-width="3" filter="url(#hyperGlow)"/>
+    <!-- 3. Metallic Beveled Right Facet (Dark Chiseled Shadow) -->
+    <path d="M400 90 L620 180 L620 390 C620 540 520 635 400 685 L400 90 Z"
+          fill="url(#metalBevelRight)"/>
 
-  <polygon points="250,170 295,200 295,260 250,290 205,260 205,200" 
-           fill="rgba(0, 245, 155, 0.2)" stroke="#00F59B" stroke-width="2"/>
+    <!-- 4. Inner Recessed Shield Body (Volumetric Obsidian Plate) -->
+    <path d="M400 120 L585 195 L585 380 C585 508 498 590 400 642 C302 590 215 508 215 380 L215 195 Z"
+          fill="url(#shield3DLight)" stroke="#00f0ff" stroke-width="2.5" stroke-opacity="0.4"/>
 
-  <!-- Radiant Power Emblem -->
-  <circle cx="250" cy="230" r="24" fill="#00F0FF" filter="url(#hyperGlow)"/>
-  <circle cx="250" cy="230" r="14" fill="#FFFFFF"/>
+    <!-- 5. 3D Faceted Geodesic Prisms inside Shield Body -->
+    <!-- Top-Left Facet -->
+    <polygon points="400,120 215,195 400,320" fill="url(#facetTopLeft)"/>
+    <!-- Top-Right Facet -->
+    <polygon points="400,120 585,195 400,320" fill="url(#facetTopRight)"/>
+    <!-- Mid-Left Facet -->
+    <polygon points="215,195 215,380 400,320" fill="#0284c7" fill-opacity="0.08"/>
+    <!-- Mid-Right Facet -->
+    <polygon points="585,195 585,380 400,320" fill="#4338ca" fill-opacity="0.12"/>
+    <!-- Bottom-Left Facet -->
+    <polygon points="215,380 400,642 400,320" fill="url(#facetBottom)"/>
+    <!-- Bottom-Right Facet -->
+    <polygon points="585,380 400,642 400,320" fill="#1e1b4b" fill-opacity="0.25"/>
 
-  <!-- Holographic Floating Node Particles -->
-  <circle cx="95" cy="180" r="4" fill="#00F0FF"/>
-  <circle cx="405" cy="310" r="4" fill="#00F59B"/>
-  <circle cx="250" cy="40" r="5" fill="#FFFFFF"/>
-  <circle cx="160" cy="410" r="3" fill="#38BDF8"/>
-  <circle cx="340" cy="110" r="3" fill="#A855F7"/>
+    <!-- 6. Specular Chiseled Ridge Lines (Glints on Vertices) -->
+    <line x1="400" y1="90" x2="400" y2="685" stroke="#ffffff" stroke-width="2" stroke-opacity="0.6"/>
+    <line x1="180" y1="180" x2="400" y2="320" stroke="#00f0ff" stroke-width="1.5" stroke-opacity="0.5"/>
+    <line x1="620" y1="180" x2="400" y2="320" stroke="#818cf8" stroke-width="1.5" stroke-opacity="0.4"/>
+    <line x1="215" y1="380" x2="400" y2="320" stroke="#00f0ff" stroke-width="1.2" stroke-opacity="0.4"/>
+    <line x1="585" y1="380" x2="400" y2="320" stroke="#818cf8" stroke-width="1.2" stroke-opacity="0.3"/>
+
+    <!-- 7. Curved Glass Specular Arc (Top-Left 3D Gloss Sheen) -->
+    <path d="M225 205 C260 215 350 250 395 320 C360 270 300 220 235 208 Z" fill="url(#specularGlint)"/>
+  </g>
+
+  <!-- ==================== 3D FLOATING 'X' CYBER MONOGRAM ==================== -->
+  <g filter="url(#xDepthShadow)">
+    
+    <!-- 3D Extrusion Shadows for Diagonal Bars -->
+    <!-- Extrusion Bar 1 (Top-Left to Bottom-Right) -->
+    <polygon points="295,245 345,215 525,485 475,515" fill="url(#chromeExtrude)" opacity="0.9"/>
+    <!-- Extrusion Bar 2 (Top-Right to Bottom-Left) -->
+    <polygon points="505,245 455,215 275,485 325,515" fill="#1e1b4b" opacity="0.95"/>
+
+    <!-- Front Face Bar 1: Electric Cyan Chrome Beam -->
+    <polygon points="280,240 330,210 520,490 470,520" fill="url(#chromeBar1)" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.8"/>
+    <!-- Front Face Bar 2: Royal Violet-Indigo Chrome Beam -->
+    <polygon points="520,240 470,210 280,490 330,520" fill="url(#chromeBar2)" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.8"/>
+
+    <!-- Central 'X' Intersection Gem Facet -->
+    <polygon points="400,335 435,365 400,395 365,365" fill="#00f0ff" fill-opacity="0.4" stroke="#ffffff" stroke-width="1.5"/>
+  </g>
+
+  <!-- ==================== CENTRAL QUANTUM NEURAL CORE ==================== -->
+  <g filter="url(#neonPulsar)">
+    <!-- High-Intensity Aura Backing -->
+    <circle cx="400" cy="365" r="70" fill="url(#coreAura)"/>
+    
+    <!-- Outer Gyro Rings -->
+    <circle cx="400" cy="365" r="48" fill="none" stroke="#00f0ff" stroke-width="2" stroke-dasharray="14 8"/>
+    <circle cx="400" cy="365" r="38" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.75" stroke-dasharray="4 6"/>
+    
+    <!-- 3D Spherical Singularity (Marble Effect) -->
+    <circle cx="400" cy="365" r="26" fill="url(#singularityCore)"/>
+    
+    <!-- Internal Laser Hotspot -->
+    <circle cx="393" cy="358" r="8" fill="#ffffff" filter="url(#neonPulsar)"/>
+
+    <!-- Micro Orbit Particles -->
+    <circle cx="442" cy="345" r="3.5" fill="#00f0ff"/>
+    <circle cx="360" cy="385" r="3" fill="#a855f7"/>
+    <circle cx="400" cy="322" r="3" fill="#ffffff"/>
+  </g>
+
+  <!-- ==================== TECH HUD ACCENTS & CALIBRATION MARKS ==================== -->
+  <g stroke="#00f0ff" stroke-width="1.5" opacity="0.85">
+    <!-- Top Crest Chevron -->
+    <polyline points="380,75 400,60 420,75" fill="none"/>
+    <line x1="400" y1="48" x2="400" y2="60"/>
+    
+    <!-- Bottom Vanguard Spike -->
+    <polyline points="385,705 400,720 415,705" fill="none"/>
+    <line x1="400" y1="720" x2="400" y2="735"/>
+
+    <!-- Lateral Sentry Brackets -->
+    <path d="M155 240 L140 255 L140 375 L155 390" fill="none" stroke="#00f0ff" stroke-width="2" stroke-opacity="0.5"/>
+    <path d="M645 240 L660 255 L660 375 L645 390" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-opacity="0.5"/>
+
+    <!-- Micro Tech Node Dots -->
+    <circle cx="140" cy="315" r="3" fill="#00f0ff"/>
+    <circle cx="660" cy="315" r="3" fill="#8b5cf6"/>
+  </g>
+
+  <!-- ==================== TYPOGRAPHIC CREST EMBED ==================== -->
+  <g text-anchor="middle" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif">
+    <!-- Brand Title -->
+    <text x="400" y="555" font-size="28" font-weight="900" letter-spacing="10" fill="#ffffff" filter="url(#neonPulsar)">XSHIELD</text>
+    
+    <!-- Subtitle / Architecture Code -->
+    <text x="400" y="582" font-size="11" font-weight="700" letter-spacing="4" fill="#00f0ff" opacity="0.95">NEURAL DEFENSE MATRIX</text>
+    
+    <!-- Enterprise Publisher Badge -->
+    <text x="400" y="605" font-size="8.5" font-weight="600" letter-spacing="2.5" fill="#94a3b8">BY FUTURE FINGER TECHNOLOGIES</text>
+  </g>
+
+  <!-- Bottom Gold Authenticode Seal Notch -->
+  <g transform="translate(400, 685)">
+    <polygon points="0,-12 10,0 0,12 -10,0" fill="url(#goldRibbon)" stroke="#ffffff" stroke-width="1"/>
+    <circle cx="0" cy="0" r="3" fill="#ffffff"/>
+  </g>
 </svg>
