@@ -1,0 +1,38 @@
+{
+  "catalog_version": "2026.1",
+  "publisher": "Future Finger Technologies",
+  "support_email": "futurefingerindia@gmail.com",
+  "updated_at": "2026-11-20T07:50:35.956129+00:00",
+  "licenses": [
+    {
+      "key_code": "FFT-FREE-PRO",
+      "plan": "PRO",
+      "duration_days": 365,
+      "max_seats": 3,
+      "is_global_corporate": false,
+      "allowed_devices": [],
+      "signed_token": "eyJkZXZpY2VfaWQiOiIqIiwiZXhwaXJlc19hdCI6MTgyNjY5NzAzNSwiZmVhdHVyZXMiOlsicmVhbHRpbWVfcHJvdGVjdGlvbiIsInF1YXJhbnRpbmUiLCJjbG91ZF9yZXB1dGF0aW9uIl0sImlzc3VlZF9hdCI6MTc5NTE2MTAzNSwiaXNzdWVkX3RvIjoiY29tbWVyY2lhbEBmdXR1cmVmaW5nZXJ0ZWNobm9sb2dpZXMuY29tIiwibGljZW5zZV9pZCI6ImxpY19mZnRfcHJvXzIwMjYiLCJtYXhfZGV2aWNlcyI6MywicGxhbiI6IlBSTyJ9.4xmJlrEf9jLA6Iq21VVHeYCfrp1twPuP5gJluwMoPTU",
+      "signature": "c4d24d0062f915d888d92156e07b4a9cfd292f10fb0ad11d13e8599ec5705bda"
+    },
+    {
+      "key_code": "XSHEILD-FREE-2026",
+      "plan": "PRO",
+      "duration_days": 365,
+      "max_seats": 3,
+      "is_global_corporate": false,
+      "allowed_devices": [],
+      "signed_token": "eyJkZXZpY2VfaWQiOiIqIiwiZXhwaXJlc19hdCI6MTgyNjY5NzAzNSwiZmVhdHVyZXMiOlsicmVhbHRpbWVfcHJvdGVjdGlvbiIsInF1YXJhbnRpbmUiLCJjbG91ZF9yZXB1dGF0aW9uIl0sImlzc3VlZF9hdCI6MTc5NTE2MTAzNSwiaXNzdWVkX3RvIjoiY29tbWVyY2lhbEBmdXR1cmVmaW5nZXJ0ZWNobm9sb2dpZXMuY29tIiwibGljZW5zZV9pZCI6ImxpY19mZnRfcHJvXzIwMjYiLCJtYXhfZGV2aWNlcyI6MywicGxhbiI6IlBSTyJ9.4xmJlrEf9jLA6Iq21VVHeYCfrp1twPuP5gJluwMoPTU",
+      "signature": "02c4e919ac73dbf773bfbfd7fe20b5107eb641630b0d8fdbc401844cc4e14f1c"
+    },
+    {
+      "key_code": "FFT-LIFETIME-VIP",
+      "plan": "BUSINESS",
+      "duration_days": 3650,
+      "max_seats": 50,
+      "is_global_corporate": true,
+      "allowed_devices": [],
+      "signed_token": "eyJkZXZpY2VfaWQiOiIqIiwiZXhwaXJlc19hdCI6MjExMDUyMTAzNSwiZmVhdHVyZXMiOlsicmVhbHRpbWVfcHJvdGVjdGlvbiIsInF1YXJhbnRpbmUiLCJjbG91ZF9yZXB1dGF0aW9uIiwiY2VudHJhbF90ZWxlbWV0cnkiXSwiaXNzdWVkX2F0IjoxNzk1MTYxMDM1LCJpc3N1ZWRfdG8iOiJmdXR1cmVmaW5nZXJpbmRpYUBnbWFpbC5jb20iLCJsaWNlbnNlX2lkIjoibGljX2ZmdF92aXBfbGlmZXRpbWUiLCJtYXhfZGV2aWNlcyI6NTAsInBsYW4iOiJCVVNJTkVTUyJ9.4PEZXo8YLQSHde7oEIPwsR6AjRpQrkY3LifBpgIyd_o",
+      "signature": "e1626ab4ac3a863c1628f686ccca12ac68d2c78179f4430b3eb2c0e099d073c3"
+    }
+  ]
+}

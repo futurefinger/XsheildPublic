@@ -7,5 +7,7 @@
   "installer_sha256": "0e158ab3a8f2d2e506fe1dd2c9c85df8897467ab3470a8c9bff825810f10542e",
   "installer_size": 43518680,
   "download_url": "https://github.com/futurefinger/XsheildPublic/releases/download/v2.6.2/XSHEILD_Setup.exe",
-  "raw_url": "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe"
+  "raw_url": "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe",
+  "sha256": "f825956605510b10939484df775f678ab9849b6fd1dffb31fe024eed9efb93c2",
+  "portable_sha256": "bb2c58b54a9848ac3d18992e1fb89ba636010531d928448fe6d3eb971c53532f"
 }
