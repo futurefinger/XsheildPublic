@@ -1,145 +1,161 @@
-# XSHEILD — Beyond Antivirus. Your Digital Bodyguard.
-### Owner: Future Finger Technologies
+# XShield Antivirus — Official Product Website & Public Releases
 
-[![Platform: Windows 10/11](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-00F0FF.svg)](https://microsoft.com/windows)
-[![Version: v2.6.2](https://img.shields.io/badge/Release-v2.6.2--Production-emerald.svg)](https://github.com/futurefinger/XsheildPublic/releases)
-[![Python: 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](https://python.org)
-[![FastAPI: Backend](https://img.shields.io/badge/Backend-FastAPI%20%7C%20SQLite-009688.svg)](https://fastapi.tiangolo.com)
-[![Updated: 16 Nov 2026](https://img.shields.io/badge/Updated-November%2016%2C%202026-brightgreen.svg)](https://github.com/futurefinger/XSHEILD)
-[![License: Proprietary Commercial](https://img.shields.io/badge/License-Proprietary-FF9800.svg)](#commercial-model)
-[![Status: Active Engineering](https://img.shields.io/badge/Status-Active%20Engineering-4CAF50.svg)](STATUS.md)
+[![Product: XShield Antivirus](https://img.shields.io/badge/Product-XShield%20Antivirus-00F0FF.svg)](https://futurefinger.github.io/XsheildPublic/)
+[![Release: v2.6.3](https://img.shields.io/badge/Release-v2.6.3--Production-10B981.svg)](https://futurefinger.github.io/XsheildPublic/#download)
+[![Platform: Windows 10 & 11](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011%20(64--bit)-0077FF.svg)](https://microsoft.com/windows)
+[![Publisher: Future Finger Technologies](https://img.shields.io/badge/Publisher-Future%20Finger%20Technologies-7C3AED.svg)](https://github.com/futurefinger)
+[![Deployment: GitHub Pages](https://img.shields.io/badge/Deployment-GitHub%20Pages%20(main)-success.svg)](https://futurefinger.github.io/XsheildPublic/)
 
 ---
 
-## 1. Executive Summary
+## 1. Project Overview
 
-**XSHEILD** is a next-generation, layered Windows endpoint security product engineered by **Future Finger Technologies**. XSHEILD bridges low-latency heuristic scanning, cryptographic signature verification, behavioral and persistence surveillance, and a cloud-assisted reputation subsystem with an ultra-responsive, animated desktop UI.
+This repository (`futurefinger/XsheildPublic`) hosts the **official product website** and **public binary release distribution** for **XShield Antivirus**, developed by **Future Finger Technologies**, New Delhi, India.
 
-### Brand Attribution
-- **Product Name**: XSHEILD (alias: XSHIELD)
-- **Tagline**: *"Beyond Antivirus. Your Digital Bodyguard."*
-- **Publisher**: Future Finger Technologies
-- **Target OS**: 64-bit Windows 11 and supported Windows 10 installations.
+- **Live Website URL:** [https://futurefinger.github.io/XsheildPublic/](https://futurefinger.github.io/XsheildPublic/)
+- **Hosting Environment:** GitHub Pages (Branch: `main`, Directory: `/` Root)
+- **Direct Installer Download:** [XSHEILD_Setup.exe](https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe)
+- **Installer Size:** 41.5 MB (43,558,616 bytes)
+- **Authenticode SHA-256 Checksum:** `bf252537bd7ffb783d5473eb1f5fee6f823685bd96247f5dc9f087a1a24352f6`
 
 ---
 
-## 2. Core Pillars & Architecture
+## 2. Key Website Features & Architecture
+
+The website is engineered with pure semantic **HTML5**, modern **CSS3** (cyber glassmorphism, responsive CSS grid, flexbox, custom properties, and reduced-motion support), and lightweight **Vanilla JavaScript** (zero external frameworks or runtime dependencies).
+
+### Core Features
+- **Cybersecurity Visual Identity:** Deep navy-black aesthetic (`#050814`), electric cyan/blue accents (`#00F0FF`, `#0077FF`), glowing shield animation, and clean typography (`Plus Jakarta Sans` & `JetBrains Mono`).
+- **One-Click Direct Software Download:** Prominent download CTAs that trigger direct download of `release/XSHEILD_Setup.exe` without intermediary registration, logins, or marketing walls.
+- **Single Source of Truth Configuration (`config.js`):** Version numbers, release dates, SHA-256 hashes, file sizes, and release notes are configured in one central file and bound dynamically across all pages.
+- **8 Verified Feature Highlights:** Real-Time Protection, Virus Scanning, Malware Detection, Threat Detection, Quarantine Vault, Security Monitoring, File & USB Drive Scanning, and Modern Dashboard.
+- **Interactive Screenshot Gallery & Lightbox:** High-resolution UI screenshots with zoom preview modal, category tabs, and full keyboard navigation (ESC to close).
+- **Interactive FAQ Accordion:** 10 comprehensive questions covering compatibility, privacy, Windows SmartScreen handling, offline detection, and USB protection.
+- **PowerShell Hash Verification Box:** Instant 1-click clipboard copy of the Authenticode SHA-256 hash.
+- **Legal & Documentation Pages:**
+  - `docs/installation.html`: 6-step illustrated installation guide and Windows SmartScreen walkthrough.
+  - `docs/privacy.html`: 100% on-device offline scanning policy, compliant with Section 43A of the Indian IT Act 2000.
+  - `docs/terms.html`: Transparent End User License Agreement and New Delhi jurisdiction terms.
+
+---
+
+## 3. Repository & Directory Structure
 
 ```
-                       ┌──────────────────────────────────────────────┐
-                       │          XSHEILD Desktop UI (v1.0)           │
-                       │    (WebView2 / Hardware-Accelerated Web)     │
-                       └──────────────────────┬───────────────────────┘
-                                              │ Local Authenticated IPC
-                                              ▼
-┌─────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                 XSHEILD CORE SERVICE                                        │
-├───────────────────────────────┬─────────────────────────────┬───────────────────────────────┤
-│    Detection Engine           │   Quarantine Vault          │   Real-Time Monitor           │
-│  - Multi-Hash (SHA256/MD5)    │  - AES/XOR Encrypted Stash  │  - Filesystem Watcher         │
-│  - PE Header & Import Parser  │  - Tamper-Evident Manifest  │  - Registry Persistence Mon   │
-│  - Shannon Entropy Inspection │  - Atomic Safe Restoration  │  - Process Spawning Telemetry │
-│  - EICAR & Custom Signatures  │  - Safe Isolation ACLs      │  - Download Dir Interception  │
-├───────────────────────────────┴─────────────────────────────┴───────────────────────────────┤
-│   Entitlement & Licensing Engine                                                            │
-│  - Cryptographically Signed Entitlements (HMAC-SHA256 Token)                                │
-│  - Anti-Rollback Monotonic System Clock Verifier                                            │
-│  - Offline Grace Period Cache with Device UUID Fingerprinting                               │
-└─────────────────────────────────────────────┬───────────────────────────────────────────────┘
-                                              │ TLS 1.3 / Authenticated REST
-                                              ▼
-                       ┌──────────────────────────────────────────────┐
-                       │           XSHEILD Cloud & Backend            │
-                       │   - FastAPI Cloud Reputation & Feed          │
-                       │   - Razorpay Sandbox Payment Verification    │
-                       │   - Webhook Signature & Replay Protection    │
-                       │   - Customer & Device Admin Portal           │
-                       └──────────────────────────────────────────────┘
-```
-
-1. **Deterministic Multi-Hash Engine**: Fast block-level SHA-256, MD5, and SHA-1 calculation against local and cloud threat databases.
-2. **PE File Structural Analysis**: Deep inspection of portable executable sections, anomalously high entropy (packed/encrypted malware indicators), suspicious DLL imports (e.g., `VirtualAllocEx`, `WriteProcessMemory`, `CreateRemoteThread`), and anomalous compile timestamps.
-3. **Archive Security**: Deep zip inspection with strict recursion limits, decompression ratios, and zip-bomb containment.
-4. **Secure Quarantine Vault**: Cryptographically obfuscates and isolates malicious binaries in a sandboxed, restricted directory, preventing direct execution while preserving original filesystem metadata for authorized restoration.
-5. **Real-Time Filesystem & Persistence Monitor**: Continuous monitoring of critical directories (Downloads, Desktop, Temp, Startup) and registry run keys (`HKCU\Software\Microsoft\Windows\CurrentVersion\Run`).
-6. **Commercial Razorpay Billing & Cryptographic Licensing**: Integrates Razorpay sandbox order creation, payment capture, idempotent webhook event verification, and Ed25519/HMAC-signed offline entitlement tokens.
-7. **Windows Defender Coexistence**: Designed to run cleanly alongside Microsoft Defender without attempting to disable or bypass Windows core security features.
-
----
-
-## 3. Commercial Model & Plans
-
-| Plan | Target | Duration / Billing | Key Capabilities |
-| :--- | :--- | :--- | :--- |
-| **Free Evaluation** | Single Device | 14-day trial | Quick & Full scan, basic heuristic analysis, quarantine |
-| **XSHEILD Pro** | Individual User | Monthly / Annual | Real-time monitoring, cloud reputation, auto-updates |
-| **XSHEILD Family** | Multi-Device (Up to 5) | Monthly / Annual | Centralized license dashboard, multi-seat activation |
-| **XSHEILD Business**| Organization / Enterprise | Annual | Policy enforcement, administrative reporting, device audit |
-
-*Payment gateway supported via Razorpay (UPI, Credit/Debit Cards, NetBanking).*
-
----
-
-## 4. Repository Structure
-
-```
-XSHIELD/
-├── README.md               # Product overview and documentation index
-├── ARCHITECTURE.md         # Full systems engineering & data flow specification
-├── SECURITY.md             # Security policies, boundaries, vulnerability disclosure
-├── THREAT_MODEL.md         # STRIDE & attack surface analysis
-├── DEVELOPMENT_PLAN.md     # 9-Phase engineering milestones & priorities
-├── TEST_PLAN.md            # Test matrix, EICAR tests, unit, integration tests
-├── PRIVACY.md              # Telemetry ethics, Indian privacy law & GDPR compliance
-├── INSTALLATION.md         # Build, installation, and deployment procedures
-├── RELEASE_CHECKLIST.md    # Production acceptance gates & verification checklist
-├── CHANGELOG.md            # Version history and changes
-├── AI_HANDOFF.md           # Autonomous agent context & state continuation
-├── STATUS.md               # Live task ledger and build/test status
-├── assets/                 # SVGs, icons (.ico), logos, high-res marketing marks
-├── src/
-│   ├── core/               # Antivirus engine: scanner, heuristics, quarantine, cache
-│   ├── realtime/           # Filesystem watcher & persistence surveillance
-│   ├── licensing/          # Entitlement tokens, device binding, anti-clock-tamper
-│   ├── backend/            # FastAPI licensing, admin portal, Razorpay sandbox
-│   ├── ui/                 # Animated UI (HTML5/CSS3/JS) + PyWebView IPC runner
-│   └── tools/              # CLI scanner, test dataset generator, benchmark harness
-├── tests/                  # Automated pytest suite (scanner, quarantine, licensing)
-└── installer/              # Standalone Windows packaging & setup script
+XsheildPublic/
+├── index.html                   # Main landing page
+├── style.css                    # Unified cyber dark-glass stylesheet & responsive rules
+├── script.js                    # Vanilla JS: dynamic binding, smooth scroll, lightbox, FAQ
+├── config.js                    # Centralized product configuration (Single Source of Truth)
+├── version.json                 # Machine-readable version & checksum endpoint for auto-updater
+├── favicon.ico                  # Browser favicon
+├── README.md                    # Project documentation
+├── assets/
+│   ├── logo.svg                 # Vector shield logo
+│   ├── logo.png                 # Raster logo for social cards
+│   ├── hero-shield.svg          # 3D holographic hero shield graphic
+│   ├── hero-shield.png          # High-resolution hero shield rendering
+│   ├── about-image.png          # Future Finger Technologies cyber operations visual
+│   └── screenshots/
+│       ├── dashboard.png        # Main dashboard screen
+│       ├── quick-scan.png       # Fast memory & startup scan
+│       ├── full-scan.png        # Complete system-wide scan
+│       ├── threat-detection.png # Real-time isolation alert
+│       ├── quarantine.png       # Encrypted quarantine vault
+│       └── usb-guard.png        # Removable USB media disinfection
+├── docs/
+│   ├── installation.html        # Comprehensive installation walkthrough
+│   ├── privacy.html             # Privacy policy & IT Act compliance
+│   └── terms.html               # End user license agreement & terms
+└── release/
+    └── XSHEILD_Setup.exe        # Production Authenticode-signed Windows installer (~41.5 MB)
 ```
 
 ---
 
-## 5. Quick Start (Development & Testing)
+## 4. How to Configure & Update Releases
 
-### Prerequisites
-- Windows 10 or 11 (64-bit)
-- Python 3.12+
-- Microsoft Edge WebView2 Evergreen Runtime (pre-installed on Windows 10/11)
+All product metadata displayed across `index.html` and `docs/` is driven by `config.js`.
 
-### Running Automated Test Suite
-```powershell
-pytest -v tests/
+### Updating `config.js`
+When releasing a new version of XShield Antivirus:
+1. Open `config.js`.
+2. Update the values in `XSHIELD_CONFIG`:
+
+```javascript
+const XSHIELD_CONFIG = {
+  version: "2.6.3",
+  releaseDate: "November 20, 2026",
+  fileSize: "41.5 MB",
+  downloadFileName: "XSHEILD_Setup.exe",
+  downloadUrl: "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe",
+  compatibility: "Windows 10, 11 (64-bit)",
+  checksumSha256: "bf252537bd7ffb783d5473eb1f5fee6f823685bd96247f5dc9f087a1a24352f6",
+  publisher: "Future Finger Technologies",
+  supportEmail: "futurefingerindia@gmail.com",
+  releaseNotes: [
+    "Meditation Sentinel HUD: 3D/4D/5D animated visual status indicator in the bottom-right notification tray.",
+    "External USB Media Disinfection: Automated zero-click scan and disinfect routine upon USB drive insertion.",
+    "Clean Process Termination: Resolved background thread shutdown hang on app exit.",
+    "Authenticode Signing: Pre-compiled installer binary signed with SHA-256 certificate for trusted Windows deployment.",
+    "Autonomous Threat Engine: Enhanced heuristic rules for offline Trojan and ransomware neutralizations."
+  ]
+};
 ```
-
-### Running the Desktop UI
-```powershell
-python -m src.ui.app
+3. Update `version.json` with the matching version and hash so that in-app auto-updaters receive the new payload:
+```json
+{
+  "version": "2.6.3",
+  "installer_url": "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe",
+  "sha256": "bf252537bd7ffb783d5473eb1f5fee6f823685bd96247f5dc9f087a1a24352f6",
+  "release_date": "2026-11-20"
+}
 ```
-
-### Running the Licensing & Payment Backend
-```powershell
-uvicorn src.backend.server:app --port 8000 --reload
-```
-
-### Running CLI Scanner Directly
-```powershell
-python -m src.tools.cli scan --path "C:\Users\HP\Downloads" --mode full
-```
+4. Place the newly compiled binary in `release/XSHEILD_Setup.exe`.
+5. Commit and push to `main`. The live website will immediately reflect the new version without manual HTML edits.
 
 ---
 
-## 6. Truth in Security & Attributions
-- **No Deceptive Protection**: XSHEILD reports genuine scan results and never fabricates threat counts or claims "100% security".
-- **Coexistence**: XSHEILD complies with Windows Security guidelines and does not disable Defender or UAC.
-- **Attribution**: *XSHEILD is developed and owned by Future Finger Technologies.*
+## 5. Local Testing
+
+To test the website locally without any build tools:
+
+```bash
+# Using Python built-in HTTP server:
+python -m http.server 8000
+
+# Open in browser:
+http://localhost:8000
+```
+
+Verify that:
+- Direct download links trigger `XSHEILD_Setup.exe`.
+- Lightbox modal displays all 6 screenshots cleanly.
+- FAQ accordion expands and collapses smoothly.
+- Copy Hash button copies the exact SHA-256 checksum to clipboard.
+- Responsive menu works seamlessly on desktop and mobile viewports.
+
+---
+
+## 6. GitHub Pages Deployment Configuration
+
+This website is automatically hosted and served via **GitHub Pages**:
+
+1. Go to **Settings** &rarr; **Pages** in the `futurefinger/XsheildPublic` repository.
+2. Under **Build and deployment**:
+   - **Source:** Deploy from a branch
+   - **Branch:** `main`
+   - **Folder:** `/ (root)`
+3. Save. The site is live at:
+   **`https://futurefinger.github.io/XsheildPublic/`**
+
+---
+
+## 7. About the Publisher
+
+**Future Finger Technologies**  
+New Delhi, India  
+Official Support Email: [futurefingerindia@gmail.com](mailto:futurefingerindia@gmail.com)  
+GitHub: [@futurefinger](https://github.com/futurefinger)
+
+*Copyright &copy; 2026 Future Finger Technologies. All rights reserved.*

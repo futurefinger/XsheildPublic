@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Installation Guide — XShield Antivirus</title>
+  <meta name="description" content="Step-by-step installation instructions for XShield Antivirus on Windows 10 & 11, including SmartScreen guidance and SHA-256 verification.">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="docs-page">
+
+  <!-- Header -->
+  <header class="site-header header-scrolled">
+    <div class="nav-container">
+      <a href="../index.html" class="brand-logo">
+        <img src="../assets/logo.svg" alt="XShield Logo" class="brand-icon" width="40" height="40">
+        <span class="brand-text">XShield<span class="brand-accent">Antivirus</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-item">← Back to Home</a>
+        <a href="../index.html#features" class="nav-item">Features</a>
+        <a href="../index.html#download" class="nav-item">Download</a>
+        <a href="privacy.html" class="nav-item">Privacy</a>
+        <a href="terms.html" class="nav-item">Terms</a>
+        <a href="https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe" class="btn-nav-download" data-config="downloadLink">
+          <span>⬇ Download Free</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="docs-container container">
+    <div class="docs-header">
+      <div class="hero-badge">OFFICIAL DOCUMENTATION</div>
+      <h1 class="docs-title">XShield Antivirus Installation Guide</h1>
+      <p class="docs-subtitle">
+        Follow these step-by-step instructions to download, verify, install, and configure XShield Antivirus on Windows 10 and Windows 11.
+      </p>
+    </div>
+
+    <!-- System Requirements Box -->
+    <div class="docs-card requirements-card">
+      <h2 class="docs-section-title">1. System Requirements</h2>
+      <div class="specs-table-wrapper">
+        <table class="specs-table">
+          <tbody>
+            <tr>
+              <th>Supported OS:</th>
+              <td>Windows 11 (64-bit), Windows 10 (64-bit), Windows Server 2019/2022</td>
+            </tr>
+            <tr>
+              <th>Processor:</th>
+              <td>1.0 GHz or faster 64-bit (x64) Intel / AMD processor</td>
+            </tr>
+            <tr>
+              <th>Memory (RAM):</th>
+              <td>512 MB minimum, 1 GB recommended for high-volume file scanning</td>
+            </tr>
+            <tr>
+              <th>Disk Space:</th>
+              <td>120 MB free storage for program binaries and local signature databases</td>
+            </tr>
+            <tr>
+              <th>Privileges:</th>
+              <td>Standard Windows Administrator permissions for installation &amp; real-time file hooks</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Step by Step Walkthrough -->
+    <div class="docs-card">
+      <h2 class="docs-section-title">2. Step-by-Step Installation Walkthrough</h2>
+
+      <div class="docs-step">
+        <div class="docs-step-number">Step 1</div>
+        <div class="docs-step-body">
+          <h3>Download the Official Installer</h3>
+          <p>
+            Download the verified installer file <code>XSHEILD_Setup.exe</code> from the official website. No account or email registration is required.
+          </p>
+          <div class="mt-15">
+            <a href="https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe" class="btn-primary" data-config="downloadLink">
+              ⬇ Download XSHEILD_Setup.exe (<span data-config="fileSize">41.5 MB</span>)
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="docs-step">
+        <div class="docs-step-number">Step 2</div>
+        <div class="docs-step-body">
+          <h3>Verify SHA-256 Checksum (Recommended)</h3>
+          <p>
+            To verify that your downloaded file has not been tampered with or corrupted during transit, open Windows PowerShell and run:
+          </p>
+          <pre class="code-block"><code>Get-FileHash -Algorithm SHA256 .\XSHEILD_Setup.exe</code></pre>
+          <p>
+            Confirm that the hash matches the official checksum:
+          </p>
+          <pre class="code-block"><code data-config="sha256">bf252537bd7ffb783d5473eb1f5fee6f823685bd96247f5dc9f087a1a24352f6</code></pre>
+        </div>
+      </div>
+
+      <div class="docs-step">
+        <div class="docs-step-number">Step 3</div>
+        <div class="docs-step-body">
+          <h3>Run the Installer &amp; Windows SmartScreen Note</h3>
+          <p>
+            Double-click <code>XSHEILD_Setup.exe</code>. When running on Windows 10 or Windows 11, Microsoft Defender SmartScreen may display an alert:
+          </p>
+          <div class="alert-box alert-info">
+            <strong>"Windows protected your PC — Microsoft Defender SmartScreen prevented an unrecognized app from starting."</strong>
+          </div>
+          <p>
+            <strong>Why this occurs:</strong> XShield Antivirus is Authenticode signed, but newly published builds require time to accumulate Microsoft cloud reputation.
+          </p>
+          <p>
+            <strong>How to proceed safely:</strong>
+          </p>
+          <ol class="docs-ordered-list">
+            <li>Click <strong>"More info"</strong> in the SmartScreen prompt.</li>
+            <li>Click the <strong>"Run anyway"</strong> button that appears.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="docs-step">
+        <div class="docs-step-number">Step 4</div>
+        <div class="docs-step-body">
+          <h3>Review License &amp; Choose Destination</h3>
+          <p>
+            The setup wizard will display the End User License Agreement. Review the terms, click <strong>"I accept the agreement"</strong>, and choose your preferred destination directory (defaults to <code>C:\Program Files\XShield Antivirus</code>).
+          </p>
+        </div>
+      </div>
+
+      <div class="docs-step">
+        <div class="docs-step-number">Step 5</div>
+        <div class="docs-step-body">
+          <h3>Complete Installation</h3>
+          <p>
+            Click <strong>"Install"</strong>. The installer extracts core threat detection models, registers system tray protocols, creates desktop shortcuts, and launches the XShield Sentinel background service.
+          </p>
+        </div>
+      </div>
+
+      <div class="docs-step">
+        <div class="docs-step-number">Step 6</div>
+        <div class="docs-step-body">
+          <h3>Launch and Perform Baseline Scan</h3>
+          <p>
+            Launch XShield from your Desktop or Start Menu. On the main dashboard, click <strong>"Quick Scan"</strong> to baseline your operating system and verify real-time protection is active.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Troubleshooting Section -->
+    <div class="docs-card">
+      <h2 class="docs-section-title">3. Troubleshooting &amp; Common Issues</h2>
+      <div class="faq-item active">
+        <h4 class="faq-inline-title">Q: The installer fails with "Access Denied"?</h4>
+        <p>A: Right-click <code>XSHEILD_Setup.exe</code> and select <strong>"Run as administrator"</strong> to grant sufficient privilege to install background system services.</p>
+      </div>
+      <div class="faq-item active mt-15">
+        <h4 class="faq-inline-title">Q: How do I cleanly uninstall XShield?</h4>
+        <p>A: Open Windows Settings &rarr; Apps &rarr; Installed Apps, locate <strong>XShield Antivirus</strong>, and click <strong>Uninstall</strong>. The uninstaller cleanly removes all engine binaries, quarantined vaults, and background tray listeners.</p>
+      </div>
+      <div class="faq-item active mt-15">
+        <h4 class="faq-inline-title">Q: Need additional assistance?</h4>
+        <p>A: Reach our engineering team at <a href="mailto:futurefingerindia@gmail.com" class="link-cyan">futurefingerindia@gmail.com</a>.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom-flex">
+      <p class="copyright-text">
+        &copy; <span id="current-year">2026</span> Future Finger Technologies. All rights reserved.
+      </p>
+      <div class="footer-bottom-links">
+        <a href="../index.html">Home</a>
+        <span class="dot">&bull;</span>
+        <a href="privacy.html">Privacy Policy</a>
+        <span class="dot">&bull;</span>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../config.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
