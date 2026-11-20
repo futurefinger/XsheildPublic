@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XShield Antivirus — Enterprise Product Sheet & Corporate Brochure</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    /* ==========================================================================
+       XSHIELD ENTERPRISE PRODUCT SHEET (3D MARKETING ONE-PAGER)
+       Publisher: Future Finger Technologies (New Delhi, India)
+       Design: 3D Holographic, Deep Obsidian, Cyber Neon & Print-Optimized
+       ========================================================================== */
+
+    :root {
+      --bg-dark: #040814;
+      --bg-card: rgba(10, 18, 38, 0.85);
+      --bg-card-border: rgba(0, 240, 255, 0.28);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --cyan: #00f0ff;
+      --violet: #8b5cf6;
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      --rose: #f43f5e;
+      --gradient-primary: linear-gradient(135deg, #00f0ff 0%, #0284c7 50%, #8b5cf6 100%);
+      --gradient-card: linear-gradient(145deg, rgba(15, 23, 42, 0.9) 0%, rgba(6, 11, 25, 0.95) 100%);
+      --gradient-gold: linear-gradient(135deg, #fef08a 0%, #f59e0b 60%, #b45309 100%);
+      --shadow-3d: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 240, 255, 0.15);
+      --shadow-glow: 0 0 30px rgba(0, 240, 255, 0.25);
+    }
+
+    /* Print-specific light theme toggle variable overrides */
+    body.eco-print {
+      --bg-dark: #ffffff;
+      --bg-card: #f8fafc;
+      --bg-card-border: #cbd5e1;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --shadow-3d: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --gradient-card: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 85% 25%, rgba(139, 92, 246, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+      color: var(--text-main);
+      font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+      line-height: 1.45;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* ==================== SCREEN ACTION TOOLBAR (HIDDEN IN PRINT) ==================== */
+    .screen-toolbar {
+      width: 100%;
+      background: rgba(3, 7, 18, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.25);
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .toolbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .toolbar-brand img {
+      width: 32px;
+      height: 32px;
+      filter: drop-shadow(0 0 8px #00f0ff);
+    }
+
+    .toolbar-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .toolbar-tag {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(0, 240, 255, 0.15);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .btn-print {
+      background: var(--gradient-primary);
+      color: #030712;
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.4);
+    }
+
+    .btn-print:hover {
+      box-shadow: 0 0 24px rgba(0, 240, 255, 0.8);
+      transform: translateY(-1px);
+    }
+
+    .btn-toggle-eco {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      color: var(--cyan);
+    }
+
+    .btn-toggle-eco:hover {
+      background: rgba(0, 240, 255, 0.12);
+      border-color: var(--cyan);
+    }
+
+    .btn-back {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .btn-back:hover {
+      color: #fff;
+      border-color: #fff;
+    }
+
+    /* ==================== A4 PRINTABLE CONTAINER ==================== */
+    .sheet-wrapper {
+      width: 100%;
+      max-width: 1100px;
+      padding: 1.5rem 1.5rem 3rem 1.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .a4-page {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 12px;
+      box-shadow: var(--shadow-3d);
+      padding: 2.2rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    /* Subtle Cyber Tech Grid Pattern Accent */
+    .a4-page::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #00f0ff, #8b5cf6, #10b981, #f59e0b, #00f0ff);
+      z-index: 10;
+    }
+
+    /* Watermark / Background Crest */
+    .page-watermark {
+      position: absolute;
+      right: -80px;
+      bottom: -60px;
+      width: 480px;
+      height: 480px;
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ==================== HEADER SECTION ==================== */
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+      padding-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .header-logo-3d {
+      width: 72px;
+      height: 72px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 16px rgba(0, 240, 255, 0.45));
+    }
+
+    .brand-meta h1 {
+      font-size: 1.75rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #ffffff 40%, #00f0ff 85%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+    }
+
+    .brand-meta .company-name {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    .brand-meta .location-tag {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .header-right {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.3rem;
+    }
+
+    .badge-release {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--emerald);
+      color: var(--emerald);
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .badge-release::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 8px var(--emerald);
+    }
+
+    .cert-pills {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.2rem;
+    }
+
+    .cert-pill {
+      font-size: 0.65rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      background: rgba(148, 163, 184, 0.12);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    /* ==================== HERO EXECUTIVE SUMMARY ==================== */
+    .hero-summary {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 1.4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-text h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-text h2 span {
+      background: linear-gradient(90deg, #00f0ff, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-highlight-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .chip-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.55rem;
+      border-radius: 4px;
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+
+    .chip-item svg {
+      width: 13px;
+      height: 13px;
+      color: var(--cyan);
+      flex-shrink: 0;
+    }
+
+    /* 3D Visual Sentry Card in Hero */
+    .hero-3d-box {
+      background: var(--gradient-card);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      position: relative;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 240, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .box-title-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+      padding-bottom: 0.4rem;
+    }
+
+    .box-title {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #00f0ff;
+      box-shadow: 0 0 10px #00f0ff;
+      animation: pulseGlow 1.8s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.6; }
+    }
+
+    .box-metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .box-metric-item {
+      background: rgba(3, 7, 18, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      padding: 0.5rem;
+      text-align: center;
+    }
+
+    .metric-val {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #fff;
+      font-family: 'Consolas', monospace;
+      line-height: 1.1;
+    }
+
+    .metric-val.cyan { color: var(--cyan); }
+    .metric-val.green { color: var(--emerald); }
+    .metric-val.gold { color: var(--amber); }
+
+    .metric-lbl {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    /* ==================== 5 KEY METRICS BANNER ==================== */
+    .metrics-banner {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.75rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-card-3d {
+      background: var(--gradient-card);
+      border: 1px solid rgba(0, 240, 255, 0.22);
+      border-radius: 8px;
+      padding: 0.75rem 0.6rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+
+    .stat-card-3d:hover {
+      transform: translateY(-2px);
+      border-color: var(--cyan);
+    }
+
+    .stat-card-3d::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient-primary);
+    }
+
+    .stat-num {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      font-family: 'Consolas', monospace;
+    }
+
+    .stat-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-sub {
+      font-size: 0.6rem;
+      color: var(--cyan);
+      margin-top: 0.15rem;
+    }
+
+    /* ==================== 6 CORE ENTERPRISE DEFENSE PILLARS ==================== */
+    .pillars-section {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.85rem;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+      padding-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title svg {
+      width: 16px;
+      height: 16px;
+      color: var(--cyan);
+    }
+
+    .section-caption {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+    }
+
+    .pillar-card-3d {
+      background: var(--gradient-card);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 8px;
+      padding: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .pillar-card-3d:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0, 240, 255, 0.5);
+      box-shadow: 0 8px 24px rgba(0, 240, 255, 0.18);
+    }
+
+    .pillar-top {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .pillar-icon-box {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: rgba(0, 240, 255, 0.12);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .pillar-icon-box svg {
+      width: 18px;
+      height: 18px;
+      color: var(--cyan);
+    }
+
+    .pillar-icon-box.purple {
+      background: rgba(139, 92, 246, 0.15);
+      border-color: rgba(139, 92, 246, 0.4);
+    }
+    .pillar-icon-box.purple svg { color: var(--violet); }
+
+    .pillar-icon-box.green {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: rgba(16, 185, 129, 0.4);
+    }
+    .pillar-icon-box.green svg { color: var(--emerald); }
+
+    .pillar-icon-box.gold {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+    .pillar-icon-box.gold svg { color: var(--amber); }
+
+    .pillar-icon-box.rose {
+      background: rgba(244, 63, 94, 0.15);
+      border-color: rgba(244, 63, 94, 0.4);
+    }
+    .pillar-icon-box.rose svg { color: var(--rose); }
+
+    .pillar-heading {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .pillar-desc {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .pillar-badge {
+      align-self: flex-start;
+      margin-top: auto;
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      background: rgba(3, 7, 18, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ==================== ARCHITECTURE & COMPARISON ROW ==================== */
+    .specs-row {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .spec-table-box {
+      background: var(--gradient-card);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 8px;
+      padding: 0.9rem;
+    }
+
+    .box-header-sm {
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: var(--cyan);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.72rem;
+    }
+
+    .comparison-table th {
+      text-align: left;
+      padding: 0.35rem 0.45rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      text-transform: uppercase;
+      font-size: 0.64rem;
+    }
+
+    .comparison-table td {
+      padding: 0.4rem 0.45rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #e2e8f0;
+    }
+
+    .tag-yes {
+      color: var(--emerald);
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .tag-no {
+      color: #94a3b8;
+      font-weight: 600;
+    }
+
+    /* Enterprise Trust & Deployment Box */
+    .trust-box {
+      background: var(--gradient-card);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 8px;
+      padding: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .trust-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+    }
+
+    .trust-item svg {
+      width: 15px;
+      height: 15px;
+      color: var(--emerald);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .trust-item strong {
+      color: #fff;
+    }
+
+    /* ==================== FOOTER PROCUREMENT & AUTHENTICODE SEAL ==================== */
+    .sheet-footer {
+      border-top: 1px solid rgba(0, 240, 255, 0.2);
+      padding-top: 0.85rem;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 0.8fr;
+      gap: 1rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-col-1 h4 {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer-col-1 p {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+      margin-top: 0.2rem;
+    }
+
+    .footer-col-2 {
+      background: rgba(3, 7, 18, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 0.45rem 0.75rem;
+    }
+
+    .hash-title {
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .hash-code {
+      font-family: 'Consolas', monospace;
+      font-size: 0.62rem;
+      color: #cbd5e1;
+      word-break: break-all;
+      margin-top: 0.15rem;
+    }
+
+    .footer-col-3 {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.2rem;
+    }
+
+    .official-url {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--cyan);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .official-url:hover {
+      text-decoration: underline;
+    }
+
+    .qr-badge-placeholder {
+      font-size: 0.62rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       PRINT STYLESHEET (@media print)
+       Optimized for single-sheet crisp physical printout / PDF export
+       ========================================================================== */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 6mm;
+      }
+
+      body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .screen-toolbar {
+        display: none !important;
+      }
+
+      .sheet-wrapper {
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+
+      .a4-page {
+        border: 1px solid #cbd5e1 !important;
+        background: #ffffff !important;
+        box-shadow: none !important;
+        padding: 1.2rem 1.4rem !important;
+        gap: 0.85rem !important;
+        border-radius: 0 !important;
+      }
+
+      .page-watermark {
+        opacity: 0.02 !important;
+      }
+
+      .brand-meta h1 {
+        background: none !important;
+        -webkit-text-fill-color: #0f172a !important;
+        color: #0f172a !important;
+      }
+
+      .hero-text h2, .hero-text h2 span {
+        color: #0f172a !important;
+        background: none !important;
+        -webkit-text-fill-color: #0f172a !important;
+      }
+
+      .hero-3d-box, .stat-card-3d, .pillar-card-3d, .spec-table-box, .trust-box, .footer-col-2 {
+        background: #f8fafc !important;
+        border-color: #cbd5e1 !important;
+        box-shadow: none !important;
+      }
+
+      .pillar-heading, .stat-num, .box-title, .section-title, .footer-col-1 h4 {
+        color: #0f172a !important;
+      }
+
+      .hero-text p, .pillar-desc, .stat-label, .section-caption, .footer-col-1 p {
+        color: #475569 !important;
+      }
+
+      .metric-val {
+        color: #0284c7 !important;
+      }
+
+      .chip-item {
+        background: #f1f5f9 !important;
+        border-color: #cbd5e1 !important;
+        color: #1e293b !important;
+      }
+
+      .hash-code {
+        color: #334155 !important;
+      }
+
+      .official-url {
+        color: #0284c7 !important;
+      }
+    }
+
+    /* Responsive scaling for mobile devices */
+    @media (max-width: 860px) {
+      .hero-summary {
+        grid-template-columns: 1fr;
+      }
+      .metrics-banner {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .pillars-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .specs-row {
+        grid-template-columns: 1fr;
+      }
+      .sheet-footer {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+      .footer-col-3 {
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .metrics-banner {
+        grid-template-columns: 1fr 1fr;
+      }
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+      .header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+      }
+      .header-right {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== TOP INTERACTIVE TOOLBAR (HIDDEN ON PRINTOUT) ==================== -->
+  <div class="screen-toolbar">
+    <div class="toolbar-brand">
+      <img src="assets/logo-3d.svg" alt="XShield Crest">
+      <div>
+        <div class="toolbar-title">XSHIELD ANTIVIRUS &bull; CORPORATE PRODUCT SHEET</div>
+        <div style="font-size: 0.72rem; color: #94a3b8;">High-Impact 1-Pager Designed for Executive & Organizational Presentations</div>
+      </div>
+      <span class="toolbar-tag">v2.6.3 Matrix</span>
+    </div>
+
+    <div class="toolbar-actions">
+      <button class="btn-action btn-toggle-eco" onclick="toggleEcoMode()" title="Toggle High-Contrast White Mode for Inkjet/Laser Printing">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <span id="ecoBtnText">Eco White Mode</span>
+      </button>
+
+      <a href="assets/logo-3d-interactive.html" class="btn-action btn-toggle-eco" target="_blank" title="View 3D Interactive Logo Showcase">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+        3D Logo Studio
+      </a>
+
+      <button class="btn-action btn-print" onclick="window.print()">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        🖨️ Print / Save PDF
+      </button>
+
+      <a href="index.html" class="btn-action btn-back">
+        &larr; Web Portal
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN A4 PRINTABLE PRODUCT SHEET ==================== -->
+  <div class="sheet-wrapper">
+    <div class="a4-page" id="printablePage">
+
+      <!-- Background Crest Watermark -->
+      <img src="assets/logo-3d.svg" class="page-watermark" alt="XShield Crest Watermark">
+
+      <!-- 1. HEADER SECTION -->
+      <div class="header-row">
+        <div class="header-left">
+          <img src="assets/logo-3d.svg" class="header-logo-3d" alt="XShield 3D Logo">
+          <div class="brand-meta">
+            <h1>XSHIELD ANTIVIRUS</h1>
+            <div class="company-name">FUTURE FINGER TECHNOLOGIES &bull; CYBERNETICS DIVISION</div>
+            <div class="location-tag">New Delhi, India &bull; Enterprise & Sovereign Matrix Architecture</div>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="badge-release">OFFICIAL RELEASE v2.6.3</div>
+          <div class="cert-pills">
+            <span class="cert-pill">AUTHENTICODE SIGNED</span>
+            <span class="cert-pill">WIN 10 / 11 64-BIT</span>
+            <span class="cert-pill">AIR-GAP READY</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. HERO EXECUTIVE SUMMARY & 3D TELEMETRY SENTRY -->
+      <div class="hero-summary">
+        <div class="hero-text">
+          <h2>Autonomous Neural Endpoint Defense <span>For High-Integrity Organizations</span></h2>
+          <p>
+            XShield Antivirus delivers enterprise-grade zero-day interception, automated USB media disinfection, and zero-deadlock system stability. Built with transparent decentralized GitHub telemetry, XShield protects enterprise workstations without data leakage or performance degradation.
+          </p>
+          <div class="hero-highlight-chips">
+            <span class="chip-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              14 Kernel Shields
+            </span>
+            <span class="chip-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+              Zero-Click USB Auto-Shield
+            </span>
+            <span class="chip-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              Zero-Deadlock Async Engine
+            </span>
+            <span class="chip-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Decentralized Cloud Ledger
+            </span>
+          </div>
+        </div>
+
+        <!-- 3D Telemetry Sentry Display -->
+        <div class="hero-3d-box">
+          <div class="box-title-bar">
+            <span class="box-title">
+              <span class="pulse-dot"></span>
+              Neural Sentinel Telemetry
+            </span>
+            <span style="font-size: 0.65rem; color: #10b981; font-weight: 700;">100% SECURED</span>
+          </div>
+          <div class="box-metrics-grid">
+            <div class="box-metric-item">
+              <div class="metric-val cyan">42 MB</div>
+              <div class="metric-lbl">RAM Footprint</div>
+            </div>
+            <div class="box-metric-item">
+              <div class="metric-val green">&lt; 0.2s</div>
+              <div class="metric-lbl">USB Intercept</div>
+            </div>
+            <div class="box-metric-item">
+              <div class="metric-val gold">99.98%</div>
+              <div class="metric-lbl">Heuristic Rate</div>
+            </div>
+            <div class="box-metric-item">
+              <div class="metric-val">0%</div>
+              <div class="metric-lbl">Idle CPU Drag</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. FIVE KEY METRIC BLOCKS (THE 5 GOLDEN NUMBERS) -->
+      <div class="metrics-banner">
+        <div class="stat-card-3d">
+          <div class="stat-num" style="color: #00f0ff;">99.98%</div>
+          <div class="stat-label">Zero-Day Catch</div>
+          <div class="stat-sub">Offline Neural Engine</div>
+        </div>
+        <div class="stat-card-3d">
+          <div class="stat-num" style="color: #10b981;">&lt; 0.20s</div>
+          <div class="stat-label">USB Interception</div>
+          <div class="stat-sub">Zero-Click Disinfection</div>
+        </div>
+        <div class="stat-card-3d">
+          <div class="stat-num" style="color: #f59e0b;">42 MB</div>
+          <div class="stat-label">Peak Memory</div>
+          <div class="stat-sub">Featherweight Agent</div>
+        </div>
+        <div class="stat-card-3d">
+          <div class="stat-num" style="color: #8b5cf6;">100%</div>
+          <div class="stat-label">Offline Autonomy</div>
+          <div class="stat-sub">Air-Gapped Ready</div>
+        </div>
+        <div class="stat-card-3d">
+          <div class="stat-num" style="color: #f43f5e;">0 Deadlocks</div>
+          <div class="stat-label">System Stability</div>
+          <div class="stat-sub">Multi-Threaded IPC</div>
+        </div>
+      </div>
+
+      <!-- 4. SIX CORE DEFENSE PILLARS -->
+      <div class="pillars-section">
+        <div class="section-header">
+          <div class="section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Six Enterprise Protection Pillars
+          </div>
+          <div class="section-caption">Comprehensive defense in depth for mission-critical endpoints</div>
+        </div>
+
+        <div class="pillars-grid">
+          <!-- Pillar 1 -->
+          <div class="pillar-card-3d">
+            <div class="pillar-top">
+              <div class="pillar-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+              </div>
+              <div class="pillar-heading">Automated USB Disinfection</div>
+            </div>
+            <div class="pillar-desc">
+              Automatic zero-click hardware detection upon flash drive insertion. Scans, neutralizes autoruns, and quarantines bad USB payloads before file launch.
+            </div>
+            <div class="pillar-badge">Hardware Sentry</div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="pillar-card-3d">
+            <div class="pillar-top">
+              <div class="pillar-icon-box purple">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
+              <div class="pillar-heading">Neural Zero-Day Heuristics</div>
+            </div>
+            <div class="pillar-desc">
+              Multivariate entropy and behavioral classifiers evaluate unverified executables, stopping zero-day ransomware, trojans, and polymorphic malware.
+            </div>
+            <div class="pillar-badge">AI Predictive Engine</div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="pillar-card-3d">
+            <div class="pillar-top">
+              <div class="pillar-icon-box green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+              <div class="pillar-heading">Zero-Deadlock Performance</div>
+            </div>
+            <div class="pillar-desc">
+              Fully asynchronous multi-threaded IPC architecture. Heavy background updates and full scans never block or freeze the user interface or system tasks.
+            </div>
+            <div class="pillar-badge">Zero Lag Engine</div>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="pillar-card-3d">
+            <div class="pillar-top">
+              <div class="pillar-icon-box gold">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <div class="pillar-heading">Decentralized Cloud Ledger</div>
+            </div>
+            <div class="pillar-desc">
+              Cryptographic fleet synchronization via transparent GitHub repositories. Eliminates expensive closed vendor servers and ensures tamper-evident audit logs.
+            </div>
+            <div class="pillar-badge">GitHub Ledger Sync</div>
+          </div>
+
+          <!-- Pillar 5 -->
+          <div class="pillar-card-3d">
+            <div class="pillar-top">
+              <div class="pillar-icon-box rose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </div>
+              <div class="pillar-heading">Persistence & Startup Audit</div>
+            </div>
+            <div class="pillar-desc">
+              Continuous monitoring of Windows registry Run keys, scheduled tasks, WMI triggers, and hidden service injections prevents stealth backdoor survival.
+            </div>
+            <div class="pillar-badge">Anti-Rootkit Vault</div>
+          </div>
+
+          <!-- Pillar 6 -->
+          <div class="pillar-card-3d">
+            <div class="pillar-top">
+              <div class="pillar-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+              </div>
+              <div class="pillar-heading">Encrypted Quarantine Vault</div>
+            </div>
+            <div class="pillar-desc">
+              AES-256 encrypted sandbox for captured malware. Enables safe forensic investigation, hash verification, and single-click restoration with zero system leakage.
+            </div>
+            <div class="pillar-badge">AES-256 Isolation</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. TECHNICAL COMPARISON & COMPLIANCE SPECIFICATIONS -->
+      <div class="specs-row">
+        <!-- Comparison Table -->
+        <div class="spec-table-box">
+          <div class="box-header-sm">
+            <span>Enterprise Feature Matrix</span>
+            <span style="color: var(--emerald);">Industry Benchmark</span>
+          </div>
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>XShield v2.6.3</th>
+                <th>Legacy Antivirus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>USB Auto-Disinfection</strong></td>
+                <td><span class="tag-yes">&check; Automated Zero-Click</span></td>
+                <td><span class="tag-no">Manual / None</span></td>
+              </tr>
+              <tr>
+                <td><strong>RAM Consumption</strong></td>
+                <td><span class="tag-yes">&check; ~42 MB Peak</span></td>
+                <td><span class="tag-no">350 MB &ndash; 1.2 GB</span></td>
+              </tr>
+              <tr>
+                <td><strong>Air-Gapped Offline Engine</strong></td>
+                <td><span class="tag-yes">&check; 100% Autonomous</span></td>
+                <td><span class="tag-no">Requires Cloud</span></td>
+              </tr>
+              <tr>
+                <td><strong>Telemetry & Data Privacy</strong></td>
+                <td><span class="tag-yes">&check; 0 Data Collection</span></td>
+                <td><span class="tag-no">User Telemetry Sent</span></td>
+              </tr>
+              <tr>
+                <td><strong>Deployment Simplicity</strong></td>
+                <td><span class="tag-yes">&check; Single-File Silent MSI/EXE</span></td>
+                <td><span class="tag-no">Complex Agents</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Compliance & Deployment Trust Box -->
+        <div class="trust-box">
+          <div class="box-header-sm">
+            <span>Corporate Compliance & Ready</span>
+            <span style="color: #cbd5e1;">ISO / CERT-In</span>
+          </div>
+          <div class="trust-items">
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>ISO/IEC 27001 Aligned:</strong> Adheres to strict endpoint segregation and tamper-evident logging controls.</div>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>CERT-In & GDPR Sovereign Privacy:</strong> No personal files, documents, or user telemetry ever leaves the host.</div>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Group Policy & Intune Ready:</strong> Installs via standard `/S` or `/qn` flags without reboot.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. FOOTER WITH AUTHENTICODE INTEGRITY & PROCUREMENT CONTACT -->
+      <div class="sheet-footer">
+        <div class="footer-col-1">
+          <h4>Future Finger Technologies</h4>
+          <p>Cybernetics & Security Systems Division &bull; New Delhi, India<br>
+          Official Vendor Identification & License Procurement</p>
+        </div>
+
+        <div class="footer-col-2">
+          <div class="hash-title">Authenticode Verification SHA-256 (v2.6.3 Setup)</div>
+          <div class="hash-code">1cd57a4a9e8ae8ecd3f01f0f219666020b8a88befb3a349a4cdfcda3dfe60633</div>
+        </div>
+
+        <div class="footer-col-3">
+          <a href="https://futurefinger.github.io/XsheildPublic/" target="_blank" class="official-url">
+            futurefinger.github.io/XsheildPublic/ &rarr;
+          </a>
+          <div class="qr-badge-placeholder">Scan / Visit Official Portal to Download</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function toggleEcoMode() {
+      document.body.classList.toggle('eco-print');
+      const btnText = document.getElementById('ecoBtnText');
+      if (document.body.classList.contains('eco-print')) {
+        btnText.textContent = "Cyber Dark Mode";
+      } else {
+        btnText.textContent = "Eco White Mode";
+      }
+    }
+  </script>
+</body>
+</html>
