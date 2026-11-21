@@ -1,0 +1,19 @@
+{
+  "machine_name": "DESKTOP-AVE90GM",
+  "user_name": "HP",
+  "device_id": "6c00edefaf6a7ebdb6b5f92b",
+  "os_version": "Windows 10.0.26200 (AMD64)",
+  "cpu_cores": 12,
+  "mac_address": "30138B657C3D",
+  "eula_hash": "e37caf4494441fc575c562be0a470394b9e9824d3bf5779c3e492327547e0b3b",
+  "digital_signature": "9467ab3bdeb9b48f43f1ee550ce47444a36edd3ebdcceda2227cb5a37662e353",
+  "jurisdiction": "New Delhi, Delhi, India (ACCEPTED)",
+  "arbitration": "New Delhi, India (ACCEPTED)",
+  "liability_cap": "INR 1,000 (ACCEPTED)",
+  "timestamp_utc": "2026-11-21T10:11:06Z",
+  "timestamp_ist": "2026-11-21 15:41:06 IST",
+  "legal_status": "FULLY_BOUND_AND_ENFORCEABLE",
+  "user_email": "hp@desktop-ave90gm.local",
+  "organization": "Future Finger Technologies",
+  "agent_version": "2.6.5"
+}
