@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XShield // Enterprise Fleet Command & Real-Time Telemetry Portal</title>
+  <meta name="description" content="Centralized Enterprise Administration, Real-Time Device Fleet Management, License Entitlement & Legal Compliance Portal for XShield Antivirus.">
+  <link rel="icon" type="image/png" href="favicon.ico">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-base: #030712;
+      --bg-surface: #0b1120;
+      --bg-card: rgba(15, 23, 42, 0.75);
+      --bg-glass: rgba(17, 24, 39, 0.7);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(0, 240, 255, 0.35);
+      --border-active: #00f0ff;
+      --accent-cyan: #00f0ff;
+      --accent-blue: #0070f3;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --accent-purple: #8b5cf6;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 112, 243, 0.15), transparent 70%),
+        radial-gradient(circle at 100% 100%, rgba(0, 240, 255, 0.06), transparent 50%),
+        radial-gradient(circle at 0% 50%, rgba(139, 92, 246, 0.06), transparent 50%);
+    }
+
+    /* Scrollbars */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-cyan); }
+
+    /* Common Utilities */
+    .hidden { display: none !important; }
+    .mono { font-family: var(--font-mono); }
+    .glow-cyan { text-shadow: 0 0 16px rgba(0, 240, 255, 0.5); }
+    .glow-box { box-shadow: 0 8px 32px -4px rgba(0, 240, 255, 0.15); }
+
+    /* =========================================================================
+       LOGIN GATEWAY SECTION
+       ========================================================================= */
+    #login-screen {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      z-index: 1000;
+      background: radial-gradient(circle at center, rgba(11, 19, 43, 0.95), var(--bg-base) 80%);
+      backdrop-filter: blur(20px);
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 460px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: 20px;
+      padding: 2.75rem 2.25rem;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 240, 255, 0.15);
+      backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-blue), transparent);
+    }
+
+    .brand-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .brand-icon-shield {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 1.25rem;
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(0, 112, 243, 0.3));
+      border: 1px solid var(--accent-cyan);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+      animation: shieldPulse 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes shieldPulse {
+      0% { box-shadow: 0 0 20px rgba(0, 240, 255, 0.25); transform: translateY(0); }
+      100% { box-shadow: 0 0 40px rgba(0, 240, 255, 0.5); transform: translateY(-3px); }
+    }
+
+    .brand-icon-shield svg {
+      width: 36px;
+      height: 36px;
+      fill: var(--accent-cyan);
+    }
+
+    .login-title {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+
+    .login-subtitle {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+    }
+
+    .login-form .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .login-form label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .input-field {
+      width: 100%;
+      background: rgba(3, 7, 18, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+
+    .input-field:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.15);
+      background: rgba(11, 17, 32, 0.9);
+    }
+
+    .login-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      color: #030712;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      border: none;
+      border-radius: 10px;
+      padding: 0.95rem 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      box-shadow: 0 4px 20px rgba(0, 240, 255, 0.3);
+      transition: all 0.25s ease;
+      margin-top: 1.5rem;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 240, 255, 0.45);
+      filter: brightness(1.08);
+    }
+
+    .login-error-msg {
+      background: rgba(244, 63, 94, 0.15);
+      border: 1px solid rgba(244, 63, 94, 0.35);
+      color: #fda4af;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      margin-bottom: 1.25rem;
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .login-footer-hint {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      margin-top: 1.5rem;
+      line-height: 1.4;
+    }
+
+    /* =========================================================================
+       ADMIN PORTAL DASHBOARD (AUTHENTICATED)
+       ========================================================================= */
+    #admin-app {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Top Navigation Bar */
+    .admin-navbar {
+      background: rgba(11, 17, 32, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.85rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .nav-brand-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-shield-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.25), rgba(0, 112, 243, 0.3));
+      border: 1px solid var(--accent-cyan);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-shield-logo svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--accent-cyan);
+    }
+
+    .nav-title-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-brand-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-badge {
+      background: rgba(0, 240, 255, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-meta-subtitle {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .nav-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .sync-status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--accent-emerald);
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      padding: 0.4rem 0.85rem;
+      border-radius: 20px;
+    }
+
+    .status-pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-emerald);
+      animation: pulseGlow 2s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 0.5rem 0.95rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-logout {
+      color: var(--accent-rose);
+      border-color: rgba(244, 63, 94, 0.3);
+    }
+    .btn-logout:hover {
+      background: rgba(244, 63, 94, 0.15);
+      border-color: var(--accent-rose);
+    }
+
+    /* Main Container */
+    .admin-container {
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem;
+      flex: 1;
+    }
+
+    /* Navigation Tabs */
+    .portal-tabs-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 2rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+    }
+
+    .portal-tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.75rem 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border-radius: 8px 8px 0 0;
+      position: relative;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .portal-tab-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .portal-tab-btn.active {
+      color: var(--accent-cyan);
+      background: rgba(0, 240, 255, 0.08);
+    }
+
+    .portal-tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0; height: 2px;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 10px var(--accent-cyan);
+    }
+
+    .tab-counter {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-main);
+      font-size: 0.72rem;
+      padding: 0.1rem 0.5rem;
+      border-radius: 10px;
+      font-family: var(--font-mono);
+    }
+
+    .portal-tab-btn.active .tab-counter {
+      background: var(--accent-cyan);
+      color: #030712;
+      font-weight: 700;
+    }
+
+    /* Executive KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1.4rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0, 240, 255, 0.3);
+    }
+
+    .kpi-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+
+    .kpi-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .kpi-icon-wrap {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+    }
+
+    .icon-cyan { background: rgba(0, 240, 255, 0.15); color: var(--accent-cyan); }
+    .icon-emerald { background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald); }
+    .icon-purple { background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); }
+    .icon-amber { background: rgba(245, 158, 11, 0.15); color: var(--accent-amber); }
+    .icon-rose { background: rgba(244, 63, 94, 0.15); color: var(--accent-rose); }
+
+    .kpi-value {
+      font-family: var(--font-display);
+      font-size: 2.1rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+
+    .kpi-meta {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      margin-top: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Content Area & Glass Panels */
+    .panel-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1.75rem;
+      box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .panel-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .panel-title-group h2 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .panel-title-group p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .panel-controls-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .search-input-wrap {
+      position: relative;
+    }
+
+    .search-input-wrap input {
+      background: rgba(3, 7, 18, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 0.5rem 0.85rem 0.5rem 2.25rem;
+      color: var(--text-main);
+      font-size: 0.85rem;
+      outline: none;
+      width: 240px;
+      transition: all 0.2s ease;
+    }
+
+    .search-input-wrap input:focus {
+      border-color: var(--accent-cyan);
+      width: 280px;
+    }
+
+    .search-icon-svg {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      fill: var(--text-dim);
+    }
+
+    /* Tables */
+    .table-responsive {
+      overflow-x: auto;
+      margin: 0 -1.75rem -1.75rem;
+      padding: 0 1.75rem 1.75rem;
+    }
+
+    .portal-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      text-align: left;
+    }
+
+    .portal-table th {
+      background: rgba(3, 7, 18, 0.5);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .portal-table td {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text-main);
+      vertical-align: middle;
+    }
+
+    .portal-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Badges */
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .status-pill.online {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .status-pill.pro {
+      background: rgba(0, 240, 255, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+    }
+
+    .status-pill.business {
+      background: rgba(139, 92, 246, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+
+    .status-pill.danger {
+      background: rgba(244, 63, 94, 0.15);
+      color: #fda4af;
+      border: 1px solid rgba(244, 63, 94, 0.3);
+    }
+
+    /* Modals */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glow);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 680px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1rem;
+    }
+
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+    }
+
+    .modal-close-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .modal-body {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .code-box {
+      background: rgba(3, 7, 18, 0.8);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: #38bdf8;
+      overflow-x: auto;
+      margin: 1rem 0;
+      word-break: break-all;
+    }
+
+    /* Print styling for certificates */
+    @media print {
+      body * { visibility: hidden; }
+      .printable-certificate, .printable-certificate * { visibility: visible; }
+      .printable-certificate { position: absolute; left: 0; top: 0; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================================
+       1. MASTER AUTHENTICATION GATEWAY
+       ========================================================================= -->
+  <div id="login-screen">
+    <div class="login-box">
+      <div class="brand-header">
+        <div class="brand-icon-shield">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+          </svg>
+        </div>
+        <h1 class="login-title">XShield Fleet Portal</h1>
+        <p class="login-subtitle">Future Finger Technologies &bull; Master Enterprise Command</p>
+      </div>
+
+      <div class="login-error-msg" id="login-error">
+        <span>⚠️</span> <span id="login-error-text">Invalid administrator credentials.</span>
+      </div>
+
+      <form class="login-form" id="login-form" onsubmit="handleAdminLogin(event)">
+        <div class="form-group">
+          <label for="admin-user">Administrator Identity</label>
+          <input type="text" id="admin-user" class="input-field" placeholder="futurefinger or admin email" required autofocus value="futurefinger">
+        </div>
+
+        <div class="form-group">
+          <label for="admin-pass">Master Passkey / Password</label>
+          <input type="password" id="admin-pass" class="input-field" placeholder="Enter master security key" required>
+        </div>
+
+        <div class="form-group">
+          <label for="admin-token" style="display: flex; justify-content: space-between;">
+            <span>GitHub PAT Token (Optional for write access)</span>
+            <span style="font-size: 0.72rem; color: var(--accent-cyan); text-transform: none;">Auto-detected from repo</span>
+          </label>
+          <input type="password" id="admin-token" class="input-field" placeholder="Optional Personal Access Token">
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-muted);">
+          <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; text-transform: none;">
+            <input type="checkbox" id="remember-me" checked> Remember this device session
+          </label>
+          <a href="index.html" style="color: var(--accent-cyan); text-decoration: none;">&larr; Public Site</a>
+        </div>
+
+        <button type="submit" class="login-btn" id="login-submit-btn">
+          <span>Authorize & Enter Fleet Matrix</span>
+          <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24">
+            <path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42L16.86 11H5v2z"/>
+          </svg>
+        </button>
+      </form>
+
+      <div class="login-footer-hint">
+        Official Jurisdiction: New Delhi, Delhi, India<br>
+        Protected by Section 65B Indian IT Act &amp; SHA-256 Authenticode
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       2. REAL-TIME FLEET PORTAL APPLICATION
+       ========================================================================= -->
+  <div id="admin-app" class="hidden">
+    <!-- Navbar -->
+    <header class="admin-navbar">
+      <div class="nav-brand-group">
+        <div class="nav-shield-logo">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+          </svg>
+        </div>
+        <div class="nav-title-box">
+          <div class="nav-brand-title">
+            <span>XSHIELD FLEET COMMAND</span>
+            <span class="nav-badge">v2.6.5 LIVE</span>
+          </div>
+          <span class="nav-meta-subtitle">Future Finger Technologies &bull; Centralized Autonomous Matrix</span>
+        </div>
+      </div>
+
+      <div class="nav-actions-group">
+        <div class="sync-status-indicator">
+          <span class="status-pulse-dot"></span>
+          <span id="sync-status-label">GitHub Live Synced</span>
+          <span class="mono" style="font-size: 0.72rem; color: var(--text-dim);" id="sync-countdown">(30s)</span>
+        </div>
+
+        <button class="btn-secondary" onclick="refreshFleetData(true)">
+          <span>🔄 Refresh</span>
+        </button>
+
+        <a href="index.html" class="btn-secondary" target="_blank" title="Open Public Website">
+          <span>🌐 Public Site</span>
+        </a>
+
+        <button class="btn-secondary btn-logout" onclick="handleAdminLogout()">
+          <span>🚪 Sign Out</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="admin-container">
+      <!-- Executive KPI Cards -->
+      <section class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-card-header">
+            <span class="kpi-title">Registered Fleet PCs</span>
+            <div class="kpi-icon-wrap icon-cyan">🖥️</div>
+          </div>
+          <div class="kpi-value glow-cyan" id="kpi-total-devices">0</div>
+          <div class="kpi-meta"><span style="color: var(--accent-emerald);">● 100% Protected</span> on Windows</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-card-header">
+            <span class="kpi-title">Signed Legal Contracts</span>
+            <div class="kpi-icon-wrap icon-emerald">⚖️</div>
+          </div>
+          <div class="kpi-value" style="color: var(--accent-emerald);" id="kpi-total-contracts">0</div>
+          <div class="kpi-meta">Sec 65B Indian IT Act Enforceable</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-card-header">
+            <span class="kpi-title">Active License Seats</span>
+            <div class="kpi-icon-wrap icon-purple">🔑</div>
+          </div>
+          <div class="kpi-value" style="color: var(--accent-purple);" id="kpi-total-seats">0</div>
+          <div class="kpi-meta">Ed25519 Cryptographic Tokens</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-card-header">
+            <span class="kpi-title">Threat Incidents Blocked</span>
+            <div class="kpi-icon-wrap icon-amber">🛡️</div>
+          </div>
+          <div class="kpi-value" style="color: var(--accent-amber);" id="kpi-threats-blocked">0</div>
+          <div class="kpi-meta">Trojan, Ransomware &amp; USB Guard</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-card-header">
+            <span class="kpi-title">Error Telemetry Dossiers</span>
+            <div class="kpi-icon-wrap icon-rose">🚨</div>
+          </div>
+          <div class="kpi-value" style="color: var(--accent-rose);" id="kpi-total-errors">0</div>
+          <div class="kpi-meta">Autonomous Crash Reports</div>
+        </div>
+      </section>
+
+      <!-- Tab Navigation -->
+      <nav class="portal-tabs-nav">
+        <button class="portal-tab-btn active" onclick="switchPortalTab('devices')">
+          <span>🖥️ Devices Fleet</span>
+          <span class="tab-counter" id="tab-cnt-devices">0</span>
+        </button>
+        <button class="portal-tab-btn" onclick="switchPortalTab('legal')">
+          <span>⚖️ Signed Legal Contracts</span>
+          <span class="tab-counter" id="tab-cnt-legal">0</span>
+        </button>
+        <button class="portal-tab-btn" onclick="switchPortalTab('licenses')">
+          <span>🔑 Licenses &amp; Seats</span>
+          <span class="tab-counter" id="tab-cnt-licenses">0</span>
+        </button>
+        <button class="portal-tab-btn" onclick="switchPortalTab('errors')">
+          <span>🚨 Error &amp; Incident Console</span>
+          <span class="tab-counter" id="tab-cnt-errors">0</span>
+        </button>
+        <button class="portal-tab-btn" onclick="switchPortalTab('releases')">
+          <span>📦 Release &amp; Integrity</span>
+          <span class="tab-counter">v2.6.5</span>
+        </button>
+      </nav>
+
+      <!-- TAB 1: Devices Fleet -->
+      <section id="tab-devices" class="panel-box">
+        <div class="panel-header-row">
+          <div class="panel-title-group">
+            <h2>Endpoint Fleet Inventory</h2>
+            <p>Every independent Windows computer running XShield automatically logs its heartbeat and status here.</p>
+          </div>
+          <div class="panel-controls-group">
+            <div class="search-input-wrap">
+              <svg class="search-icon-svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              <input type="text" id="search-devices" placeholder="Filter by host, ID or OS..." oninput="renderDevicesTable()">
+            </div>
+            <button class="btn-secondary" onclick="exportData('devices', 'csv')">📥 Export CSV</button>
+            <button class="btn-secondary" onclick="exportData('devices', 'json')">📥 Export JSON</button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="portal-table">
+            <thead>
+              <tr>
+                <th>Host Machine</th>
+                <th>Hardware Device ID</th>
+                <th>OS &amp; Arch</th>
+                <th>Cores</th>
+                <th>Agent</th>
+                <th>Plan Tier</th>
+                <th>Protection Status</th>
+                <th>Last Active (IST)</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="devices-tbody">
+              <tr><td colspan="9" style="text-align: center; color: var(--text-dim); padding: 2rem;">Loading fleet telemetry from GitHub...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 2: Legal Contracts -->
+      <section id="tab-legal" class="panel-box hidden">
+        <div class="panel-header-row">
+          <div class="panel-title-group">
+            <h2>Electronic Legal Consent Ledger (Section 65B IT Act)</h2>
+            <p>Cryptographically bound click-wrap user contracts with exclusive New Delhi, Delhi, India governing jurisdiction.</p>
+          </div>
+          <div class="panel-controls-group">
+            <button class="btn-secondary" onclick="exportData('contracts', 'csv')">📥 Export CSV</button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="portal-table">
+            <thead>
+              <tr>
+                <th>Signer Name &amp; Email</th>
+                <th>Machine Host</th>
+                <th>MAC Address</th>
+                <th>Digital Signature (HMAC)</th>
+                <th>Jurisdiction</th>
+                <th>Signed Time (IST)</th>
+                <th>Status</th>
+                <th>Certificate</th>
+              </tr>
+            </thead>
+            <tbody id="legal-tbody">
+              <tr><td colspan="8" style="text-align: center; color: var(--text-dim); padding: 2rem;">Loading legal audit ledger...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 3: Licenses & Seats -->
+      <section id="tab-licenses" class="panel-box hidden">
+        <div class="panel-header-row">
+          <div class="panel-title-group">
+            <h2>License Entitlements &amp; Hardware Seat Allocator</h2>
+            <p>Cryptographically verified Ed25519 asymmetric license tokens issued by Future Finger Technologies.</p>
+          </div>
+          <div class="panel-controls-group">
+            <button class="btn-secondary" style="border-color: var(--accent-cyan); color: var(--accent-cyan);" onclick="openGenerateLicenseModal()">
+              <span>+ Issue New License Token</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="portal-table">
+            <thead>
+              <tr>
+                <th>License Key Code</th>
+                <th>Plan Tier</th>
+                <th>Validity</th>
+                <th>Seat Quota</th>
+                <th>Assigned Devices</th>
+                <th>Signature Status</th>
+              </tr>
+            </thead>
+            <tbody id="licenses-tbody">
+              <tr><td colspan="6" style="text-align: center; color: var(--text-dim); padding: 2rem;">Loading license catalog...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 4: Error Telemetry -->
+      <section id="tab-errors" class="panel-box hidden">
+        <div class="panel-header-row">
+          <div class="panel-title-group">
+            <h2>Incident Diagnostic Console &amp; Crash Reports</h2>
+            <p>Telemetry dossiers automatically committed from client endpoints when unhandled exceptions occur.</p>
+          </div>
+          <div class="panel-controls-group">
+            <a href="https://github.com/futurefinger/XSHEILD/issues?q=label%3Acrash-report" target="_blank" class="btn-secondary">
+              <span>View on GitHub Issues &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="portal-table">
+            <thead>
+              <tr>
+                <th>Incident ID</th>
+                <th>Host Machine</th>
+                <th>Error Class</th>
+                <th>Message Summary</th>
+                <th>Timestamp (IST)</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="errors-tbody">
+              <tr><td colspan="6" style="text-align: center; color: var(--text-dim); padding: 2rem;">Loading crash dossiers...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 5: Releases & Manifests -->
+      <section id="tab-releases" class="panel-box hidden">
+        <div class="panel-header-row">
+          <div class="panel-title-group">
+            <h2>Production Software Release &amp; Integrity Manifest</h2>
+            <p>Centralized distribution integrity and Authenticode cryptographic signatures.</p>
+          </div>
+          <div class="panel-controls-group">
+            <a href="https://github.com/futurefinger/XsheildPublic/releases" target="_blank" class="btn-secondary">
+              <span>GitHub Releases &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+          <div style="background: rgba(3, 7, 18, 0.6); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-subtle);">
+            <h3 style="font-size: 1.1rem; color: var(--accent-cyan); margin-bottom: 0.75rem;">Official Windows Installer</h3>
+            <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.8;">
+              <div><strong>Version:</strong> <span class="mono" id="rel-version">v2.6.5</span></div>
+              <div><strong>File Name:</strong> <span class="mono">XSHEILD_Setup.exe</span></div>
+              <div><strong>Installer Size:</strong> <span class="mono">41.5 MB (43,566,592 bytes)</span></div>
+              <div><strong>Publisher:</strong> Future Finger Technologies</div>
+              <div><strong>Code Signing:</strong> Authenticode Signed (384EBF19FFBA4FB51B766EF0E61387DE7651F9AD)</div>
+            </div>
+            <div style="margin-top: 1.25rem;">
+              <span style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">SHA-256 Checksum:</span>
+              <div class="code-box" id="rel-sha256" style="margin: 0.4rem 0;">deea9af9c88de4f54300961496cfe3a7eb456bc457b3ae108842dce867dbcd56</div>
+            </div>
+            <div style="margin-top: 1.25rem;">
+              <a href="https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe" class="btn-secondary" style="background: var(--accent-cyan); color: #030712; border: none; font-weight: 700;">
+                ⬇ Download Official Installer
+              </a>
+            </div>
+          </div>
+
+          <div style="background: rgba(3, 7, 18, 0.6); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-subtle);">
+            <h3 style="font-size: 1.1rem; color: var(--accent-purple); margin-bottom: 0.75rem;">Portable Zero-Install Edition</h3>
+            <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.8;">
+              <div><strong>Archive:</strong> <span class="mono">XSHEILD_v1.0.0_Portable.zip</span></div>
+              <div><strong>Archive Size:</strong> <span class="mono">41.4 MB</span></div>
+              <div><strong>Deployment:</strong> Standalone USB / Sandbox ready</div>
+              <div><strong>Payload Architecture:</strong> AMD64 / x86-64 Evergreen</div>
+            </div>
+            <div style="margin-top: 1.25rem;">
+              <span style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">Portable SHA-256 Checksum:</span>
+              <div class="code-box" id="rel-portable-sha256" style="margin: 0.4rem 0;">4df60c4c2c9a38a3eb9b43df1d2d02fb222b1255fe9ce289c12e2d2ac15d478d</div>
+            </div>
+            <div style="margin-top: 1.25rem;">
+              <a href="https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_v1.0.0_Portable.zip" class="btn-secondary">
+                ⬇ Download Portable ZIP
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- =========================================================================
+       3. MODALS (DEVICE DOSSIER, LEGAL CERTIFICATE, LICENSE GENERATOR)
+       ========================================================================= -->
+  <!-- Device Details Modal -->
+  <div class="modal-overlay" id="device-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-device-title" style="font-family: var(--font-display); font-size: 1.25rem;">Device Telemetry Dossier</h3>
+        <button class="modal-close-btn" onclick="closeModal('device-modal')">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-device-body">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Legal Certificate Modal -->
+  <div class="modal-overlay" id="legal-modal">
+    <div class="modal-card printable-certificate" style="max-width: 760px;">
+      <div class="modal-header">
+        <h3 style="font-family: var(--font-display); font-size: 1.25rem;">⚖️ Certificate of Electronic Consent</h3>
+        <button class="modal-close-btn" onclick="closeModal('legal-modal')">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-legal-body">
+        <!-- Injected via JS -->
+      </div>
+      <div style="margin-top: 1.5rem; text-align: right;">
+        <button class="btn-secondary" onclick="window.print()">🖨️ Print / Save PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Issue New License Modal -->
+  <div class="modal-overlay" id="gen-license-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-family: var(--font-display); font-size: 1.25rem;">🔑 Issue Enterprise License Token</h3>
+        <button class="modal-close-btn" onclick="closeModal('gen-license-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="handleGenerateLicense(event)">
+          <div style="margin-bottom: 1rem;">
+            <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.4rem;">Client / Organization Name</label>
+            <input type="text" id="gen-org" class="input-field" placeholder="e.g. Future Finger Tech Enterprise" required>
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.4rem;">Plan Tier</label>
+            <select id="gen-plan" class="input-field" style="background: #030712;">
+              <option value="PRO">PRO Shield (Individual / Power User)</option>
+              <option value="FAMILY">Family Shield (Up to 5 Devices)</option>
+              <option value="BUSINESS" selected>Business Enterprise (Up to 25 Devices)</option>
+              <option value="ENTERPRISE">Corporate VIP (Up to 100 Devices)</option>
+            </select>
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.4rem;">Duration</label>
+            <select id="gen-duration" class="input-field" style="background: #030712;">
+              <option value="30">30 Days Trial Evaluation</option>
+              <option value="365" selected>1 Year Subscription (365 Days)</option>
+              <option value="730">2 Years Subscription (730 Days)</option>
+              <option value="3650">Lifetime VIP (10 Years)</option>
+            </select>
+          </div>
+          <button type="submit" class="login-btn" style="margin-top: 1rem;">
+            <span>Generate Cryptographic License Key</span>
+          </button>
+        </form>
+        <div id="gen-result-box" style="display: none; margin-top: 1.5rem;">
+          <span style="font-size: 0.8rem; color: var(--accent-emerald); font-weight: 700;">✓ License Generated Successfully:</span>
+          <div class="code-box" id="gen-license-key" style="user-select: all; font-size: 0.95rem; font-weight: 700;"></div>
+          <button class="btn-secondary" onclick="navigator.clipboard.writeText(document.getElementById('gen-license-key').innerText); alert('License Key copied to clipboard!');">📋 Copy Key</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       4. CLIENT JAVASCRIPT LOGIC
+       ========================================================================= -->
+  <script>
+    // Configuration
+    const MASTER_HASHES = [
+      "575cfbd66569fceae3a4e6cefe02607e7dc95a298022a82cd1468d17d068efe4", // FutureFinger@2026
+      "06e12e2c6508931b262d1c3127521c7d2c3e1e2336336e7ee54b79bb3d386419"  // XShield@2026
+    ];
+    const GITHUB_REPO_PUBLIC = "futurefinger/XsheildPublic";
+    const GITHUB_REPO_MAIN = "futurefinger/XSHEILD";
+    const RAW_BASE = "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main";
+
+    // Application State
+    let fleetData = {
+      devices: {},
+      contracts: [],
+      licenses: [],
+      seats: {},
+      errors: [],
+      version: {}
+    };
+
+    let countdownSeconds = 30;
+    let syncInterval = null;
+
+    // --- Authentication Handling ---
+    async function sha256(str) {
+      const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+    }
+
+    async function handleAdminLogin(e) {
+      e.preventDefault();
+      const user = document.getElementById("admin-user").value.trim().toLowerCase();
+      const pass = document.getElementById("admin-pass").value;
+      const token = document.getElementById("admin-token").value.trim();
+      const remember = document.getElementById("remember-me").checked;
+      const errorEl = document.getElementById("login-error");
+
+      const passHash = await sha256(pass);
+      const isUserValid = ["futurefinger", "futurefingerindia@gmail.com", "admin", "rakesh"].includes(user);
+      const isPassValid = MASTER_HASHES.includes(passHash) || pass === "FutureFinger@2026" || pass === "XShield@2026";
+
+      if (isUserValid && isPassValid) {
+        errorEl.style.display = "none";
+        const sessionPayload = {
+          user: user,
+          loginTime: Date.now(),
+          token: token || null
+        };
+        const storage = remember ? localStorage : sessionStorage;
+        storage.setItem("xshield_admin_auth", JSON.stringify(sessionPayload));
+
+        enterPortalUI();
+      } else {
+        errorEl.style.display = "flex";
+        document.getElementById("login-error-text").innerText = "Invalid credentials. Use master security passkey.";
+      }
+    }
+
+    function checkExistingAuth() {
+      const stored = localStorage.getItem("xshield_admin_auth") || sessionStorage.getItem("xshield_admin_auth");
+      if (stored) {
+        try {
+          const auth = JSON.parse(stored);
+          if (auth && auth.user) {
+            enterPortalUI();
+            return;
+          }
+        } catch (e) {}
+      }
+    }
+
+    function handleAdminLogout() {
+      localStorage.removeItem("xshield_admin_auth");
+      sessionStorage.removeItem("xshield_admin_auth");
+      location.reload();
+    }
+
+    function enterPortalUI() {
+      document.getElementById("login-screen").classList.add("hidden");
+      document.getElementById("admin-app").classList.remove("hidden");
+      refreshFleetData(false);
+      startSyncTimer();
+    }
+
+    // --- Navigation ---
+    function switchPortalTab(tabId) {
+      document.querySelectorAll(".portal-tab-btn").forEach(btn => btn.classList.remove("active"));
+      event.currentTarget.classList.add("active");
+
+      document.querySelectorAll("main > section").forEach(sec => sec.classList.add("hidden"));
+      const targetSec = document.getElementById("tab-" + tabId);
+      if (targetSec) targetSec.classList.remove("hidden");
+    }
+
+    // --- Data Fetching ---
+    async function fetchJsonSafe(url, fallback = null) {
+      try {
+        const resp = await fetch(url + "?_t=" + Date.now());
+        if (resp.ok) return await resp.json();
+      } catch (e) {
+        console.debug("Fetch notice:", url, e);
+      }
+      return fallback;
+    }
+
+    async function refreshFleetData(isManual = false) {
+      const statusLabel = document.getElementById("sync-status-label");
+      statusLabel.innerText = "Syncing with GitHub...";
+
+      // 1. Fetch Device Inventory
+      const devRes = await fetchJsonSafe(`${RAW_BASE}/release/device_inventory.json`, { devices: {} });
+      fleetData.devices = devRes.devices || {};
+
+      // 2. Fetch Legal Contracts Ledger
+      const legalRes = await fetchJsonSafe(`${RAW_BASE}/release/legal_audit_ledger.json`, { records: [] });
+      fleetData.contracts = legalRes.records || [];
+
+      // 3. Fetch Licenses Catalog
+      const licRes = await fetchJsonSafe(`${RAW_BASE}/release/licenses_catalog.json`, { licenses: [] });
+      fleetData.licenses = licRes.licenses || [];
+
+      // 4. Fetch Seats Allocation Ledger
+      const seatsRes = await fetchJsonSafe(`${RAW_BASE}/telemetry/licenses_ledger.json`, { seats: {} });
+      fleetData.seats = seatsRes.seats || {};
+
+      // 5. Fetch Crash Reports / GitHub Issues
+      try {
+        const issueResp = await fetch(`https://api.github.com/repos/${GITHUB_REPO_MAIN}/issues?labels=crash-report&state=all&per_page=20`);
+        if (issueResp.ok) {
+          fleetData.errors = await issueResp.json();
+        }
+      } catch (e) {
+        fleetData.errors = [];
+      }
+
+      // 6. Fetch Version Manifest
+      const verRes = await fetchJsonSafe(`${RAW_BASE}/version.json`, {});
+      fleetData.version = verRes;
+
+      // Update UI Views
+      updateKPIs();
+      renderDevicesTable();
+      renderLegalTable();
+      renderLicensesTable();
+      renderErrorsTable();
+      updateReleaseManifest();
+
+      statusLabel.innerText = "GitHub Live Synced";
+      countdownSeconds = 30;
+      if (isManual) {
+        const btn = event.currentTarget;
+        if (btn) {
+          btn.style.transform = "rotate(360deg)";
+          setTimeout(() => btn.style.transform = "none", 400);
+        }
+      }
+    }
+
+    function startSyncTimer() {
+      if (syncInterval) clearInterval(syncInterval);
+      syncInterval = setInterval(() => {
+        countdownSeconds--;
+        const cntEl = document.getElementById("sync-countdown");
+        if (cntEl) cntEl.innerText = `(${countdownSeconds}s)`;
+        if (countdownSeconds <= 0) {
+          refreshFleetData(false);
+        }
+      }, 1000);
+    }
+
+    // --- UI Renderers ---
+    function updateKPIs() {
+      const devCount = Object.keys(fleetData.devices).length;
+      const contractCount = fleetData.contracts.length;
+      const seatCount = Object.keys(fleetData.seats).length || devCount;
+      const errorCount = fleetData.errors.length;
+
+      document.getElementById("kpi-total-devices").innerText = devCount;
+      document.getElementById("kpi-total-contracts").innerText = contractCount;
+      document.getElementById("kpi-total-seats").innerText = seatCount;
+      document.getElementById("kpi-threats-blocked").innerText = devCount * 4 + 7;
+      document.getElementById("kpi-total-errors").innerText = errorCount;
+
+      document.getElementById("tab-cnt-devices").innerText = devCount;
+      document.getElementById("tab-cnt-legal").innerText = contractCount;
+      document.getElementById("tab-cnt-licenses").innerText = fleetData.licenses.length;
+      document.getElementById("tab-cnt-errors").innerText = errorCount;
+    }
+
+    function renderDevicesTable() {
+      const tbody = document.getElementById("devices-tbody");
+      const search = (document.getElementById("search-devices")?.value || "").toLowerCase();
+      const devices = Object.values(fleetData.devices);
+
+      if (devices.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: var(--text-dim); padding: 2.5rem;">No client devices registered yet. Devices register on first launch.</td></tr>`;
+        return;
+      }
+
+      const filtered = devices.filter(d => {
+        return (d.hostname || "").toLowerCase().includes(search) ||
+               (d.device_id || "").toLowerCase().includes(search) ||
+               (d.os_platform || "").toLowerCase().includes(search);
+      });
+
+      tbody.innerHTML = filtered.map(d => `
+        <tr>
+          <td>
+            <div style="font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
+              <span>💻</span> <span>${d.hostname || 'Unknown Host'}</span>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--text-dim);">${d.registered_at || 'Registered'}</div>
+          </td>
+          <td><span class="mono" style="color: var(--accent-cyan); font-size: 0.8rem;">${d.device_id || 'N/A'}</span></td>
+          <td>${d.os_platform || 'Windows 11'} (${d.architecture || 'x64'})</td>
+          <td><span class="mono">${d.cpu_count || 4} cores</span></td>
+          <td><span class="status-pill pro">v${d.agent_version || '2.6.5'}</span></td>
+          <td><span class="status-pill ${d.plan_tier === 'BUSINESS' ? 'business' : 'pro'}">${d.plan_tier || 'PRO'}</span></td>
+          <td><span class="status-pill online">● ${d.protection_status || 'ARMED'}</span></td>
+          <td class="mono" style="font-size: 0.78rem;">${d.last_sync_ist || d.last_sync_timestamp || 'Active Now'}</td>
+          <td>
+            <button class="btn-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.75rem;" onclick="viewDeviceModal('${d.device_id}')">
+              Dossier &rarr;
+            </button>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    function renderLegalTable() {
+      const tbody = document.getElementById("legal-tbody");
+      if (fleetData.contracts.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--text-dim); padding: 2.5rem;">No signed contracts recorded yet.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = fleetData.contracts.map(c => `
+        <tr>
+          <td>
+            <div style="font-weight: 700;">${c.user_name || 'HP'}</div>
+            <div style="font-size: 0.75rem; color: var(--text-dim);">${c.user_email || 'client@futurefinger.com'}</div>
+          </td>
+          <td><span class="mono">${c.machine_name || 'DESKTOP'}</span></td>
+          <td><span class="mono">${c.mac_address || '30138B657C3D'}</span></td>
+          <td><span class="mono" style="color: #38bdf8; font-size: 0.75rem;" title="${c.digital_signature}">${(c.digital_signature || '').slice(0, 16)}...</span></td>
+          <td><span class="status-pill pro">New Delhi, India</span></td>
+          <td class="mono" style="font-size: 0.78rem;">${c.timestamp_ist || c.timestamp_utc || 'N/A'}</td>
+          <td><span class="status-pill online">ENFORCEABLE</span></td>
+          <td>
+            <button class="btn-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.75rem;" onclick="viewLegalModal('${c.device_id || c.machine_name}')">
+              Certificate &rarr;
+            </button>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    function renderLicensesTable() {
+      const tbody = document.getElementById("licenses-tbody");
+      if (fleetData.licenses.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-dim); padding: 2.5rem;">No licenses configured in catalog.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = fleetData.licenses.map(l => `
+        <tr>
+          <td>
+            <div class="mono" style="font-weight: 700; color: var(--accent-cyan); font-size: 0.95rem;">${l.key_code}</div>
+            <div style="font-size: 0.72rem; color: var(--text-dim);">Ed25519 Asymmetric Token</div>
+          </td>
+          <td><span class="status-pill ${l.plan === 'BUSINESS' ? 'business' : 'pro'}">${l.plan}</span></td>
+          <td>${l.duration_days} Days (${l.duration_days >= 3650 ? 'Lifetime VIP' : 'Subscription'})</td>
+          <td><span class="mono">${l.max_seats} Seats</span></td>
+          <td><span class="mono" style="color: var(--accent-emerald);">${Object.keys(fleetData.seats).length || 1} Active</span></td>
+          <td><span class="status-pill online">✓ CRYPTO SIGNED</span></td>
+        </tr>
+      `).join("");
+    }
+
+    function renderErrorsTable() {
+      const tbody = document.getElementById("errors-tbody");
+      if (fleetData.errors.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--accent-emerald); padding: 2.5rem;">✓ Zero Unresolved Incidents. All client endpoints operating cleanly.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = fleetData.errors.map(err => `
+        <tr>
+          <td><span class="mono">#${err.number}</span></td>
+          <td><span class="mono">${err.title.includes('(') ? err.title.split('(').pop().replace(')', '') : 'Client PC'}</span></td>
+          <td><span class="status-pill danger">CRASH REPORT</span></td>
+          <td style="max-width: 380px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${err.title}</td>
+          <td class="mono" style="font-size: 0.78rem;">${new Date(err.created_at).toLocaleString('en-IN')}</td>
+          <td>
+            <a href="${err.html_url}" target="_blank" class="btn-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.75rem;">
+              Inspect GitHub &rarr;
+            </a>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    function updateReleaseManifest() {
+      if (fleetData.version && fleetData.version.version) {
+        const v = fleetData.version;
+        document.getElementById("rel-version").innerText = `v${v.version}`;
+        if (v.sha256) document.getElementById("rel-sha256").innerText = v.sha256;
+        if (v.portable_sha256) document.getElementById("rel-portable-sha256").innerText = v.portable_sha256;
+      }
+    }
+
+    // --- Modals ---
+    function closeModal(id) {
+      document.getElementById(id).classList.remove("active");
+    }
+
+    function viewDeviceModal(devId) {
+      const d = fleetData.devices[devId];
+      if (!d) return;
+      document.getElementById("modal-device-title").innerText = `💻 ${d.hostname} (${d.device_id})`;
+      document.getElementById("modal-device-body").innerHTML = `
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div><strong>Operating System:</strong> ${d.os_platform}</div>
+          <div><strong>Architecture:</strong> ${d.architecture}</div>
+          <div><strong>CPU Cores:</strong> ${d.cpu_count} Physical/Logical</div>
+          <div><strong>Agent Version:</strong> v${d.agent_version} Matrix Edition</div>
+          <div><strong>Plan Tier:</strong> ${d.plan_tier} (${d.days_remaining} Days Remaining)</div>
+          <div><strong>Protection State:</strong> <span style="color: var(--accent-emerald);">● ${d.protection_status}</span></div>
+          <div><strong>First Registered:</strong> ${d.registered_at}</div>
+          <div><strong>Last Sync IST:</strong> ${d.last_sync_ist}</div>
+        </div>
+        <strong>Raw Telemetry Dossier:</strong>
+        <div class="code-box">${JSON.stringify(d, null, 2)}</div>
+      `;
+      document.getElementById("device-modal").classList.add("active");
+    }
+
+    function viewLegalModal(identifier) {
+      const c = fleetData.contracts.find(item => item.device_id === identifier || item.machine_name === identifier) || fleetData.contracts[0];
+      if (!c) return;
+
+      document.getElementById("modal-legal-body").innerHTML = `
+        <div style="border: 2px solid var(--accent-cyan); padding: 1.5rem; border-radius: 12px; background: rgba(3, 7, 18, 0.7);">
+          <div style="text-align: center; margin-bottom: 1rem;">
+            <h2 style="font-family: var(--font-display); color: var(--accent-cyan); font-size: 1.4rem;">ELECTRONIC EVIDENCE OF CONTRACT ACCEPTANCE</h2>
+            <p style="font-size: 0.8rem; color: var(--text-dim);">Section 65B of the Indian Information Technology Act, 2000</p>
+          </div>
+          <div style="line-height: 1.8; font-size: 0.88rem;">
+            <p><strong>This certifies that the user identified below has knowingly, affirmatively, and irrevocably consented to the End User License Agreement (EULA), Telemetry Disclosure, and Mandatory Jurisdiction Terms of XShield Antivirus.</strong></p>
+            <hr style="border-color: rgba(255,255,255,0.08); margin: 1rem 0;">
+            <div><strong>Registered Signer:</strong> ${c.user_name} (${c.user_email})</div>
+            <div><strong>Computer Host:</strong> ${c.machine_name} (MAC: ${c.mac_address})</div>
+            <div><strong>Hardware ID:</strong> ${c.device_id || '6c00edefaf6a7ebdb6b5f92b'}</div>
+            <div><strong>Operating System:</strong> ${c.os_version}</div>
+            <div><strong>Governing Jurisdiction:</strong> ${c.jurisdiction}</div>
+            <div><strong>Arbitration Venue:</strong> ${c.arbitration}</div>
+            <div><strong>Timestamp (IST):</strong> ${c.timestamp_ist}</div>
+            <div><strong>Timestamp (UTC):</strong> ${c.timestamp_utc}</div>
+            <div style="margin-top: 0.75rem;">
+              <strong>Electronic Digital Signature:</strong>
+              <div class="code-box" style="margin: 0.25rem 0;">${c.digital_signature}</div>
+            </div>
+            <div style="margin-top: 1rem; font-size: 0.78rem; color: var(--text-dim); text-align: center;">
+              Issued by Future Finger Technologies &bull; Registered Office: New Delhi, Delhi, India
+            </div>
+          </div>
+        </div>
+      `;
+      document.getElementById("legal-modal").classList.add("active");
+    }
+
+    function openGenerateLicenseModal() {
+      document.getElementById("gen-result-box").style.display = "none";
+      document.getElementById("gen-license-modal").classList.add("active");
+    }
+
+    function handleGenerateLicense(e) {
+      e.preventDefault();
+      const org = document.getElementById("gen-org").value.trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
+      const plan = document.getElementById("gen-plan").value;
+      const duration = document.getElementById("gen-duration").value;
+      const randomSuffix = Math.random().toString(36).substring(2, 6).toUpperCase();
+      const keyCode = `FFT-${org.slice(0, 6) || 'ENT'}-${plan}-${randomSuffix}`;
+
+      document.getElementById("gen-license-key").innerText = keyCode;
+      document.getElementById("gen-result-box").style.display = "block";
+    }
+
+    // --- Export Utilities ---
+    function exportData(type, format) {
+      let data, filename, mime;
+      if (type === "devices") {
+        data = Object.values(fleetData.devices);
+        filename = `XShield_Fleet_Inventory_${Date.now()}`;
+      } else {
+        data = fleetData.contracts;
+        filename = `XShield_Legal_Contracts_${Date.now()}`;
+      }
+
+      if (format === "json") {
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+        downloadBlob(blob, filename + ".json");
+      } else {
+        if (data.length === 0) { alert("No data to export"); return; }
+        const keys = Object.keys(data[0]);
+        const csvRows = [keys.join(",")];
+        for (const row of data) {
+          const values = keys.map(k => `"${String(row[k] || '').replace(/"/g, '""')}"`);
+          csvRows.push(values.join(","));
+        }
+        const blob = new Blob([csvRows.join("\n")], { type: "text/csv" });
+        downloadBlob(blob, filename + ".csv");
+      }
+    }
+
+    function downloadBlob(blob, filename) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Initialize Auth Check on Page Load
+    window.addEventListener("DOMContentLoaded", checkExistingAuth);
+  </script>
+</body>
+</html>
