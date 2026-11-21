@@ -18,16 +18,16 @@ const XSHIELD_CONFIG = {
     
     // Installer Specifications
     installerName: "XSHEILD_Setup.exe",
-    installerSize: "41.5 MB",
-    installerSizeBytes: 43560664,
+    installerSize: "43.2 MB",
+    installerSizeBytes: 45367000,
     downloadUrl: "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe",
     portableName: "XSHEILD_v1.0.0_Portable.zip",
-    portableSize: "41.4 MB",
+    portableSize: "43.1 MB",
     portableUrl: "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_v1.0.0_Portable.zip",
     
     // Cryptographic Checksums
-    sha256: "deea9af9c88de4f54300961496cfe3a7eb456bc457b3ae108842dce867dbcd56",
-    portableSha256: "4df60c4c2c9a38a3eb9b43df1d2d02fb222b1255fe9ce289c12e2d2ac15d478d",
+    sha256: "f135ec25874ce8bd92ed17d45a85678f7aa4074e8637e82dce79c6666c5ff3a9",
+    portableSha256: "d88e669153fb6b5197a40cb2ebd85823844d7db63f2fe5c672db812a498e8315",
     
     // Compatibility & Architecture
     windowsCompatibility: "Windows 11, Windows 10, Windows Server 2022 / 2019 (64-bit)",
