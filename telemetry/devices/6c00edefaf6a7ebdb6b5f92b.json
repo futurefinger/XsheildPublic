@@ -1,0 +1,15 @@
+{
+  "device_id": "6c00edefaf6a7ebdb6b5f92b",
+  "hostname": "DESKTOP-AVE90GM",
+  "os_platform": "Windows 11 (10.0.26200)",
+  "architecture": "AMD64",
+  "cpu_count": 12,
+  "agent_version": "2.6.5",
+  "plan_tier": "PRO",
+  "is_trial": false,
+  "days_remaining": 365,
+  "protection_status": "ARMED_AND_ACTIVE",
+  "registered_at": "21 Nov 2026",
+  "last_sync_timestamp": "2026-11-21T10:10:57.857484+00:00",
+  "last_sync_ist": "2026-11-21 15:40:57 IST"
+}
