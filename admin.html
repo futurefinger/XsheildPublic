@@ -1307,9 +1307,52 @@
       const devRes = await fetchJsonSafe(`${RAW_BASE}/release/device_inventory.json`, { devices: {} });
       fleetData.devices = devRes.devices || {};
 
+      // Dynamic Auto-Discovery: Scan individual telemetry/devices/ files directly from GitHub API
+      try {
+        const devFilesResp = await fetch(`https://api.github.com/repos/${GITHUB_REPO_PUBLIC}/contents/telemetry/devices?_t=${Date.now()}`);
+        if (devFilesResp.ok) {
+          const devFiles = await devFilesResp.json();
+          if (Array.isArray(devFiles)) {
+            for (const item of devFiles) {
+              if (item.name && item.name.endsWith(".json")) {
+                const devId = item.name.replace(".json", "");
+                if (!fleetData.devices[devId]) {
+                  const singleDev = await fetchJsonSafe(item.download_url || `${RAW_BASE}/telemetry/devices/${item.name}`);
+                  if (singleDev && singleDev.device_id) {
+                    fleetData.devices[singleDev.device_id] = singleDev;
+                  }
+                }
+              }
+            }
+          }
+        }
+      } catch (e) {
+        console.debug("Direct device discovery notice:", e);
+      }
+
       // 2. Fetch Legal Contracts Ledger
       const legalRes = await fetchJsonSafe(`${RAW_BASE}/release/legal_audit_ledger.json`, { records: [] });
       fleetData.contracts = legalRes.records || [];
+
+      // Dynamic Auto-Discovery: Scan individual telemetry/contracts/ files directly from GitHub API
+      try {
+        const contractFilesResp = await fetch(`https://api.github.com/repos/${GITHUB_REPO_PUBLIC}/contents/telemetry/contracts?_t=${Date.now()}`);
+        if (contractFilesResp.ok) {
+          const contractFiles = await contractFilesResp.json();
+          if (Array.isArray(contractFiles)) {
+            for (const item of contractFiles) {
+              if (item.name && item.name.endsWith(".json")) {
+                const singleContract = await fetchJsonSafe(item.download_url || `${RAW_BASE}/telemetry/contracts/${item.name}`);
+                if (singleContract && !fleetData.contracts.some(c => (c.device_id && c.device_id === singleContract.device_id) || (c.machine_name && c.machine_name === singleContract.machine_name))) {
+                  fleetData.contracts.push(singleContract);
+                }
+              }
+            }
+          }
+        }
+      } catch (e) {
+        console.debug("Direct contract discovery notice:", e);
+      }
 
       // 3. Fetch Licenses Catalog
       const licRes = await fetchJsonSafe(`${RAW_BASE}/release/licenses_catalog.json`, { licenses: [] });
