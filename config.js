@@ -26,8 +26,8 @@ const XSHIELD_CONFIG = {
     portableUrl: "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_v1.0.0_Portable.zip",
     
     // Cryptographic Checksums
-    sha256: "bf9b8070da5e84091f495a66e07a94ed7417d750ca6a66e317db5e87fe80b2f0",
-    portableSha256: "4f1d82827c87385fde55de4a98d0715ca6d5acef333aa703c625a7f7a25297bc",
+    sha256: "deea9af9c88de4f54300961496cfe3a7eb456bc457b3ae108842dce867dbcd56",
+    portableSha256: "4df60c4c2c9a38a3eb9b43df1d2d02fb222b1255fe9ce289c12e2d2ac15d478d",
     
     // Compatibility & Architecture
     windowsCompatibility: "Windows 11, Windows 10, Windows Server 2022 / 2019 (64-bit)",
