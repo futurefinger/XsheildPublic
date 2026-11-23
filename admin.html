@@ -815,7 +815,7 @@
         <div class="nav-title-box">
           <div class="nav-brand-title">
             <span>XSHIELD FLEET COMMAND</span>
-            <span class="nav-badge">v2.6.12 LIVE</span>
+            <span class="nav-badge">v2.6.13 LIVE</span>
           </div>
           <span class="nav-meta-subtitle">Future Finger Technologies &bull; Centralized Autonomous Matrix</span>
         </div>
@@ -912,7 +912,7 @@
         </button>
         <button class="portal-tab-btn" onclick="switchPortalTab('releases')">
           <span>📦 Release &amp; Integrity</span>
-          <span class="tab-counter">v2.6.12</span>
+          <span class="tab-counter">v2.6.13</span>
         </button>
       </nav>
 
@@ -1075,7 +1075,7 @@
           <div style="background: rgba(3, 7, 18, 0.6); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-subtle);">
             <h3 style="font-size: 1.1rem; color: var(--accent-cyan); margin-bottom: 0.75rem;">Official Windows Installer</h3>
             <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.8;">
-              <div><strong>Version:</strong> <span class="mono" id="rel-version">v2.6.12</span></div>
+              <div><strong>Version:</strong> <span class="mono" id="rel-version">v2.6.13</span></div>
               <div><strong>File Name:</strong> <span class="mono">XSHEILD_Setup.exe</span></div>
               <div><strong>Installer Size:</strong> <span class="mono">41.5 MB (43,566,592 bytes)</span></div>
               <div><strong>Publisher:</strong> Future Finger Technologies</div>
@@ -1083,7 +1083,7 @@
             </div>
             <div style="margin-top: 1.25rem;">
               <span style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">SHA-256 Checksum:</span>
-              <div class="code-box" id="rel-sha256" style="margin: 0.4rem 0;">52015c5b561996f16c0717747cacfb1cd5ff8df4f3eafb3cdc225cb164551b7f</div>
+              <div class="code-box" id="rel-sha256" style="margin: 0.4rem 0;">cdc21f07ed11f4654baa7bcd4aae1c0af1df37b2577254848f70c163a665ba57</div>
             </div>
             <div style="margin-top: 1.25rem;">
               <a href="https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe" class="btn-secondary" style="background: var(--accent-cyan); color: #030712; border: none; font-weight: 700;">
@@ -1102,7 +1102,7 @@
             </div>
             <div style="margin-top: 1.25rem;">
               <span style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">Portable SHA-256 Checksum:</span>
-              <div class="code-box" id="rel-portable-sha256" style="margin: 0.4rem 0;">52015c5b561996f16c0717747cacfb1cd5ff8df4f3eafb3cdc225cb164551b7f</div>
+              <div class="code-box" id="rel-portable-sha256" style="margin: 0.4rem 0;">cdc21f07ed11f4654baa7bcd4aae1c0af1df37b2577254848f70c163a665ba57</div>
             </div>
             <div style="margin-top: 1.25rem;">
               <a href="https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_v1.0.0_Portable.zip" class="btn-secondary">
@@ -1202,8 +1202,8 @@
   <script>
     // Configuration
     const MASTER_HASHES = [
-      "52015c5b561996f16c0717747cacfb1cd5ff8df4f3eafb3cdc225cb164551b7f", // FutureFinger@2026
-      "52015c5b561996f16c0717747cacfb1cd5ff8df4f3eafb3cdc225cb164551b7f"  // XShield@2026
+      "cdc21f07ed11f4654baa7bcd4aae1c0af1df37b2577254848f70c163a665ba57", // FutureFinger@2026
+      "cdc21f07ed11f4654baa7bcd4aae1c0af1df37b2577254848f70c163a665ba57"  // XShield@2026
     ];
     const GITHUB_REPO_PUBLIC = "futurefinger/XsheildPublic";
     const GITHUB_REPO_MAIN = "futurefinger/XSHEILD";
@@ -1490,7 +1490,7 @@
           <td><span class="mono" style="color: var(--accent-cyan); font-size: 0.8rem;">${d.device_id || 'N/A'}</span></td>
           <td>${d.os_platform || 'Windows 11'} (${d.architecture || 'x64'})</td>
           <td><span class="mono">${d.cpu_count || 4} cores</span></td>
-          <td><span class="status-pill pro">v${d.agent_version || '2.6.12'}</span></td>
+          <td><span class="status-pill pro">v${d.agent_version || '2.6.13'}</span></td>
           <td><span class="status-pill ${d.is_trial ? 'trial' : (d.plan_tier === 'BUSINESS' ? 'business' : 'pro')}">${d.is_trial ? `⏳ TRIAL (${d.days_remaining || 14}d)` : `💎 ${d.plan_tier || 'PRO'}`}</span></td>
           <td><span class="status-pill online">● ${d.protection_status || 'ARMED'}</span></td>
           <td class="mono" style="font-size: 0.78rem;">${d.last_sync_ist || d.last_sync_timestamp || 'Active Now'}</td>
@@ -1791,7 +1791,7 @@
         doc.setFontSize(7);
         doc.setTextColor(40, 50, 60);
         doc.text(`Digital HMAC Signature : ${c.digital_signature || 'N/A'}`, 18, finalY + 12);
-        doc.text(`EULA Document SHA-256   : ${c.eula_hash || '52015c5b561996f16c0717747cacfb1cd5ff8df4f3eafb3cdc225cb164551b7f'}`, 18, finalY + 18);
+        doc.text(`EULA Document SHA-256   : ${c.eula_hash || 'cdc21f07ed11f4654baa7bcd4aae1c0af1df37b2577254848f70c163a665ba57'}`, 18, finalY + 18);
         doc.text(`Root Certificate Thumb : 384EBF19FFBA4FB51B766EF0E61387DE7651F9AD`, 18, finalY + 24);
         doc.text(`Verification Authority  : Future Finger Technologies Legal Sentry Matrix`, 18, finalY + 30);
 
@@ -1877,7 +1877,7 @@
           ["Hardware Device UUID", `${d.device_id || 'N/A'}`],
           ["Operating System", `${d.os_platform || 'Windows 11'} (${d.architecture || 'x64'})`],
           ["Processor Topology", `${d.cpu_count || 4} Physical / Logical Hardware Execution Threads`],
-          ["Agent Engine Version", `v${d.agent_version || '2.6.12'} (Quantum Matrix Shield)`],
+          ["Agent Engine Version", `v${d.agent_version || '2.6.13'} (Quantum Matrix Shield)`],
           ["License Plan Tier", `${d.plan_tier || 'PRO'} (${d.days_remaining || 365} Days Remaining)`],
           ["Overall Shield State", `ARMED & ACTIVE (100% Protection Level)`],
           ["Last Heartbeat (IST)", `${d.last_sync_ist || 'Active Live'}`]

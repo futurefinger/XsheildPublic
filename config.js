@@ -12,22 +12,22 @@ const XSHIELD_CONFIG = {
     description: "XShield Antivirus helps protect your digital environment with security tools designed to detect threats, scan files, and help safeguard your Windows computer.",
     
     // Release Metadata
-    version: "2.6.12",
-    tag: "v2.6.12",
+    version: "2.6.13",
+    tag: "v2.6.13",
     releaseDate: "November 23, 2026",
     
     // Installer Specifications
     installerName: "XSHEILD_Setup.exe",
     installerSize: "43.3 MB",
-    installerSizeBytes: 47325400,
+    installerSizeBytes: 47328984,
     downloadUrl: "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe",
     portableName: "XSHEILD_v1.0.0_Portable.zip",
     portableSize: "43.1 MB",
     portableUrl: "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_v1.0.0_Portable.zip",
     
     // Cryptographic Checksums
-    sha256: "52015c5b561996f16c0717747cacfb1cd5ff8df4f3eafb3cdc225cb164551b7f",
-    portableSha256: "52015c5b561996f16c0717747cacfb1cd5ff8df4f3eafb3cdc225cb164551b7f",
+    sha256: "cdc21f07ed11f4654baa7bcd4aae1c0af1df37b2577254848f70c163a665ba57",
+    portableSha256: "cdc21f07ed11f4654baa7bcd4aae1c0af1df37b2577254848f70c163a665ba57",
     
     // Compatibility & Architecture
     windowsCompatibility: "Windows 11, Windows 10, Windows Server 2022 / 2019 (64-bit)",
