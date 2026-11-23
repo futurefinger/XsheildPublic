@@ -1,0 +1,18 @@
+{
+  "device_id": "060e13dec9a8701c81406a15",
+  "hostname": "DESKTOP-AVE90GM",
+  "os_platform": "Microsoft Windows NT 6.2.9200.0 (64-bit)",
+  "architecture": "x64",
+  "cpu_count": 12,
+  "agent_version": "2.6.6",
+  "plan_tier": "PRO",
+  "is_trial": false,
+  "days_remaining": 365,
+  "protection_status": "ARMED_AND_ACTIVE",
+  "registered_at": "23 Nov 2026",
+  "last_sync_timestamp": "2026-11-23T07:35:19.3664870Z",
+  "last_sync_ist": "2026-11-23 13:05:15 IST",
+  "mac_address": "94BB43E10740",
+  "public_ip": "Unknown",
+  "user_name": "HP"
+}
