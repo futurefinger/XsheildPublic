@@ -633,6 +633,12 @@
       border: 1px solid rgba(16, 185, 129, 0.3);
     }
 
+    .status-pill.trial {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+
     .status-pill.pro {
       background: rgba(0, 240, 255, 0.15);
       color: var(--accent-cyan);
@@ -809,7 +815,7 @@
         <div class="nav-title-box">
           <div class="nav-brand-title">
             <span>XSHIELD FLEET COMMAND</span>
-            <span class="nav-badge">v2.6.7 LIVE</span>
+            <span class="nav-badge">v2.6.8 LIVE</span>
           </div>
           <span class="nav-meta-subtitle">Future Finger Technologies &bull; Centralized Autonomous Matrix</span>
         </div>
@@ -906,7 +912,7 @@
         </button>
         <button class="portal-tab-btn" onclick="switchPortalTab('releases')">
           <span>📦 Release &amp; Integrity</span>
-          <span class="tab-counter">v2.6.7</span>
+          <span class="tab-counter">v2.6.8</span>
         </button>
       </nav>
 
@@ -1069,7 +1075,7 @@
           <div style="background: rgba(3, 7, 18, 0.6); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-subtle);">
             <h3 style="font-size: 1.1rem; color: var(--accent-cyan); margin-bottom: 0.75rem;">Official Windows Installer</h3>
             <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.8;">
-              <div><strong>Version:</strong> <span class="mono" id="rel-version">v2.6.7</span></div>
+              <div><strong>Version:</strong> <span class="mono" id="rel-version">v2.6.8</span></div>
               <div><strong>File Name:</strong> <span class="mono">XSHEILD_Setup.exe</span></div>
               <div><strong>Installer Size:</strong> <span class="mono">41.5 MB (43,566,592 bytes)</span></div>
               <div><strong>Publisher:</strong> Future Finger Technologies</div>
@@ -1077,7 +1083,7 @@
             </div>
             <div style="margin-top: 1.25rem;">
               <span style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">SHA-256 Checksum:</span>
-              <div class="code-box" id="rel-sha256" style="margin: 0.4rem 0;">d525f6dc2a11d09c30d8982a7ebb6e5d5841b65835931f5bee4427641c2de028</div>
+              <div class="code-box" id="rel-sha256" style="margin: 0.4rem 0;">00d3a027e80aecb1b0c3ed2e257864b2a9b4e9416fa9f956e3bd5ffd6e1f9783</div>
             </div>
             <div style="margin-top: 1.25rem;">
               <a href="https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe" class="btn-secondary" style="background: var(--accent-cyan); color: #030712; border: none; font-weight: 700;">
@@ -1096,7 +1102,7 @@
             </div>
             <div style="margin-top: 1.25rem;">
               <span style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">Portable SHA-256 Checksum:</span>
-              <div class="code-box" id="rel-portable-sha256" style="margin: 0.4rem 0;">d525f6dc2a11d09c30d8982a7ebb6e5d5841b65835931f5bee4427641c2de028</div>
+              <div class="code-box" id="rel-portable-sha256" style="margin: 0.4rem 0;">00d3a027e80aecb1b0c3ed2e257864b2a9b4e9416fa9f956e3bd5ffd6e1f9783</div>
             </div>
             <div style="margin-top: 1.25rem;">
               <a href="https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_v1.0.0_Portable.zip" class="btn-secondary">
@@ -1196,8 +1202,8 @@
   <script>
     // Configuration
     const MASTER_HASHES = [
-      "d525f6dc2a11d09c30d8982a7ebb6e5d5841b65835931f5bee4427641c2de028", // FutureFinger@2026
-      "d525f6dc2a11d09c30d8982a7ebb6e5d5841b65835931f5bee4427641c2de028"  // XShield@2026
+      "00d3a027e80aecb1b0c3ed2e257864b2a9b4e9416fa9f956e3bd5ffd6e1f9783", // FutureFinger@2026
+      "00d3a027e80aecb1b0c3ed2e257864b2a9b4e9416fa9f956e3bd5ffd6e1f9783"  // XShield@2026
     ];
     const GITHUB_REPO_PUBLIC = "futurefinger/XsheildPublic";
     const GITHUB_REPO_MAIN = "futurefinger/XSHEILD";
@@ -1305,7 +1311,7 @@
 
       // 1. Fetch Device Inventory
       const devRes = await fetchJsonSafe(`${RAW_BASE}/release/device_inventory.json`, { devices: {} });
-      fleetData.devices = devRes.devices || {};
+      const rawDevices = devRes.devices || {};
 
       // Dynamic Auto-Discovery: Scan individual telemetry/devices/ files directly from GitHub API
       try {
@@ -1316,10 +1322,10 @@
             for (const item of devFiles) {
               if (item.name && item.name.endsWith(".json")) {
                 const devId = item.name.replace(".json", "");
-                if (!fleetData.devices[devId]) {
+                if (!rawDevices[devId]) {
                   const singleDev = await fetchJsonSafe(item.download_url || `${RAW_BASE}/telemetry/devices/${item.name}`);
                   if (singleDev && singleDev.device_id) {
-                    fleetData.devices[singleDev.device_id] = singleDev;
+                    rawDevices[singleDev.device_id] = singleDev;
                   }
                 }
               }
@@ -1329,6 +1335,23 @@
       } catch (e) {
         console.debug("Direct device discovery notice:", e);
       }
+
+      // Universal Endpoint Deduplication: Merge multiple entries for the same physical computer
+      const deduplicatedDevs = {};
+      for (const dev of Object.values(rawDevices)) {
+        if (!dev || !dev.hostname) continue;
+        const hostKey = dev.hostname.trim().toUpperCase();
+        if (!deduplicatedDevs[hostKey]) {
+          deduplicatedDevs[hostKey] = dev;
+        } else {
+          const existingTs = new Date(deduplicatedDevs[hostKey].last_sync_timestamp || 0).getTime();
+          const currentTs = new Date(dev.last_sync_timestamp || 0).getTime();
+          if (currentTs >= existingTs) {
+            deduplicatedDevs[hostKey] = dev;
+          }
+        }
+      }
+      fleetData.devices = deduplicatedDevs;
 
       // 2. Fetch Legal Contracts Ledger
       const legalRes = await fetchJsonSafe(`${RAW_BASE}/release/legal_audit_ledger.json`, { records: [] });
@@ -1353,6 +1376,19 @@
       } catch (e) {
         console.debug("Direct contract discovery notice:", e);
       }
+
+      // Deduplicate contracts by machine_name
+      const deduplicatedContracts = [];
+      const seenContracts = new Set();
+      for (const c of fleetData.contracts) {
+        if (!c) continue;
+        const key = (c.machine_name || c.device_id || '').trim().toUpperCase();
+        if (!seenContracts.has(key)) {
+          seenContracts.add(key);
+          deduplicatedContracts.push(c);
+        }
+      }
+      fleetData.contracts = deduplicatedContracts;
 
       // 3. Fetch Licenses Catalog
       const licRes = await fetchJsonSafe(`${RAW_BASE}/release/licenses_catalog.json`, { licenses: [] });
@@ -1411,7 +1447,8 @@
     function updateKPIs() {
       const devCount = Object.keys(fleetData.devices).length;
       const contractCount = fleetData.contracts.length;
-      const seatCount = Object.keys(fleetData.seats).length || devCount;
+      const paidSeats = Object.values(fleetData.devices).filter(d => !d.is_trial && d.plan_tier && d.plan_tier !== 'TRIAL' && d.plan_tier !== 'FREE_EVALUATION').length;
+      const seatCount = Object.keys(fleetData.seats).length || paidSeats;
       const errorCount = fleetData.errors.length;
 
       document.getElementById("kpi-total-devices").innerText = devCount;
@@ -1453,8 +1490,8 @@
           <td><span class="mono" style="color: var(--accent-cyan); font-size: 0.8rem;">${d.device_id || 'N/A'}</span></td>
           <td>${d.os_platform || 'Windows 11'} (${d.architecture || 'x64'})</td>
           <td><span class="mono">${d.cpu_count || 4} cores</span></td>
-          <td><span class="status-pill pro">v${d.agent_version || '2.6.7'}</span></td>
-          <td><span class="status-pill ${d.plan_tier === 'BUSINESS' ? 'business' : 'pro'}">${d.plan_tier || 'PRO'}</span></td>
+          <td><span class="status-pill pro">v${d.agent_version || '2.6.8'}</span></td>
+          <td><span class="status-pill ${d.is_trial ? 'trial' : (d.plan_tier === 'BUSINESS' ? 'business' : 'pro')}">${d.is_trial ? `⏳ TRIAL (${d.days_remaining || 14}d)` : `💎 ${d.plan_tier || 'PRO'}`}</span></td>
           <td><span class="status-pill online">● ${d.protection_status || 'ARMED'}</span></td>
           <td class="mono" style="font-size: 0.78rem;">${d.last_sync_ist || d.last_sync_timestamp || 'Active Now'}</td>
           <td>
@@ -1754,7 +1791,7 @@
         doc.setFontSize(7);
         doc.setTextColor(40, 50, 60);
         doc.text(`Digital HMAC Signature : ${c.digital_signature || 'N/A'}`, 18, finalY + 12);
-        doc.text(`EULA Document SHA-256   : ${c.eula_hash || 'd525f6dc2a11d09c30d8982a7ebb6e5d5841b65835931f5bee4427641c2de028'}`, 18, finalY + 18);
+        doc.text(`EULA Document SHA-256   : ${c.eula_hash || '00d3a027e80aecb1b0c3ed2e257864b2a9b4e9416fa9f956e3bd5ffd6e1f9783'}`, 18, finalY + 18);
         doc.text(`Root Certificate Thumb : 384EBF19FFBA4FB51B766EF0E61387DE7651F9AD`, 18, finalY + 24);
         doc.text(`Verification Authority  : Future Finger Technologies Legal Sentry Matrix`, 18, finalY + 30);
 
@@ -1840,7 +1877,7 @@
           ["Hardware Device UUID", `${d.device_id || 'N/A'}`],
           ["Operating System", `${d.os_platform || 'Windows 11'} (${d.architecture || 'x64'})`],
           ["Processor Topology", `${d.cpu_count || 4} Physical / Logical Hardware Execution Threads`],
-          ["Agent Engine Version", `v${d.agent_version || '2.6.7'} (Quantum Matrix Shield)`],
+          ["Agent Engine Version", `v${d.agent_version || '2.6.8'} (Quantum Matrix Shield)`],
           ["License Plan Tier", `${d.plan_tier || 'PRO'} (${d.days_remaining || 365} Days Remaining)`],
           ["Overall Shield State", `ARMED & ACTIVE (100% Protection Level)`],
           ["Last Heartbeat (IST)", `${d.last_sync_ist || 'Active Live'}`]
