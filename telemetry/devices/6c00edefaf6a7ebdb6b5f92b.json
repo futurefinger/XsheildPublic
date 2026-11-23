@@ -4,12 +4,12 @@
   "os_platform": "Windows 11 (10.0.26200)",
   "architecture": "AMD64",
   "cpu_count": 12,
-  "agent_version": "2.6.13",
+  "agent_version": "2.6.14",
   "plan_tier": "TRIAL",
   "is_trial": true,
   "days_remaining": 14,
   "protection_status": "ARMED_AND_ACTIVE",
   "registered_at": "23 Nov 2026",
-  "last_sync_timestamp": "2026-11-23T09:56:49.369774+00:00",
-  "last_sync_ist": "2026-11-23 15:26:49 IST"
+  "last_sync_timestamp": "2026-11-23T10:09:24.354401+00:00",
+  "last_sync_ist": "2026-11-23 15:39:24 IST"
 }
