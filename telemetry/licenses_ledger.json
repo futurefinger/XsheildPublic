@@ -1,0 +1,14 @@
+{
+  "seats": {
+    "6c00edefaf6a7ebdb6b5f92b": {
+      "key_code": "FFT-FREE-PRO",
+      "plan": "PRO",
+      "hostname": "DESKTOP-AVE90GM",
+      "activated_at": "2026-11-23T09:57:06.933201+00:00",
+      "agent_version": "2.6.13",
+      "status": "ACTIVE"
+    }
+  },
+  "total_active_seats": 1,
+  "updated_at": "2026-11-23T09:57:06.933201+00:00"
+}
