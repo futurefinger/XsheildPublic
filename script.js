@@ -669,4 +669,34 @@
     }
   };
 
+  // ---------------------------------------------------------------------------
+  // Floating Meditation Sentinel 3D Buy Now Button Visibility Control
+  // ---------------------------------------------------------------------------
+  function syncFloatingBuyNowVisibility() {
+    const badge = document.getElementById('floating-meditation-badge');
+    if (!badge) return;
+
+    // Check if user has already purchased / activated XShield license
+    const isPurchased = (
+      localStorage.getItem('xshield_is_registered') === 'true' ||
+      localStorage.getItem('xshield_license_active') === 'true' ||
+      localStorage.getItem('xshield_tier') === 'lifetime' ||
+      localStorage.getItem('xshield_tier') === 'enterprise' ||
+      localStorage.getItem('xshield_tier') === 'pro'
+    );
+
+    if (isPurchased) {
+      // ANTIVIRUS PURCHASED: Permanently hide the Buy Now floating badge
+      badge.style.display = 'none';
+    } else {
+      // UNPURCHASED: Keep gorgeous 3D Buy Now badge visible
+      badge.style.display = 'block';
+    }
+  }
+
+  // Run on load and listen for license activation events
+  syncFloatingBuyNowVisibility();
+  window.addEventListener('storage', syncFloatingBuyNowVisibility);
+  window.addEventListener('xshield:license-updated', syncFloatingBuyNowVisibility);
+
 })();
