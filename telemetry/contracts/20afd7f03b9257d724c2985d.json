@@ -1,0 +1,19 @@
+{
+  "machine_name": "FUTURE-FIGNER-T",
+  "user_name": "HP",
+  "device_id": "20afd7f03b9257d724c2985d",
+  "os_version": "Windows 10.0.26200 (AMD64)",
+  "cpu_cores": 2,
+  "mac_address": "B83DA9137D37",
+  "eula_hash": "e37caf4494441fc575c562be0a470394b9e9824d3bf5779c3e492327547e0b3b",
+  "digital_signature": "2e953f4504815ce685c954cf86e9f4097dafa6730abe565d0ef8a38a08d2d46d",
+  "jurisdiction": "New Delhi, Delhi, India (ACCEPTED)",
+  "arbitration": "New Delhi, India (ACCEPTED)",
+  "liability_cap": "INR 1,000 (ACCEPTED)",
+  "timestamp_utc": "2026-11-23T11:09:12Z",
+  "timestamp_ist": "2026-11-23 16:39:12 IST",
+  "legal_status": "FULLY_BOUND_AND_ENFORCEABLE",
+  "user_email": "hp@future-figner-t.local",
+  "organization": "Future Finger Technologies",
+  "agent_version": "2.6.15"
+}
