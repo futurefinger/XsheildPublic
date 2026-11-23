@@ -1,0 +1,15 @@
+{
+  "device_id": "20afd7f03b9257d724c2985d",
+  "hostname": "FUTURE-FIGNER-T",
+  "os_platform": "Windows 11 (10.0.26200)",
+  "architecture": "AMD64",
+  "cpu_count": 2,
+  "agent_version": "2.6.15",
+  "plan_tier": "TRIAL",
+  "is_trial": true,
+  "days_remaining": 0,
+  "protection_status": "ARMED_AND_ACTIVE",
+  "registered_at": "23 Nov 2026",
+  "last_sync_timestamp": "2026-11-23T11:09:04.014858+00:00",
+  "last_sync_ist": "2026-11-23 16:39:04 IST"
+}
