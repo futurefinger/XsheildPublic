@@ -30,6 +30,7 @@
     init3DCardTilt();
     initAnimatedCounters();
     initScrollReveal();
+    initWebPricingCurrency();
   });
 
   /* ==========================================================================
@@ -692,6 +693,102 @@
       // UNPURCHASED: Keep gorgeous 3D Buy Now badge visible
       badge.style.display = 'block';
     }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Intelligent Multi-Currency Purchasing Power & Currency Switcher
+  // ---------------------------------------------------------------------------
+  function initWebPricingCurrency() {
+    const select = document.getElementById('web-pricing-currency-select');
+    const badge = document.getElementById('web-currency-badge');
+    if (!select) return;
+
+    const catalog = (typeof XSHIELD_CONFIG !== 'undefined' && XSHIELD_CONFIG.currencyPricing) ? XSHIELD_CONFIG.currencyPricing : null;
+    if (!catalog) return;
+
+    // Detect visitor currency from locale, timezone, or saved preference
+    let detectedCurrency = 'INR';
+    let isManual = false;
+    try {
+      const saved = localStorage.getItem('xshield_web_currency');
+      if (saved && catalog[saved]) {
+        detectedCurrency = saved;
+        isManual = true;
+      } else {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        const lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+        if (tz.includes('London') || lang.endsWith('gb')) detectedCurrency = 'GBP';
+        else if (tz.includes('Dubai') || lang.endsWith('ae')) detectedCurrency = 'AED';
+        else if (tz.includes('Singapore') || lang.endsWith('sg')) detectedCurrency = 'SGD';
+        else if (tz.includes('Tokyo') || lang.endsWith('jp') || lang.startsWith('ja')) detectedCurrency = 'JPY';
+        else if (tz.includes('Sydney') || tz.includes('Melbourne') || lang.endsWith('au')) detectedCurrency = 'AUD';
+        else if (tz.includes('Toronto') || tz.includes('Vancouver') || lang.endsWith('ca')) detectedCurrency = 'CAD';
+        else if (tz.includes('Riyadh') || lang.endsWith('sa')) detectedCurrency = 'SAR';
+        else if (tz.includes('Berlin') || tz.includes('Paris') || tz.includes('Rome') || tz.includes('Madrid') || tz.includes('Amsterdam') || ['de','fr','it','es','nl'].some(l => lang.startsWith(l))) detectedCurrency = 'EUR';
+        else if (tz.includes('America') || tz.includes('New_York') || tz.includes('Chicago') || tz.includes('Los_Angeles') || lang.endsWith('us')) detectedCurrency = 'USD';
+        else if (tz.includes('Kolkata') || tz.includes('Calcutta') || lang.endsWith('in') || lang.startsWith('hi')) detectedCurrency = 'INR';
+      }
+    } catch (e) {}
+
+    function applyCurrency(cur, manualChoice = false) {
+      if (!catalog[cur]) cur = 'INR';
+      const curData = catalog[cur];
+      select.value = cur;
+
+      if (badge) {
+        badge.innerText = manualChoice ? 'Selected' : 'Auto-Detected';
+        badge.style.color = manualChoice ? '#38bdf8' : '#10b981';
+        badge.style.borderColor = manualChoice ? 'rgba(56, 189, 248, 0.4)' : 'rgba(16, 185, 129, 0.3)';
+      }
+
+      const pPro = curData.plans.pro;
+      const pFleet = curData.plans.fleet;
+      const pLife = curData.plans.lifetime;
+
+      // Update Pro card
+      const elProCur = document.getElementById('web-pro-currency');
+      const elProPrice = document.getElementById('web-pro-price');
+      const elProPeriod = document.getElementById('web-pro-period');
+      const elProBtn = document.getElementById('web-pro-buy-btn');
+      if (elProCur) elProCur.innerText = curData.symbol;
+      if (elProPrice) elProPrice.innerText = pPro.price;
+      if (elProPeriod) elProPeriod.innerText = pPro.period;
+      if (elProBtn) {
+        elProBtn.setAttribute('href', `mailto:futurefingerindia@gmail.com?subject=XShield%20Pro%20Purchase%20Inquiry&body=Hi%2C%20I%20want%20to%20purchase%20XShield%20Pro%20(${encodeURIComponent(pPro.inquiryText)})%20to%20Unlock%20Full%20Security.`);
+      }
+
+      // Update Fleet card
+      const elFleetCur = document.getElementById('web-fleet-currency');
+      const elFleetPrice = document.getElementById('web-fleet-price');
+      const elFleetPeriod = document.getElementById('web-fleet-period');
+      const elFleetBtn = document.getElementById('web-fleet-buy-btn');
+      if (elFleetCur) elFleetCur.innerText = curData.symbol;
+      if (elFleetPrice) elFleetPrice.innerText = pFleet.price;
+      if (elFleetPeriod) elFleetPeriod.innerText = pFleet.period;
+      if (elFleetBtn) {
+        elFleetBtn.setAttribute('href', `mailto:futurefingerindia@gmail.com?subject=XShield%20Enterprise%20Fleet%20Order&body=Hi%2C%20I%20want%20to%20deploy%20XShield%20Fleet%20Enterprise%20(${encodeURIComponent(pFleet.inquiryText)})%20to%20Unlock%20Full%20Security.`);
+      }
+
+      // Update Lifetime card
+      const elLifeCur = document.getElementById('web-lifetime-currency');
+      const elLifePrice = document.getElementById('web-lifetime-price');
+      const elLifePeriod = document.getElementById('web-lifetime-period');
+      const elLifeBtn = document.getElementById('web-lifetime-buy-btn');
+      if (elLifeCur) elLifeCur.innerText = curData.symbol;
+      if (elLifePrice) elLifePrice.innerText = pLife.price;
+      if (elLifePeriod) elLifePeriod.innerText = pLife.period;
+      if (elLifeBtn) {
+        elLifeBtn.setAttribute('href', `mailto:futurefingerindia@gmail.com?subject=XShield%20Lifetime%20Sovereign%20Order&body=Hi%2C%20I%20want%20to%20purchase%20XShield%20Lifetime%20Sovereign%20(${encodeURIComponent(pLife.inquiryText)})%20to%20Unlock%20Full%20Security.`);
+      }
+    }
+
+    select.addEventListener('change', (e) => {
+      const chosen = e.target.value;
+      try { localStorage.setItem('xshield_web_currency', chosen); } catch(e) {}
+      applyCurrency(chosen, true);
+    });
+
+    applyCurrency(detectedCurrency, isManual);
   }
 
   // Run on load and listen for license activation events
