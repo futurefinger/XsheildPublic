@@ -1,14 +1,14 @@
 {
-  "tag": "v2.6.16",
-  "version": "2.6.16",
-  "release_name": "XSHEILD v2.6.16 Production Enterprise Release",
-  "published_at": "2026-11-23T11:25:18Z",
+  "tag": "v2.6.18",
+  "version": "2.6.18",
+  "release_name": "XSHEILD v2.6.18 Production Enterprise Release",
+  "published_at": "2026-11-24T06:39:16Z",
   "installer_file": "XSHEILD_Setup.exe",
-  "installer_sha256": "01e595f2ed8ed550a8a0b3cedec66e7582a634f69163ebcba06ba40984bf7198",
-  "installer_size": 47355096,
-  "download_url": "https://github.com/futurefinger/XsheildPublic/releases/download/v2.6.16/XSHEILD_Setup.exe",
+  "installer_sha256": "c6b065ef0416fc8dfc857a669c1fd28bb269837243bec8623207af806d2cd943",
+  "installer_size": 48832728,
+  "download_url": "https://github.com/futurefinger/XsheildPublic/releases/download/v2.6.18/XSHEILD_Setup.exe",
   "raw_url": "https://raw.githubusercontent.com/futurefinger/XsheildPublic/main/release/XSHEILD_Setup.exe",
-  "sha256": "01e595f2ed8ed550a8a0b3cedec66e7582a634f69163ebcba06ba40984bf7198",
-  "portable_sha256": "e22c2a4b3297143341c96a345f70e47e573e17b62205de894766fa102855a485",
-  "size": 47355096
+  "sha256": "c6b065ef0416fc8dfc857a669c1fd28bb269837243bec8623207af806d2cd943",
+  "portable_sha256": "748c0cc3a2a2cb699bbfe2d0110fd58dbe3d39a8b41f7b406684ee4fca4a90e9",
+  "size": 48832728
 }
