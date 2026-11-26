@@ -34,7 +34,7 @@
   });
 
   /* ==========================================================================
-     1. Cyber Matrix Neural Particle Canvas (Zero-Dependency Background)
+     1. Cyber Matrix 4D Quantum Particle Canvas (Zero-Dependency)
      ========================================================================== */
   function initCyberMatrixCanvas() {
     const canvas = document.getElementById('cyberMatrixCanvas');
@@ -46,62 +46,86 @@
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Particle pool
-    const count = Math.min(Math.floor(width / 26), 55);
+    // Dynamic density based on screen width
+    const count = Math.min(Math.floor(width / 22), 65);
     const particles = [];
-    const mouse = { x: null, y: null, radius: 140 };
+    const pointer = { x: null, y: null, radius: 150, active: false };
 
-    class Particle {
+    class Particle4D {
       constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.65;
-        this.vy = (Math.random() - 0.5) * 0.65;
-        this.radius = Math.random() * 2 + 1;
-        // Cyan, Violet, or Emerald accent
+        this.baseX = Math.random() * width;
+        this.baseY = Math.random() * height;
+        this.baseZ = (Math.random() - 0.5) * 280; // 3rd spatial dimension
+        this.vx = (Math.random() - 0.5) * 0.7;
+        this.vy = (Math.random() - 0.5) * 0.7;
+        this.vz = (Math.random() - 0.5) * 0.5;
+        this.radius = Math.random() * 2.2 + 1.2;
+        this.phase = Math.random() * Math.PI * 2; // 4th temporal dimension phase
+
+        // Cyber chromatic palette
         const colors = [
-          'rgba(0, 240, 255, 0.75)',
-          'rgba(139, 92, 246, 0.65)',
-          'rgba(16, 185, 129, 0.65)',
-          'rgba(56, 189, 248, 0.7)'
+          'rgba(0, 240, 255, 0.85)',
+          'rgba(139, 92, 246, 0.8)',
+          'rgba(16, 185, 129, 0.8)',
+          'rgba(56, 189, 248, 0.85)',
+          'rgba(251, 191, 36, 0.75)'
         ];
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
 
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
+      update(time) {
+        this.baseX += this.vx;
+        this.baseY += this.vy;
+        this.baseZ += this.vz;
 
-        // Bounce on boundaries
-        if (this.x < 0 || this.x > width) this.vx *= -1;
-        if (this.y < 0 || this.y > height) this.vy *= -1;
+        // Wrap around spatial boundaries
+        if (this.baseX < 0) this.baseX = width;
+        if (this.baseX > width) this.baseX = 0;
+        if (this.baseY < 0) this.baseY = height;
+        if (this.baseY > height) this.baseY = 0;
+        if (this.baseZ < -140) this.baseZ = 140;
+        if (this.baseZ > 140) this.baseZ = -140;
 
-        // Subtle mouse repulsion / attraction
-        if (mouse.x !== null && mouse.y !== null) {
-          const dx = mouse.x - this.x;
-          const dy = mouse.y - this.y;
+        // 4D Temporal Wave Function: z oscillates with time & coordinate distance
+        const tWave = Math.sin(time * 0.0018 + this.phase + this.baseX * 0.008) * 35;
+        const currentZ = this.baseZ + tWave;
+
+        // 3D Perspective Projection
+        const fov = 300;
+        const scale = fov / (fov + currentZ);
+        this.projX = (this.baseX - width / 2) * scale + width / 2;
+        this.projY = (this.baseY - height / 2) * scale + height / 2;
+        this.projRadius = Math.max(0.6, this.radius * scale);
+        this.projAlpha = Math.min(1, Math.max(0.15, scale * 0.85));
+
+        // Touch & Mouse gravitational ripple
+        if (pointer.active && pointer.x !== null && pointer.y !== null) {
+          const dx = pointer.x - this.projX;
+          const dy = pointer.y - this.projY;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < mouse.radius) {
-            const force = (mouse.radius - dist) / mouse.radius;
-            this.x -= (dx / dist) * force * 1.5;
-            this.y -= (dy / dist) * force * 1.5;
+          if (dist < pointer.radius && dist > 0) {
+            const force = (pointer.radius - dist) / pointer.radius;
+            this.baseX -= (dx / dist) * force * 2.2;
+            this.baseY -= (dy / dist) * force * 2.2;
           }
         }
       }
 
       draw() {
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.arc(this.projX, this.projY, this.projRadius, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
-        ctx.shadowBlur = 8;
+        ctx.shadowBlur = 10 * this.projAlpha;
         ctx.shadowColor = this.color;
+        ctx.globalAlpha = this.projAlpha;
         ctx.fill();
+        ctx.globalAlpha = 1;
         ctx.shadowBlur = 0;
       }
     }
 
     for (let i = 0; i < count; i++) {
-      particles.push(new Particle());
+      particles.push(new Particle4D());
     }
 
     window.addEventListener('resize', () => {
@@ -109,37 +133,64 @@
       height = canvas.height = window.innerHeight;
     }, { passive: true });
 
+    // Mouse events
     window.addEventListener('mousemove', (e) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
+      pointer.x = e.clientX;
+      pointer.y = e.clientY;
+      pointer.active = true;
     }, { passive: true });
 
     window.addEventListener('mouseleave', () => {
-      mouse.x = null;
-      mouse.y = null;
+      pointer.active = false;
+      pointer.x = null;
+      pointer.y = null;
     });
 
+    // Touch events for mobile
+    window.addEventListener('touchstart', (e) => {
+      if (e.touches.length) {
+        pointer.x = e.touches[0].clientX;
+        pointer.y = e.touches[0].clientY;
+        pointer.active = true;
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches.length) {
+        pointer.x = e.touches[0].clientX;
+        pointer.y = e.touches[0].clientY;
+        pointer.active = true;
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+      pointer.active = false;
+    }, { passive: true });
+
     let animationFrameId;
-    function render() {
+    let startTime = performance.now();
+
+    function render(currentTime) {
+      const elapsed = currentTime - startTime;
       ctx.clearRect(0, 0, width, height);
 
-      // Connect nearby particles with subtle glowing lines
+      // Connect nearby particles with glowing neural lines
       for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
+        particles[i].update(elapsed);
         particles[i].draw();
 
         for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
+          const dx = particles[i].projX - particles[j].projX;
+          const dy = particles[i].projY - particles[j].projY;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 130) {
-            const alpha = 1 - dist / 130;
+          if (dist < 135) {
+            const alpha = (1 - dist / 135) * Math.min(particles[i].projAlpha, particles[j].projAlpha);
             ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(0, 240, 255, ${alpha * 0.18})`;
-            ctx.lineWidth = 0.8;
+            ctx.moveTo(particles[i].projX, particles[i].projY);
+            ctx.lineTo(particles[j].projX, particles[j].projY);
+            ctx.strokeStyle = `rgba(0, 240, 255, ${alpha * 0.22})`;
+            ctx.lineWidth = 0.9;
             ctx.stroke();
           }
         }
@@ -148,24 +199,23 @@
       animationFrameId = requestAnimationFrame(render);
     }
 
-    // Check reduced motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!prefersReducedMotion) {
-      render();
+      render(performance.now());
     }
 
-    // Auto-pause when tab is inactive to save battery
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
         cancelAnimationFrame(animationFrameId);
       } else if (!prefersReducedMotion) {
-        render();
+        startTime = performance.now();
+        render(performance.now());
       }
     });
   }
 
   /* ==========================================================================
-     2. 3D Volumetric Hero Shield Gyroscope Tilt
+     2. 3D Volumetric Hero Shield Gyroscope & Mobile Touch Tilt
      ========================================================================== */
   function init3DHeroTilt() {
     const stage = document.getElementById('heroVisualStage') || document.querySelector('.hero-visual');
@@ -177,37 +227,61 @@
       bounds = stage.getBoundingClientRect();
     }, { passive: true });
 
-    stage.addEventListener('mousemove', (e) => {
-      const mouseX = e.clientX;
-      const mouseY = e.clientY;
+    const applyTilt = (x, y) => {
       const centerX = bounds.left + bounds.width / 2;
       const centerY = bounds.top + bounds.height / 2;
 
-      const deltaX = (mouseX - centerX) / (bounds.width / 2);
-      const deltaY = (mouseY - centerY) / (bounds.height / 2);
+      const deltaX = Math.max(-1, Math.min(1, (x - centerX) / (bounds.width / 2)));
+      const deltaY = Math.max(-1, Math.min(1, (y - centerY) / (bounds.height / 2)));
 
-      const rotateY = deltaX * 22;
-      const rotateX = -deltaY * 22;
+      const rotateY = deltaX * 24;
+      const rotateX = -deltaY * 24;
 
       container.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    };
+
+    stage.addEventListener('mousemove', (e) => {
+      applyTilt(e.clientX, e.clientY);
     });
 
     stage.addEventListener('mouseleave', () => {
       container.style.transform = 'rotateX(0deg) rotateY(0deg)';
     });
+
+    // Touch interaction for mobile devices
+    stage.addEventListener('touchmove', (e) => {
+      if (e.touches.length) {
+        applyTilt(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+
+    stage.addEventListener('touchend', () => {
+      container.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    }, { passive: true });
+
+    // Gyroscope orientation tilt on mobile (when available)
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener('deviceorientation', (e) => {
+        if (e.gamma !== null && e.beta !== null && window.innerWidth <= 1024) {
+          const tiltX = Math.min(Math.max(e.gamma, -25), 25) * 0.6;
+          const tiltY = Math.min(Math.max(e.beta - 45, -25), 25) * 0.6;
+          container.style.transform = `rotateX(${-tiltY}deg) rotateY(${tiltX}deg)`;
+        }
+      }, { passive: true });
+    }
   }
 
   /* ==========================================================================
-     3. Interactive 3D Perspective & Specular Glare on Cards
+     3. Interactive 3D Perspective & Specular Glare on All Cards
      ========================================================================== */
   function init3DCardTilt() {
-    const cards = document.querySelectorAll('[data-tilt], .feature-card, .why-card, .metric-strip-card');
+    const cards = document.querySelectorAll('[data-tilt], .feature-card, .why-card, .metric-strip-card, .pricing-card, .download-card, .pillar-card');
 
     cards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
+      const updateCardGlare = (clientX, clientY) => {
         const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
 
         // Set CSS variables for radial glare spotlight
         card.style.setProperty('--mouse-x', `${x}px`);
@@ -216,15 +290,30 @@
         // Subtle 3D tilt
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -8;
-        const rotateY = ((x - centerX) / centerX) * 8;
+        const rotateX = ((y - centerY) / centerY) * -7;
+        const rotateY = ((x - centerX) / centerX) * 7;
 
         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      };
+
+      card.addEventListener('mousemove', (e) => {
+        updateCardGlare(e.clientX, e.clientY);
       });
 
       card.addEventListener('mouseleave', () => {
         card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
       });
+
+      // Mobile touch spotlight
+      card.addEventListener('touchmove', (e) => {
+        if (e.touches.length) {
+          const rect = card.getBoundingClientRect();
+          const x = e.touches[0].clientX - rect.left;
+          const y = e.touches[0].clientY - rect.top;
+          card.style.setProperty('--mouse-x', `${x}px`);
+          card.style.setProperty('--mouse-y', `${y}px`);
+        }
+      }, { passive: true });
     });
   }
 
@@ -372,12 +461,13 @@
   }
 
   /* ==========================================================================
-     8. Mobile Hamburger Menu Toggle
+     8. Mobile Cyber Drawer Navigation & Touch Gestures
      ========================================================================== */
   function initMobileNav() {
     const hamburgerBtn = document.querySelector('.hamburger-btn');
     const mobileMenu = document.querySelector('.nav-links');
     const navOverlay = document.querySelector('.mobile-overlay');
+    const closeBtn = document.getElementById('mobileNavClose') || document.querySelector('.mobile-nav-close');
 
     if (!hamburgerBtn || !mobileMenu) return;
 
@@ -392,17 +482,42 @@
 
     hamburgerBtn.addEventListener('click', () => toggleMenu());
 
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => toggleMenu(false));
+    }
+
     if (navOverlay) {
       navOverlay.addEventListener('click', () => toggleMenu(false));
     }
 
+    // Close on link click on tablets & mobile
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        if (window.innerWidth <= 992) {
+        if (window.innerWidth <= 1024) {
           toggleMenu(false);
         }
       });
     });
+
+    // Close on Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('nav-active')) {
+        toggleMenu(false);
+      }
+    });
+
+    // Touch swipe-to-close gesture
+    let touchStartX = 0;
+    mobileMenu.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    mobileMenu.addEventListener('touchmove', (e) => {
+      const touchCurrentX = e.touches[0].clientX;
+      if (touchCurrentX - touchStartX > 50) {
+        toggleMenu(false);
+      }
+    }, { passive: true });
   }
 
   /* ==========================================================================
