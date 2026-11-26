@@ -10,12 +10,12 @@
       "cpu_cores": 12,
       "mac_address": "30138B657C3D",
       "eula_hash": "e37caf4494441fc575c562be0a470394b9e9824d3bf5779c3e492327547e0b3b",
-      "digital_signature": "d2adb41e9dc61bc8f02006d4c3f770a1cfd4aa24ce800e0aa25ccf5aa5b38fc3",
+      "digital_signature": "d40d244d9e24b957d3de3f49679f219fbc2491e690ece0473d3b2722dac5dfd1",
       "jurisdiction": "New Delhi, Delhi, India (ACCEPTED)",
       "arbitration": "New Delhi, India (ACCEPTED)",
       "liability_cap": "INR 1,000 (ACCEPTED)",
-      "timestamp_utc": "2026-11-26T12:26:25Z",
-      "timestamp_ist": "2026-11-26 17:56:25 IST",
+      "timestamp_utc": "2026-11-26T13:12:47Z",
+      "timestamp_ist": "2026-11-26 18:42:47 IST",
       "legal_status": "FULLY_BOUND_AND_ENFORCEABLE",
       "user_email": "hp@desktop-ave90gm.local",
       "organization": "Future Finger Technologies",
@@ -42,5 +42,5 @@
     }
   ],
   "total_enforceable_contracts": 2,
-  "last_audit_sync": "2026-11-26T12:26:25.080979+00:00"
+  "last_audit_sync": "2026-11-26T13:12:47.432190+00:00"
 }
