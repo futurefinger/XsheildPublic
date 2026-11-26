@@ -4,39 +4,22 @@
   "records": [
     {
       "machine_name": "DESKTOP-AVE90GM",
-      "user_name": "Dev User",
+      "user_name": "HP",
       "device_id": "6c00edefaf6a7ebdb6b5f92b",
-      "os_version": "10.0.26200",
+      "os_version": "Windows 10.0.26200 (AMD64)",
       "cpu_cores": 12,
       "mac_address": "30138B657C3D",
       "eula_hash": "e37caf4494441fc575c562be0a470394b9e9824d3bf5779c3e492327547e0b3b",
-      "digital_signature": "50ec0b55c26a97a25db1bc9a67a9d4d6ef11f6147888bd1b74678c35c665310c",
-      "jurisdiction": "New Delhi, Delhi, India",
+      "digital_signature": "fb9cf19a267b1177acd38e902ff55d4cb427baf94315804a88e7f4da5958fa10",
+      "jurisdiction": "New Delhi, Delhi, India (ACCEPTED)",
       "arbitration": "New Delhi, India (ACCEPTED)",
       "liability_cap": "INR 1,000 (ACCEPTED)",
-      "timestamp_utc": "2026-11-26T08:39:53Z",
-      "timestamp_ist": "2026-11-26 14:09:53 IST",
+      "timestamp_utc": "2026-11-26T09:09:18Z",
+      "timestamp_ist": "2026-11-26 14:39:18 IST",
       "legal_status": "FULLY_BOUND_AND_ENFORCEABLE",
-      "user_email": "dev@futurefinger.com",
-      "organization": "Future Finger Technologies Lab",
-      "agent_version": "2.6.26",
-      "agreement_version": "2026.1-DELHI-EXCLUSIVE",
-      "utc_timestamp": "2026-11-26 08:39:52 UTC",
-      "local_timestamp": "2026-11-26 14:09:52 (Local)",
-      "computer_name": "DESKTOP-AVE90GM",
-      "username": "HP",
-      "os_platform": "Windows-11-10.0.26200-SP0",
-      "machine_arch": "AMD64",
-      "processor": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel",
-      "publisher": "Future Finger Technologies",
-      "support_email": "futurefingerindia@gmail.com",
-      "network_telemetry": {
-        "ip": "2401:4900:893f:aa30:59ca:59e1:ebf9:8648",
-        "city": "Noida",
-        "region": "Uttar Pradesh",
-        "country": "India",
-        "org": "Bharti Airtel Limited"
-      }
+      "user_email": "hp@desktop-ave90gm.local",
+      "organization": "Future Finger Technologies",
+      "agent_version": "2.6.26"
     },
     {
       "machine_name": "FUTURE-FIGNER-T",
@@ -59,5 +42,5 @@
     }
   ],
   "total_enforceable_contracts": 2,
-  "last_audit_sync": "2026-11-26T08:39:53.311545+00:00"
+  "last_audit_sync": "2026-11-26T09:09:18.719041+00:00"
 }
