@@ -12,11 +12,11 @@
       "key_code": "FFT-FREE-PRO",
       "plan": "PRO",
       "hostname": "FUTURE-FIGNER-T",
-      "activated_at": "2026-11-27T05:51:00.630774+00:00",
-      "agent_version": "2.6.27",
+      "activated_at": "2026-11-27T08:35:00.247352+00:00",
+      "agent_version": "2.6.30",
       "status": "ACTIVE"
     }
   },
   "total_active_seats": 2,
-  "updated_at": "2026-11-27T08:30:08.863513+00:00"
+  "updated_at": "2026-11-27T08:35:00.247352+00:00"
 }
