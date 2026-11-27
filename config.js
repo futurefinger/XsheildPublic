@@ -12,8 +12,8 @@ const XSHIELD_CONFIG = {
     description: "XShield Antivirus helps protect your digital environment with security tools designed to detect threats, scan files, and help safeguard your Windows computer.",
     
     // Release Metadata
-    version: "2.6.28",
-    tag: "v2.6.28",
+    version: "2.6.29",
+    tag: "v2.6.29",
     releaseDate: "November 23, 2026",
     
     // Installer Specifications
