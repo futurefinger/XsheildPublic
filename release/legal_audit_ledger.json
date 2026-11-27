@@ -27,14 +27,14 @@
       "device_id": "20afd7f03b9257d724c2985d",
       "os_version": "Windows 10.0.26200 (AMD64)",
       "cpu_cores": 2,
-      "mac_address": "CE3FA10A2595",
+      "mac_address": "AAB1720183F0",
       "eula_hash": "e37caf4494441fc575c562be0a470394b9e9824d3bf5779c3e492327547e0b3b",
-      "digital_signature": "73ecb2c0e5dc7ce66fddd46e8e3ea88ec0878f4b0ac956bbfc61b808eaa217bb",
+      "digital_signature": "66ab530053b0fbade4e3a1693d08ab8516240d5b997bdee3228937051bf5c1f8",
       "jurisdiction": "New Delhi, Delhi, India (ACCEPTED)",
       "arbitration": "New Delhi, India (ACCEPTED)",
       "liability_cap": "INR 1,000 (ACCEPTED)",
-      "timestamp_utc": "2026-11-27T08:34:50Z",
-      "timestamp_ist": "2026-11-27 14:04:50 IST",
+      "timestamp_utc": "2026-11-27T10:58:31Z",
+      "timestamp_ist": "2026-11-27 16:28:31 IST",
       "legal_status": "FULLY_BOUND_AND_ENFORCEABLE",
       "user_email": "hp@future-figner-t.local",
       "organization": "Future Finger Technologies",
@@ -42,5 +42,5 @@
     }
   ],
   "total_enforceable_contracts": 2,
-  "last_audit_sync": "2026-11-27T08:34:50.876443+00:00"
+  "last_audit_sync": "2026-11-27T10:58:31.539490+00:00"
 }
