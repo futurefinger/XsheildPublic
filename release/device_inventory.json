@@ -10,11 +10,11 @@
       "agent_version": "2.6.30",
       "plan_tier": "TRIAL",
       "is_trial": true,
-      "days_remaining": 11,
+      "days_remaining": 10,
       "protection_status": "ARMED_AND_ACTIVE",
-      "registered_at": "27 Nov 2026",
-      "last_sync_timestamp": "2026-11-27T08:29:51.509271+00:00",
-      "last_sync_ist": "2026-11-27 13:59:51 IST"
+      "registered_at": "28 Nov 2026",
+      "last_sync_timestamp": "2026-11-28T04:36:11.626162+00:00",
+      "last_sync_ist": "2026-11-28 10:06:11 IST"
     },
     "20afd7f03b9257d724c2985d": {
       "device_id": "20afd7f03b9257d724c2985d",
@@ -33,5 +33,5 @@
     }
   },
   "total_registered_devices": 2,
-  "updated_at": "2026-11-27T10:58:23.125397+00:00"
+  "updated_at": "2026-11-28T04:36:11.626162+00:00"
 }
